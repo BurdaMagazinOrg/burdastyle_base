@@ -1,0 +1,9 @@
+name: BurdaStyle Article
+type: module
+description: Provide content related configs and code for BurdaStyle articles.
+package: BurdaStyle
+core: 8.x
+version: 8.x-1.x-dev
+dependencies:
+  - burdastyle_base
+

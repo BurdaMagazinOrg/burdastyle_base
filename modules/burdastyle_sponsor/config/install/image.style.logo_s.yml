@@ -1,0 +1,14 @@
+langcode: de
+status: true
+dependencies: {  }
+name: logo_s
+label: 'Logo S'
+effects:
+  3bc1d7bb-b53c-44ec-8139-57d5acea49d7:
+    uuid: 3bc1d7bb-b53c-44ec-8139-57d5acea49d7
+    id: image_scale
+    weight: 1
+    data:
+      width: null
+      height: 20
+      upscale: false

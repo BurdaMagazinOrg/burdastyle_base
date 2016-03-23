@@ -1,0 +1,22 @@
+# SEO Linker routing definition
+entity.seo_linker.collection:
+  route_name: entity.seo_linker.collection
+  base_route: system.admin_content
+  title: 'SEO Linker'
+
+entity.seo_linker.canonical:
+  route_name: entity.seo_linker.canonical
+  base_route: entity.seo_linker.canonical
+  title: 'View'
+
+entity.seo_linker.edit_form:
+  route_name: entity.seo_linker.edit_form
+  base_route: entity.seo_linker.canonical
+  title: Edit
+
+entity.seo_linker.delete_form:
+  route_name:  entity.seo_linker.delete_form
+  base_route:  entity.seo_linker.canonical
+  title: Delete
+  weight: 10
+

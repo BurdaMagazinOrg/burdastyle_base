@@ -1,0 +1,12 @@
+burdastyle_seo_linker.seo_linker_type.*:
+  type: config_entity
+  label: 'SEO Linker type config'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    label:
+      type: label
+      label: 'Label'
+    uuid:
+      type: string

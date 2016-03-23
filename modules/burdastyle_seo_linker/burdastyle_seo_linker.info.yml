@@ -1,0 +1,7 @@
+name: BurdaStyle SEO Linker
+type: module
+description: Provide SEO linker related configs and code for BurdaStyle projects.
+core: 8.x
+package: BurdaStyle
+dependencies:
+  - burdastyle_base

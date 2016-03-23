@@ -1,0 +1,14 @@
+{
+  "name": "drupal/burdastyle_seo_linker",
+  "type": "drupal-module",
+  "description": "My Awesome Module",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/burdastyle_seo_linker",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "http://drupal.org/project/issues/burdastyle_seo_linker",
+    "source": "http://cgit.drupalcode.org/burdastyle_seo_linker"
+  },
+  "require": { }
+}

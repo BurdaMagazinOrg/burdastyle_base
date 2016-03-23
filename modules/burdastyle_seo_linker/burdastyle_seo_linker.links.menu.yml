@@ -1,0 +1,8 @@
+# SEO Linker type menu items definition
+entity.seo_linker_type.collection:
+  title: 'SEO Linker type'
+  route_name: entity.seo_linker_type.collection
+  description: 'List SEO Linker type (bundles)'
+  parent: system.admin_structure
+  weight: 99
+

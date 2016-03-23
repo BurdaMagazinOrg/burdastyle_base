@@ -1,0 +1,9 @@
+langcode: de
+status: true
+dependencies:
+  module:
+    - taxonomy
+id: taxonomy_term.sponsored
+label: Sponsored
+targetEntityType: taxonomy_term
+cache: true

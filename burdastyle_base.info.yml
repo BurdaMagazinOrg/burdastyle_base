@@ -1,0 +1,6 @@
+name: BurdaStyle Base
+type: module
+description: Provide base functions for BurdaStyle projects.
+package: BurdaStyle
+core: 8.x
+version: 8.x-1.x-dev

@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - burdastyle_seo_linker.seo_linker_type.basic
+    - field.storage.paragraph.field_seo_linker
+    - paragraphs.paragraphs_type.seo_links
+id: paragraph.seo_links.field_seo_linker
+field_name: field_seo_linker
+entity_type: paragraph
+bundle: seo_links
+label: 'SEO Linker'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:seo_linker'
+  handler_settings:
+    target_bundles:
+      basic: basic
+    sort:
+      field: _none
+field_type: entity_reference

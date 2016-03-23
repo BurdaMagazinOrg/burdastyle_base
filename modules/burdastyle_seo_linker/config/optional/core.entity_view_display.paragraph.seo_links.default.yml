@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.seo_links.field_seo_linker
+    - field.field.paragraph.seo_links.field_title
+    - paragraphs.paragraphs_type.seo_links
+id: paragraph.seo_links.default
+targetEntityType: paragraph
+bundle: seo_links
+mode: default
+content:
+  field_seo_linker:
+    weight: 1
+    label: hidden
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+  field_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+hidden:
+  created: true
+  uid: true

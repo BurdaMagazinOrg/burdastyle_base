@@ -1,0 +1,52 @@
+<?php
+
+/**
+ * @file
+ * Contains burdastyle_seo_linker.module..
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function burdastyle_seo_linker_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the burdastyle_seo_linker module.
+    case 'help.page.burdastyle_seo_linker':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function burdastyle_seo_linker_theme() {
+  $theme = [];
+  $theme['seo_linker'] = [
+    'render element' => 'elements',
+    'file' => 'seo_linker.page.inc',
+    'template' => 'seo_linker',
+  ];
+  $theme['seo_linker_content_add_list'] = [
+    'render element' => 'content',
+    'variables' => ['content' => NULL],
+    'file' => 'seo_linker.page.inc',
+  ];
+  return $theme;
+}
+
+/**
+ * Implements hook_theme_suggestions_seo_linker_alter().
+ */
+function burdastyle_seo_linker_theme_suggestions_seo_linker_alter(array &$suggestions, array $variables, $hook) {
+  if (!empty($variables['elements']['#seo_linker'])) {
+    $seo_linker = $variables['elements']['#seo_linker'];
+    $suggestions[] = $hook . '__' . $seo_linker->bundle();
+  }
+}

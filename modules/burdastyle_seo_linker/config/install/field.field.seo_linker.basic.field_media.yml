@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - burdastyle_seo_linker.seo_linker_type.basic
+    - field.storage.seo_linker.field_media
+    - media_entity.bundle.image
+id: seo_linker.basic.field_media
+field_name: field_media
+entity_type: seo_linker
+bundle: basic
+label: Media
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+field_type: entity_reference

@@ -1,0 +1,19 @@
+add seo linker entities:
+  title: 'Create new SEO Linker entities'
+
+administer seo linker entities:
+  title: 'Administer SEO Linker entities'
+  description: 'Allow to access the administration form to configure SEO Linker entities.'
+  restrict access: true
+
+delete seo linker entities:
+  title: 'Delete SEO Linker entities'
+
+edit seo linker entities:
+  title: 'Edit SEO Linker entities'
+
+view published seo linker entities:
+  title: 'View published SEO Linker entities'
+
+view unpublished seo linker entities:
+  title: 'View unpublished SEO Linker entities'

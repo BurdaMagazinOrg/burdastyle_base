@@ -1,0 +1,62 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - burdastyle_seo_linker.seo_linker_type.basic
+    - field.field.seo_linker.basic.field_links
+    - field.field.seo_linker.basic.field_media
+    - field.field.seo_linker.basic.field_title
+  module:
+    - inline_entity_form
+    - link
+id: seo_linker.basic.default
+targetEntityType: seo_linker
+bundle: basic
+mode: default
+content:
+  field_links:
+    weight: 2
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+  field_media:
+    weight: 3
+    settings:
+      label_singular: ''
+      label_plural: ''
+      allow_new: true
+      allow_existing: true
+      match_operator: CONTAINS
+      override_labels: false
+    third_party_settings: {  }
+    type: inline_entity_form_complex
+  field_title:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+  langcode:
+    type: language_select
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  user_id:
+    type: entity_reference_autocomplete
+    weight: 4
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

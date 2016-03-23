@@ -1,0 +1,44 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - burdastyle_seo_linker.seo_linker_type.basic
+    - field.field.seo_linker.basic.field_links
+    - field.field.seo_linker.basic.field_media
+    - field.field.seo_linker.basic.field_title
+  module:
+    - link
+id: seo_linker.basic.default
+targetEntityType: seo_linker
+bundle: basic
+mode: default
+content:
+  field_links:
+    weight: 2
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+  field_media:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: square_s
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+  field_title:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+hidden:
+  name: true
+  user_id: true

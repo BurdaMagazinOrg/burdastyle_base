@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - burdastyle_seo_linker.seo_linker_type.basic
+    - field.storage.seo_linker.field_links
+  module:
+    - link
+id: seo_linker.basic.field_links
+field_name: field_links
+entity_type: seo_linker
+bundle: basic
+label: Links
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 2
+field_type: link

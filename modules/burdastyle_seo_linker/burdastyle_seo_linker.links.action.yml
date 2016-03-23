@@ -1,0 +1,11 @@
+entity.seo_linker.add_form:
+  route_name: 'seo_linker.add_page'
+  title: 'Add SEO Linker'
+  appears_on:
+    - entity.seo_linker.collection
+entity.seo_linker_type.add_form:
+  route_name: 'entity.seo_linker_type.add_form'
+  title: 'Add SEO Linker type'
+  appears_on:
+    - entity.seo_linker_type.collection
+

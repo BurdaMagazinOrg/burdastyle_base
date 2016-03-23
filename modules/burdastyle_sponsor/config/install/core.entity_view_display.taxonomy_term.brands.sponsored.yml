@@ -1,0 +1,23 @@
+uuid: 8d98b8c9-0b0c-431a-9104-4b42a9c03eeb
+langcode: de
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.taxonomy_term.sponsored
+    - taxonomy.vocabulary.brands
+id: taxonomy_term.brands.sponsored
+targetEntityType: taxonomy_term
+bundle: brands
+mode: sponsored
+content:
+  field_logo_media:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: logo_s
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+hidden:
+  description: true
+  langcode: true

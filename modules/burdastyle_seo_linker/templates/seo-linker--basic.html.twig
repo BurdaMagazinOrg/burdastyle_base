@@ -1,0 +1,22 @@
+{#
+/**
+ * @file seo_linker.html.twig
+ * Default theme implementation to present SEO Linker data.
+ *
+ * This template is used when viewing SEO Linker pages.
+ *
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ * - attributes: HTML attributes for the container element.
+ *
+ * @see template_preprocess_seo_linker()
+ *
+ * @ingroup themeable
+ */
+#}
+<div class="{{ attributes.addClass('seo-linker') }}">
+  {{ content.field_media }}
+  <h3>{{ content.field_title }}</h3>
+  {{ content.field_links }}
+</div>

@@ -1,0 +1,26 @@
+langcode: de
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_sponsor_tag
+    - node.type.article
+    - taxonomy.vocabulary.brands
+id: node.article.field_sponsor_tag
+field_name: field_sponsor_tag
+entity_type: node
+bundle: article
+label: 'Sponsor Tag'
+description: 'Required when <i>Native Article</i> is selected. Provide a logo image from selected taxonomy term.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      brands: brands
+    sort:
+      field: _none
+    auto_create: false
+field_type: entity_reference
