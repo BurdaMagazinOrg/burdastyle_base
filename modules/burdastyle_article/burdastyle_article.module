@@ -1,6 +1,8 @@
 <?php
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
+use Drupal\node\Entity\Node;
 
 /**
  * Implements hook_form_node_article_edit_form_alter().
@@ -32,4 +34,38 @@ function _burdastyle_article_form_alter_helper(&$form, FormStateInterface $form_
 
   // Add CSS file for layout optimization.
   $form['#attached']['library'][] = 'burdastyle_article/article_form_styling';
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function burdastyle_article_preprocess_node(&$variables) {
+  /* @var Node $node */
+  $node = &$variables['elements']['#node'];
+  if ($node->bundle() == "article") {
+    $variables['datetime'] = \Drupal::service('date.formatter')
+      ->format($node->created->value, 'html_datetime');
+    $variables['timestamp'] = \Drupal::service('date.formatter')
+      ->format($node->created->value, 'infinite_timestamp');
+
+    $author = $node->getOwner();
+
+    // Get absolute URL from node alias URL.
+    $author_absolute_url = \Drupal::service('path.alias_manager')
+      ->getAliasByPath('/user/' . $author->id());
+    $author_absolute_url = Url::fromUri('base:/' . $author_absolute_url, array('absolute' => TRUE));
+
+    //render author display
+    $author_teaser = array(
+      '#theme' => 'author_teaser',
+      '#elements' => ['#user' => $author,],
+      '#name' => $author->field_forename->value . ' ' . $author->field_surname->value,
+      '#author_id' => $author->isActive() ? $node->getOwnerId() : 0,
+      '#author_url' => $author_absolute_url->toString(),
+      '#author_picture' => user_view($author, 'author_teaser'),
+      '#timestamp' => $variables['timestamp'],
+      '#datetime' => $variables['datetime'],
+    );
+    $variables['author_teaser'] = render($author_teaser);
+  }
 }
