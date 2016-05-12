@@ -49,23 +49,38 @@ function burdastyle_article_preprocess_node(&$variables) {
       ->format($node->created->value, 'infinite_timestamp');
 
     $author = $node->getOwner();
+    if ($author->isActive()) {
 
-    // Get absolute URL from node alias URL.
-    $author_absolute_url = \Drupal::service('path.alias_manager')
-      ->getAliasByPath('/user/' . $author->id());
-    $author_absolute_url = Url::fromUri('base:/' . $author_absolute_url, array('absolute' => TRUE));
+      // Get absolute URL from node alias URL.
+      $author_absolute_url = \Drupal::service('path.alias_manager')
+        ->getAliasByPath('/user/' . $author->id());
+      $author_absolute_url = Url::fromUri('base:/' . $author_absolute_url, array('absolute' => TRUE));
 
-    //render author display
-    $author_teaser = array(
-      '#theme' => 'author_teaser',
-      '#elements' => ['#user' => $author,],
-      '#name' => $author->field_forename->value . ' ' . $author->field_surname->value,
-      '#author_id' => $author->isActive() ? $node->getOwnerId() : 0,
-      '#author_url' => $author_absolute_url->toString(),
-      '#author_picture' => user_view($author, 'author_teaser'),
-      '#timestamp' => $variables['timestamp'],
-      '#datetime' => $variables['datetime'],
-    );
+      // Build author teaser.
+      $author_teaser = array(
+        '#theme' => 'author_teaser',
+        '#elements' => ['#user' => $author,],
+        '#name' => $author->field_forename->value . ' ' . $author->field_surname->value,
+        '#author_id' => $node->getOwnerId(),
+        '#author_url' => $author_absolute_url->toString(),
+        '#author_picture' => user_view($author, 'author_teaser'),
+        '#timestamp' => $variables['timestamp'],
+        '#datetime' => $variables['datetime'],
+      );
+
+    }
+    else {
+
+      // Build anonymous author teaser.
+      $author_teaser = array(
+        '#theme' => 'author_teaser',
+        '#elements' => ['#user' => $author,],
+        '#author_id' => 0,
+        '#timestamp' => $variables['timestamp'],
+        '#datetime' => $variables['datetime'],
+      );
+    }
+
     $variables['author_teaser'] = render($author_teaser);
   }
 }
