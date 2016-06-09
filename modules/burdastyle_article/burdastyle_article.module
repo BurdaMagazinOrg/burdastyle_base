@@ -60,7 +60,6 @@ function burdastyle_article_preprocess_node(&$variables) {
       $author_teaser = array(
         '#theme' => 'author_teaser',
         '#elements' => ['#user' => $author,],
-        '#name' => $author->field_forename->value . ' ' . $author->field_surname->value,
         '#author_id' => $node->getOwnerId(),
         '#author_url' => $author_absolute_url->toString(),
         '#author_picture' => user_view($author, 'author_teaser'),
