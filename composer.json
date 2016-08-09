@@ -1,0 +1,13 @@
+{
+    "name": "burdamagazinorg/burdastyle-base",
+    "description": "Provide base functions for BurdaStyle projects.",
+    "type": "drupal-module",
+    "authors": [
+        {
+            "name": "ITCru",
+            "email": "steffen.schlaer@it-cru.de"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
