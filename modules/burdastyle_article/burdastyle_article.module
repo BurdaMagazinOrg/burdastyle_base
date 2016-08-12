@@ -67,7 +67,15 @@ function burdastyle_article_node_prepare_form(\Drupal\Core\Entity\EntityInterfac
         $promote_states[] = $new_promote_state;
       }
     }
-    $entity->field_promote_states->setValue($promote_states);
+
+    // we need to preserve the state of all non-legacy values
+    $enabled_states = array_map(function($el) {
+      return $el['value'];
+    }, $entity->field_promote_states->getValue());
+    // this diff works b/c it is non-assoc
+    $nonlegacy_enabled_states = array_diff($enabled_states, $old_promote_states);
+
+    $entity->field_promote_states->setValue(array_merge($promote_states, $nonlegacy_enabled_states));
   }
 }
 
