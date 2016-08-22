@@ -1,5 +1,5 @@
 {
-    "name": "burdamagazinorg/burdastyle-base",
+    "name": "burdamagazinorg/burdastyle_base",
     "description": "Provide base functions for BurdaStyle projects.",
     "type": "drupal-module",
     "authors": [
