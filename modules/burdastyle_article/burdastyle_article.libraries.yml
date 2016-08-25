@@ -3,3 +3,9 @@ article_form_styling:
   css:
     theme:
       css/article-form.css: {weight: 999999999}
+
+article_form_editor_workaround:
+  version: 1.0
+  css:
+    theme:
+      css/article-form-editor-workaround.css: {weight: 9999999999}

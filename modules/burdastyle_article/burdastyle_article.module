@@ -43,6 +43,14 @@ function _burdastyle_article_form_alter_helper(&$form, FormStateInterface $form_
   // Add CSS file for layout optimization.
   // TODO: We need a better admin theme!
   $form['#attached']['library'][] = 'burdastyle_article/article_form_styling';
+
+  // Load workaround CSS for editor role.
+  // TODO: Remove when paragraphs form rebrush is done.
+  $account = \Drupal::currentUser();
+  $user_roles = $account->getRoles();
+  if (in_array('editor', $user_roles) && !in_array('seo', $user_roles)) {
+    $form['#attached']['library'][] = 'burdastyle_article/article_form_editor_workaround';
+  }
 }
 
 /**

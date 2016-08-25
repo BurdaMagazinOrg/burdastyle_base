@@ -5,6 +5,8 @@ use Drupal\Core\Entity\EntityTypeInterface;
 
 /**
  * Implements hook_entity_base_field_info().
+ *
+ * TODO: Remove when field_promote_states is fully implemented.
  */
 function burdastyle_base_entity_base_field_info(EntityTypeInterface $entity_type) {
   if ($entity_type->id() === 'node') {
@@ -83,6 +85,8 @@ function burdastyle_base_entity_base_field_info(EntityTypeInterface $entity_type
 
 /**
  * Implements hook_page_attachments_alter().
+ *
+ * TODO: Check if this could be placed in a form_alter hook for example in burdastyle_article.
  */
 function burdastyle_base_page_attachments_alter(array &$attachments) {
   if (\Drupal::request()->attributes->has('_entity_form') && \Drupal::moduleHandler()->moduleExists('focal_point')) {
