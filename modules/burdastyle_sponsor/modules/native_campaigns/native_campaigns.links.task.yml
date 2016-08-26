@@ -1,0 +1,21 @@
+# Native campaign routing definition
+native_campaign.settings_tab:
+  route_name: native_campaign.settings
+  title: 'Settings'
+  base_route: native_campaign.settings
+entity.native_campaign.canonical:
+  route_name: entity.native_campaign.canonical
+  base_route: entity.native_campaign.canonical
+  title: 'View'
+
+entity.native_campaign.edit_form:
+  route_name: entity.native_campaign.edit_form
+  base_route: entity.native_campaign.canonical
+  title: Edit
+
+entity.native_campaign.delete_form:
+  route_name:  entity.native_campaign.delete_form
+  base_route:  entity.native_campaign.canonical
+  title: Delete
+  weight: 10
+

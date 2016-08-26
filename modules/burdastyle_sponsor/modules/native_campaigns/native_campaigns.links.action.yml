@@ -1,0 +1,5 @@
+entity.native_campaign.add_form:
+  route_name: entity.native_campaign.add_form
+  title: 'Add Native campaign'
+  appears_on:
+    - entity.native_campaign.collection

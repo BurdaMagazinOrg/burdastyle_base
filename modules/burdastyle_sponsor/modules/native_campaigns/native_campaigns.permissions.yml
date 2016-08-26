@@ -1,0 +1,22 @@
+add native campaign entities:
+  title: 'Create new Native campaign entities'
+
+administer native campaign entities:
+  title: 'Administer Native campaign entities'
+  description: 'Allow to access the administration form to configure Native campaign entities.'
+  restrict access: true
+
+delete native campaign entities:
+  title: 'Delete Native campaign entities'
+
+edit native campaign entities:
+  title: 'Edit Native campaign entities'
+
+view published native campaign entities:
+  title: 'View published Native campaign entities'
+
+view unpublished native campaign entities:
+  title: 'View unpublished Native campaign entities'
+
+view native campaign entities list:
+  title: 'View Native campaign entities list'

@@ -1,0 +1,13 @@
+# Native campaign menu items definition
+entity.native_campaign.collection:
+  title: 'Native campaign list'
+  route_name: entity.native_campaign.collection
+  description: 'List Native campaign entities'
+  parent: system.admin_structure
+  weight: 100
+
+native_campaign.admin.structure.settings:
+  title: Native campaign settings
+  description: 'Configure Native campaign entities'
+  route_name: native_campaign.settings
+  parent: system.admin_structure
