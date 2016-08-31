@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * @file
+ * Contains native_campaigns.module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function native_campaigns_theme() {
+  $theme = [];
+  $theme['native_campaign'] = [
+    'render element' => 'elements',
+    'file' => 'native_campaign.page.inc',
+    'template' => 'native_campaign',
+  ];
+  return $theme;
+}

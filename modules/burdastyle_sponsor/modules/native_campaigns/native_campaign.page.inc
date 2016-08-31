@@ -29,4 +29,5 @@ function template_preprocess_native_campaign(array &$variables) {
   foreach (Element::children($variables['elements']) as $key) {
     $variables['content'][$key] = $variables['elements'][$key];
   }
+
 }
