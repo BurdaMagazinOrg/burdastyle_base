@@ -44,11 +44,11 @@ use Drupal\user\UserInterface;
  *     "status" = "status",
  *   },
  *   links = {
- *     "canonical" = "/admin/structure/native_campaign/{native_campaign}",
- *     "add-form" = "/admin/structure/native_campaign/add",
- *     "edit-form" = "/admin/structure/native_campaign/{native_campaign}/edit",
- *     "delete-form" = "/admin/structure/native_campaign/{native_campaign}/delete",
- *     "collection" = "/admin/structure/native_campaign",
+ *     "canonical" = "/admin/content/native_campaign/{native_campaign}",
+ *     "add-form" = "/admin/content/native_campaign/add",
+ *     "edit-form" = "/admin/content/native_campaign/{native_campaign}/edit",
+ *     "delete-form" = "/admin/content/native_campaign/{native_campaign}/delete",
+ *     "collection" = "/admin/content/native_campaign",
  *   },
  *   field_ui_base_route = "native_campaign.settings"
  * )
@@ -191,6 +191,7 @@ class NativeCampaign extends ContentEntityBase implements NativeCampaignInterfac
       ->setSetting('handler_settings', array(
         'target_bundles' => array(
           'image' => 'image',
+          'file' => 'file',
         ),
       ));
 
