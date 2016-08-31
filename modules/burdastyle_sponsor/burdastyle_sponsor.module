@@ -23,10 +23,6 @@ function burdastyle_sponsor_preprocess_node(&$variables) {
     $variables['sponsor_type'] = $node->field_sponsor_type->value;
   }
 
-  if ($node->hasField('field_campaign') && !$node->field_campaign->isEmpty()) {
-    $variables['has_campaign'] = TRUE;
-  }
-
 }
 
 /**
