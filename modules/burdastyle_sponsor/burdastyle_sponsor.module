@@ -23,15 +23,18 @@ function burdastyle_sponsor_preprocess_node(&$variables) {
     $variables['sponsor_type'] = $node->field_sponsor_type->value;
   }
 
-  if ($node->hasField('field_campaign') && !$node->field_campaign->isEmpty()) {
-    $variables['has_campaign'] = TRUE;
-  }
-
 }
 
 /**
  * Implements hook_preprocess_taxonomy_term().
  */
 function burdastyle_sponsor_preprocess_taxonomy_term(&$variables) {
+  $variables['logo_url'] = theme_get_setting('logo.url');
+}
+
+/**
+ * Implements hook_preprocess_native_campaign().
+ */
+function burdastyle_sponsor_preprocess_native_campaign(&$variables) {
   $variables['logo_url'] = theme_get_setting('logo.url');
 }

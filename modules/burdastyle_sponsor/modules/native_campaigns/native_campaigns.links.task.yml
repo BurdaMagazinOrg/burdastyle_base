@@ -1,8 +1,14 @@
 # Native campaign routing definition
+entity.native_campaign.collection:
+  route_name: entity.native_campaign.collection
+  base_route: system.admin_content
+  title: 'Native Campaigns'
+
 native_campaign.settings_tab:
   route_name: native_campaign.settings
   title: 'Settings'
   base_route: native_campaign.settings
+
 entity.native_campaign.canonical:
   route_name: entity.native_campaign.canonical
   base_route: entity.native_campaign.canonical
