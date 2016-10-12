@@ -172,10 +172,10 @@ body .field-multiple-table .fieldset-wrapper > .form-wrapper > * {
 }
 /* line 186, ../sass/article-form.scss */
 .field--name-field-promote-states .form-item-field-promote-states-channel-presenter {
-  border-bottom: 1px solid #c2c2c2;
   padding-bottom: 20px;
 }
-/* line 191, ../sass/article-form.scss */
+/* line 190, ../sass/article-form.scss */
 .field--name-field-promote-states .form-item-field-promote-states-fb-instant-articles {
+  border-top: 1px solid #c2c2c2;
   padding-top: 20px;
 }
