@@ -141,6 +141,20 @@ function burdastyle_article_preprocess_node(&$variables) {
     $author = $node->getOwner();
     if ($author->isActive()) {
 
+      $author_forename = "";
+      if(isset($author->field_forename)) {
+        $author_forename =  $author->field_forename->value;
+      } else if(isset($author->first_name)) {
+        $author_forename =  $author->first_name->value;
+      }
+
+      $author_surname = "";
+      if(isset($author->field_surname)) {
+        $author_surname =  $author->field_surname->value;
+      } else if(isset($author->last_name)) {
+        $author_surname =  $author->last_name->value;
+      }
+
       // Get absolute URL from node alias URL.
       $author_absolute_url = \Drupal::service('path.alias_manager')
         ->getAliasByPath('/user/' . $author->id());
@@ -151,6 +165,8 @@ function burdastyle_article_preprocess_node(&$variables) {
         '#theme' => 'author_teaser',
         '#elements' => ['#user' => $author,],
         '#author_id' => $node->getOwnerId(),
+        '#author_forename' => $author_forename,
+        '#author_surname' => $author_surname,
         '#author_url' => $author_absolute_url->toString(),
         '#author_picture' => user_view($author, 'author_teaser'),
         '#timestamp' => $variables['timestamp'],
