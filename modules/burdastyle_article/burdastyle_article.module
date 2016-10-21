@@ -137,6 +137,8 @@ function burdastyle_article_preprocess_node(&$variables) {
       ->format($node->created->value, 'html_datetime');
     $variables['timestamp'] = \Drupal::service('date.formatter')
       ->format($node->created->value, 'infinite_timestamp');
+    $dateFormatter = \Drupal::service('date.formatter');
+    $variables['formatted_interval'] = $dateFormatter->formatInterval((REQUEST_TIME - $variables['timestamp']), 1);
 
     $author = $node->getOwner();
     if ($author->isActive()) {
@@ -171,6 +173,7 @@ function burdastyle_article_preprocess_node(&$variables) {
         '#author_picture' => user_view($author, 'author_teaser'),
         '#timestamp' => $variables['timestamp'],
         '#datetime' => $variables['datetime'],
+        '#formatted_interval' => $variables['formatted_interval'],
       );
 
     }
@@ -183,9 +186,10 @@ function burdastyle_article_preprocess_node(&$variables) {
         '#author_id' => 0,
         '#timestamp' => $variables['timestamp'],
         '#datetime' => $variables['datetime'],
+        '#formatted_interval' => $variables['formatted_interval'],
       );
     }
 
-    $variables['author_teaser'] = render($author_teaser);
+    $variables['author_teaser'] = $author_teaser;
   }
 }
