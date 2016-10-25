@@ -138,7 +138,7 @@ function burdastyle_article_preprocess_node(&$variables) {
     $variables['timestamp'] = \Drupal::service('date.formatter')
       ->format($node->created->value, 'infinite_timestamp');
     $dateFormatter = \Drupal::service('date.formatter');
-    $variables['formatted_interval'] = $dateFormatter->formatInterval((REQUEST_TIME - $variables['timestamp']), 1);
+    $variables['formatted_interval'] = $dateFormatter->formatInterval((REQUEST_TIME - $variables['timestamp']), 2);
 
     $author = $node->getOwner();
     if ($author->isActive()) {
