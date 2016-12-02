@@ -141,6 +141,17 @@ function burdastyle_article_preprocess_node(&$variables) {
     $variables['formatted_interval'] = $dateFormatter->formatInterval((REQUEST_TIME - $variables['timestamp']), 2);
 
     $author = $node->getOwner();
+
+    // Build anonymous author teaser.
+    $author_teaser = array(
+      '#theme' => 'author_teaser',
+      '#elements' => ['#user' => $author,],
+      '#author_id' => 0,
+      '#timestamp' => $variables['timestamp'],
+      '#datetime' => $variables['datetime'],
+      '#formatted_interval' => $variables['formatted_interval'],
+    );
+
     if ($author->isActive()) {
 
       $author_forename = "";
@@ -164,30 +175,13 @@ function burdastyle_article_preprocess_node(&$variables) {
 
       // Build author teaser.
       $author_teaser = array(
-        '#theme' => 'author_teaser',
-        '#elements' => ['#user' => $author,],
         '#author_id' => $node->getOwnerId(),
         '#author_forename' => $author_forename,
         '#author_surname' => $author_surname,
         '#author_url' => $author_absolute_url->toString(),
         '#author_picture' => user_view($author, 'author_teaser'),
-        '#timestamp' => $variables['timestamp'],
-        '#datetime' => $variables['datetime'],
-        '#formatted_interval' => $variables['formatted_interval'],
-      );
+      ) + $author_teaser;
 
-    }
-    else {
-
-      // Build anonymous author teaser.
-      $author_teaser = array(
-        '#theme' => 'author_teaser',
-        '#elements' => ['#user' => $author,],
-        '#author_id' => 0,
-        '#timestamp' => $variables['timestamp'],
-        '#datetime' => $variables['datetime'],
-        '#formatted_interval' => $variables['formatted_interval'],
-      );
     }
 
     $variables['author_teaser'] = $author_teaser;
