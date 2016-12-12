@@ -1,5 +1,7 @@
 <?php
 
+use \Drupal\file\Entity\File;
+
 /**
  * Implements hook_theme_suggestions_alter().
  */
@@ -29,12 +31,26 @@ function burdastyle_sponsor_preprocess_node(&$variables) {
  * Implements hook_preprocess_taxonomy_term().
  */
 function burdastyle_sponsor_preprocess_taxonomy_term(&$variables) {
-  $variables['logo_url'] = theme_get_setting('logo.url');
+  $logo_url = DRUPAL_ROOT . theme_get_setting('logo.url');
+  $logo = file_get_contents($logo_url);
+
+  $variables['logo_url'] = $logo_url;
+  $variables['logo'] = $logo;
 }
 
 /**
  * Implements hook_preprocess_native_campaign().
  */
 function burdastyle_sponsor_preprocess_native_campaign(&$variables) {
-  $variables['logo_url'] = theme_get_setting('logo.url');
+  $logo_url = DRUPAL_ROOT . theme_get_setting('logo.url');
+  $logo = file_get_contents($logo_url);
+
+  if (isset($variables['elements']['#native_campaign']->logo->entity->field_file->entity->uri->value)) {
+    $campaign_logo_uri = $variables['elements']['#native_campaign']->logo->entity->field_file->entity->uri->value;
+    $campaign_logo = file_get_contents($campaign_logo_uri);
+    $variables['campaign_logo'] = $campaign_logo;
+  }
+
+  $variables['logo_url'] = $logo_url;
+  $variables['logo'] = $logo;
 }
