@@ -31,26 +31,36 @@ function burdastyle_sponsor_preprocess_node(&$variables) {
  * Implements hook_preprocess_taxonomy_term().
  */
 function burdastyle_sponsor_preprocess_taxonomy_term(&$variables) {
-  $logo_url = DRUPAL_ROOT . theme_get_setting('logo.url');
-  $logo = file_get_contents($logo_url);
-
-  $variables['logo_url'] = $logo_url;
-  $variables['logo'] = $logo;
+  $variables['logo_url'] = _burdastyle_sponsor_get_theme_logo();
+  $variables['logo'] = _burdastyle_sponsor_get_theme_logo(TRUE);
 }
 
 /**
  * Implements hook_preprocess_native_campaign().
  */
 function burdastyle_sponsor_preprocess_native_campaign(&$variables) {
-  $logo_url = DRUPAL_ROOT . theme_get_setting('logo.url');
-  $logo = file_get_contents($logo_url);
+  $variables['logo_url'] = _burdastyle_sponsor_get_theme_logo();
+  $variables['logo'] = _burdastyle_sponsor_get_theme_logo(TRUE);
 
   if (isset($variables['elements']['#native_campaign']->logo->entity->field_file->entity->uri->value)) {
     $campaign_logo_uri = $variables['elements']['#native_campaign']->logo->entity->field_file->entity->uri->value;
     $campaign_logo = file_get_contents($campaign_logo_uri);
     $variables['campaign_logo'] = $campaign_logo;
   }
+}
 
-  $variables['logo_url'] = $logo_url;
-  $variables['logo'] = $logo;
+/**
+ * Helper function to get logo from current theme (optional as string by file_get_contents()).
+ *
+ * @param bool $file_get_contents
+ * @return bool|mixed|string
+ */
+function _burdastyle_sponsor_get_theme_logo($file_get_contents = FALSE) {
+  if ($logo_url = theme_get_setting('logo.url')) {
+    if ($file_get_contents && file_exists(DRUPAL_ROOT . $logo_url)) {
+      return file_get_contents(DRUPAL_ROOT . $logo_url);
+    }
+    return $logo_url;
+  }
+  return FALSE;
 }
