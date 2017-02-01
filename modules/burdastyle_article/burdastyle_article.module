@@ -1,7 +1,6 @@
 <?php
 
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Url;
 use Drupal\node\Entity\Node;
 
 /**
@@ -132,13 +131,23 @@ function burdastyle_article_node_presave(Drupal\Core\Entity\EntityInterface $ent
 function burdastyle_article_preprocess_node(&$variables) {
   /* @var Node $node */
   $node = &$variables['elements']['#node'];
+  $view_mode = $variables['view_mode'];
+
   if ($node->bundle() == "article") {
-    $variables['datetime'] = \Drupal::service('date.formatter')
-      ->format($node->created->value, 'html_datetime');
-    $variables['timestamp'] = \Drupal::service('date.formatter')
-      ->format($node->created->value, 'infinite_timestamp');
-    $dateFormatter = \Drupal::service('date.formatter');
-    $variables['formatted_interval'] = $dateFormatter->formatInterval((REQUEST_TIME - $variables['timestamp']), 2);
+    if (_burdastyle_article_display_created($node, $view_mode)) {
+      $variables['datetime'] = \Drupal::service('date.formatter')
+        ->format($node->created->value, 'html_datetime');
+      $variables['timestamp'] = \Drupal::service('date.formatter')
+        ->format($node->created->value, 'infinite_timestamp');
+      $dateFormatter = \Drupal::service('date.formatter');
+      $variables['formatted_interval'] = $dateFormatter->formatInterval((REQUEST_TIME - $variables['timestamp']), 2);
+    }
+    else {
+      unset($variables['content']['field_created']);
+      $variables['datetime'] = '';
+      $variables['timestamp'] = '';
+      $variables['formatted_interval'] = '';
+    }
 
     $author = $node->getOwner();
 
@@ -186,4 +195,25 @@ function burdastyle_article_preprocess_node(&$variables) {
 
     $variables['author_teaser'] = $author_teaser;
   }
+}
+
+/**
+ * Returns TRUE if the date should be displayed, FALSE otherwise.
+ *
+ * @param Node $node
+ *
+ * @param string $view_mode
+ *
+ * @return bool
+ */
+function _burdastyle_article_display_created(Node $node, $view_mode) {
+  if (!in_array($view_mode, ['full', 'lazyloading', 'fb_instant_articles_rss'])) {
+    return TRUE;
+  }
+
+  if (!isset($node->field_hide_created->value)) {
+    return TRUE;
+  }
+
+  return !$node->field_hide_created->value;
 }
