@@ -177,10 +177,7 @@ function burdastyle_article_preprocess_node(&$variables) {
         $author_surname =  $author->last_name->value;
       }
 
-      // Get absolute URL from node alias URL.
-      $author_absolute_url = \Drupal::service('path.alias_manager')
-        ->getAliasByPath('/user/' . $author->id());
-      $author_absolute_url = Url::fromUri('base:/' . $author_absolute_url, array('absolute' => TRUE));
+      $author_absolute_url = $author->toUrl('canonical', ['absolute' => TRUE]);
 
       // Build author teaser.
       $author_teaser = array(
