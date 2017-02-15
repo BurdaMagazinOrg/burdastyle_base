@@ -170,7 +170,7 @@ function burdastyle_article_preprocess_node(&$variables) {
         $author_surname = $author->last_name->value;
       }
 
-      if (strpos($view_mode, 'amp_') === 0) {
+      if (strpos($view_mode, 'amp') === 0) {
         $user_view_mode = 'amp_author_teaser';
       }
       else {
