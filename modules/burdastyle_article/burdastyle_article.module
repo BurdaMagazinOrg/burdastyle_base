@@ -130,23 +130,16 @@ function burdastyle_article_node_presave(Drupal\Core\Entity\EntityInterface $ent
  */
 function burdastyle_article_preprocess_node(&$variables) {
   /* @var Node $node */
-  $node = &$variables['elements']['#node'];
+  $node = $variables['node'];
   $view_mode = $variables['view_mode'];
 
   if ($node->bundle() == "article") {
     if (_burdastyle_article_display_created($node, $view_mode)) {
-      $variables['datetime'] = \Drupal::service('date.formatter')
-        ->format($node->created->value, 'html_datetime');
-      $variables['timestamp'] = \Drupal::service('date.formatter')
-        ->format($node->created->value, 'infinite_timestamp');
-      $dateFormatter = \Drupal::service('date.formatter');
-      $variables['formatted_interval'] = $dateFormatter->formatInterval((REQUEST_TIME - $variables['timestamp']), 2);
+      $variables['timestamp'] = $node->created->value;
     }
     else {
       unset($variables['content']['field_created']);
-      $variables['datetime'] = '';
       $variables['timestamp'] = '';
-      $variables['formatted_interval'] = '';
     }
 
     $author = $node->getOwner();
@@ -157,34 +150,32 @@ function burdastyle_article_preprocess_node(&$variables) {
       '#elements' => ['#user' => $author,],
       '#author_id' => 0,
       '#timestamp' => $variables['timestamp'],
-      '#datetime' => $variables['datetime'],
-      '#formatted_interval' => $variables['formatted_interval'],
     );
 
     if ($author->isActive()) {
 
-      $author_forename = "";
-      if(isset($author->field_forename)) {
-        $author_forename =  $author->field_forename->value;
-      } else if(isset($author->first_name)) {
-        $author_forename =  $author->first_name->value;
+      $author_forename = '';
+      if (isset($author->field_forename)) {
+        $author_forename = $author->field_forename->value;
+      }
+      elseif (isset($author->first_name)) {
+        $author_forename = $author->first_name->value;
       }
 
-      $author_surname = "";
-      if(isset($author->field_surname)) {
-        $author_surname =  $author->field_surname->value;
-      } else if(isset($author->last_name)) {
-        $author_surname =  $author->last_name->value;
+      $author_surname = '';
+      if (isset($author->field_surname)) {
+        $author_surname = $author->field_surname->value;
       }
-
-      $author_absolute_url = $author->toUrl('canonical', ['absolute' => TRUE]);
+      elseif (isset($author->last_name)) {
+        $author_surname = $author->last_name->value;
+      }
 
       // Build author teaser.
       $author_teaser = array(
         '#author_id' => $node->getOwnerId(),
         '#author_forename' => $author_forename,
         '#author_surname' => $author_surname,
-        '#author_url' => $author_absolute_url->toString(),
+        '#author_url' => $author->url('canonical', ['absolute' => TRUE]),
         '#author_picture' => user_view($author, 'author_teaser'),
       ) + $author_teaser;
 
