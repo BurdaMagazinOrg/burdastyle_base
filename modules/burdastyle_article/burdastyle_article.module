@@ -170,13 +170,20 @@ function burdastyle_article_preprocess_node(&$variables) {
         $author_surname = $author->last_name->value;
       }
 
+      if (strpos($view_mode, 'amp_') === 0) {
+        $user_view_mode = 'amp_author_teaser';
+      }
+      else {
+        $user_view_mode = 'author_teaser';
+      }
+
       // Build author teaser.
       $author_teaser = array(
         '#author_id' => $node->getOwnerId(),
         '#author_forename' => $author_forename,
         '#author_surname' => $author_surname,
         '#author_url' => $author->url('canonical', ['absolute' => TRUE]),
-        '#author_picture' => user_view($author, 'author_teaser'),
+        '#author_picture' => user_view($author, $user_view_mode),
       ) + $author_teaser;
 
     }
