@@ -128,7 +128,7 @@
         "drupal/tracdelight": "~1.0",
         "drupal/views_rest_feed": "~1.0",
         "exeu/apai-io": "~1.0"
-    }
+    },
     "extra": {
         "enable-patching": true,
         "patches": {
@@ -145,9 +145,6 @@
             "drupal/fb_instant_articles": {
                 "fix warning of missing namespace": "patches/fb_instant_articles/fb_instant_articles-fix-error-with-missing-namespace.patch"
             },
-            "drupal/tracdelight": {
-                "INREL-1297: Update to new API": "patches/tracdelight/INREL-1297-api-update.patch"
-            },
             "drupal/media_entity_instagram": {
                 "fix responsive instagrams": "patches/media_entity_instagram/make_posts_responsive-2807735-31.patch"
             },
@@ -156,6 +153,9 @@
             },
             "drupal/migrate_plus": {
                 "fix-plugin-manager-cache-collision-2752335-8-improved": "patches/migrate_plus/fix-plugin-manager-cache-collision-2752335-8-improved.patch"
+            },
+            "drupal/tracdelight": {
+                "INREL-1297: Update to new API": "patches/tracdelight/INREL-1297-api-update.patch"
             }
         },
         "patches-ignore": {
