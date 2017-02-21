@@ -4,10 +4,135 @@
     "type": "drupal-module",
     "authors": [
         {
-            "name": "ITCru",
+            "name": "Steffen Schlaer",
             "email": "steffen.schlaer@it-cru.de"
+        },
+        {
+            "name": "Nico Davis",
+            "email": "nicod@gmx.net"
+        },
+        {
+            "name": "Stefan Freudenberg",
+            "email": "stefan@agaric.com"
         }
     ],
     "minimum-stability": "dev",
-    "require": {}
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        },
+        {
+            "name": "burdamagazinorg/infinite_theme",
+            "type": "vcs",
+            "url": "git@github.com:BurdaMagazinOrg/infinite-theme.git"
+        },
+        {
+            "name": "burdamagazinorg/infinite_module",
+            "type": "vcs",
+            "url": "git@github.com:BurdaMagazinOrg/infinite-module.git"
+        },
+        {
+            "name": "burdamagazinorg/paragraphs_starterkit",
+            "type": "vcs",
+            "url": "git@github.com:BurdaMagazinOrg/paragraphs_starterkit.git"
+        },
+        {
+            "name": "burdamagazinorg/ivw_integration_fia",
+            "type": "vcs",
+            "url": "git@github.com:BurdaMagazinOrg/bs-module-ivw_integration_fia.git"
+        },
+        {
+            "name": "burdamagazinorg/views_feed_xml",
+            "type": "vcs",
+            "url": "git@github.com:BurdaMagazinOrg/bs-module-views-feed-xml.git"
+        },
+        {
+            "name": "burdamagazinorg/xsl_process",
+            "type": "vcs",
+            "url": "git@github.com:BurdaMagazinOrg/bs-module-xsl-process.git"
+        },
+        {
+            "name": "drupal/color_field",
+            "type": "vcs",
+            "url": "git.drupal.org/project/color_field.git"
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "drupal/media_entity_pinterest",
+                "version": "1.0",
+                "type": "drupal-module",
+                "source": {
+                    "url": "https://git.drupal.org/sandbox/double/2769473.git",
+                    "type": "git",
+                    "reference": "8.x-1.x"                }
+            }
+        },
+        {
+            "type":"package",
+            "package": {
+                "name": "drupal/path_redirect_import",
+                "version":"1.0",
+                "type": "drupal-module",
+                "source": {
+                    "url": "https://git.drupal.org/project/path_redirect_import.git",
+                    "type": "git",
+                    "reference": "8.x-1.x"
+                }
+            }
+        },
+        {
+            "name": "burdamagazinorg/advertising_products",
+            "type": "vcs",
+            "url": "git@github.com:BurdaMagazinOrg/advertising_products.git"
+        },
+        {
+            "name": "burdamagazinorg/burdastyle_migrate_common",
+            "type": "vcs",
+            "url": "git@github.com:BurdaMagazinOrg/bs-module-burdastyle-migrate-common.git"
+        }
+    ],
+    "require": {
+        "burdamagazinorg/thunder": "~8.1.0",
+        "burdamagazinorg/robo": "~2.0",
+        "composer/installers": "~1.0",
+        "drupal-composer/drupal-scaffold": "~2.2",
+        "cweagans/composer-patches": "dev-master as 1.6.0",
+        "drush/drush": "~8.0",
+        "drupal/console": "~0.10",
+        "burdamagazinorg/advertising_products": "dev-8.x-1.x",
+        "burdamagazinorg/ad_integration": "dev-8.x-1.x",
+        "burdamagazinorg/burdastyle_base": "dev-8.x-1.x",
+        "burdamagazinorg/burdastyle_migrate_common": "dev-8.x-1.x",
+        "burdamagazinorg/hm_newsletter": "~1.0",
+        "burdamagazinorg/infinite_theme": "dev-8.x-2.x as 1.0",
+        "burdamagazinorg/infinite_module": "dev-8.x-2.x as 1.0",
+        "burdamagazinorg/ivw_integration_fia": "dev-8.x-1.x",
+        "burdamagazinorg/nexx_integration": "dev-8.x-1.x as 8.1.7",
+        "burdamagazinorg/paragraphs_starterkit": "dev-8.x-1.x",
+        "burdamagazinorg/views_feed_xml": "dev-8.x-2.x",
+        "burdamagazinorg/xsl_process": "dev-8.x-1.x",
+        "drupal/access_unpublished": "~1.0",
+        "drupal/acquia_connector": "~1.0",
+        "drupal/acquia_lift": "~1.0",
+        "drupal/breakpoint_js_settings": "~1.0",
+        "drupal/color_field": "dev-2.x",
+        "drupal/csv_serialization": "~1.0",
+        "drupal/embed": "~1.0",
+        "drupal/entity_embed": "~1.0",
+        "drupal/fb_instant_articles": "~1.0",
+        "drupal/imagemagick": "~1.0",
+        "drupal/image_effects": "~1.0",
+        "drupal/media_entity_browser": "dev-1.x",
+        "drupal/media_entity_pinterest": "~1.0",
+        "drupal/menu_link_attributes": "~1.0",
+        "drupal/path_redirect_import": "~1.0",
+        "drupal/redirect": "~1.0",
+        "drupal/simple_sitemap": "2.8 as 2.6",
+        "drupal/tracdelight": "~1.0",
+        "drupal/views_rest_feed": "~1.0",
+        "exeu/apai-io": "~1.0"
+    }
 }
