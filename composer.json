@@ -84,11 +84,6 @@
             }
         },
         {
-            "name": "burdamagazinorg/advertising_products",
-            "type": "vcs",
-            "url": "git@github.com:BurdaMagazinOrg/advertising_products.git"
-        },
-        {
             "name": "burdamagazinorg/burdastyle_migrate_common",
             "type": "vcs",
             "url": "git@github.com:BurdaMagazinOrg/bs-module-burdastyle-migrate-common.git"
@@ -102,7 +97,6 @@
         "cweagans/composer-patches": "dev-master as 1.6.0",
         "drush/drush": "~8.0",
         "drupal/console": "~0.10",
-        "burdamagazinorg/advertising_products": "dev-8.x-1.x",
         "burdamagazinorg/ad_integration": "dev-8.x-1.x",
         "burdamagazinorg/burdastyle_base": "dev-8.x-1.x",
         "burdamagazinorg/burdastyle_migrate_common": "dev-8.x-1.x",
@@ -117,6 +111,7 @@
         "drupal/access_unpublished": "~1.0",
         "drupal/acquia_connector": "~1.0",
         "drupal/acquia_lift": "~1.0",
+        "drupal/advertising_products": "dev-8.x-1.x",
         "drupal/breakpoint_js_settings": "~1.0",
         "drupal/color_field": "dev-2.x",
         "drupal/csv_serialization": "~1.0",
