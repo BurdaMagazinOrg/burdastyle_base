@@ -133,14 +133,9 @@
         "enable-patching": true,
         "patches": {
             "drupal/core": {
-                "fixes convert image effect": "patches/core/2630230-fix-convert-image-effect-3.patch",
                 "fixes missing vocabulary contextual filter": "patches/core/2048733-18.patch",
                 "fixes rss fields wrong url": "patches/core/rss-fields-wrong-url-2673980-3.patch",
-                "fixes ...": "patches/core/2648950-27.patch",
-                "DCX: fixex allow redirect callback to return": "patches/core/allow_redirect_callback_to_return-2781993-5.patch"
-            },
-            "drupal/color_field": {
-                "fixes missing import declaration and some bad UI stuff": "patches/color_field/fix-color-field-module.patch"
+                "fixes ...": "patches/core/2648950-27.patch"
             },
             "drupal/fb_instant_articles": {
                 "fix warning of missing namespace": "patches/fb_instant_articles/fb_instant_articles-fix-error-with-missing-namespace.patch"
@@ -153,9 +148,6 @@
             },
             "drupal/migrate_plus": {
                 "fix-plugin-manager-cache-collision-2752335-8-improved": "patches/migrate_plus/fix-plugin-manager-cache-collision-2752335-8-improved.patch"
-            },
-            "burdamagazinorg/nexx_integration": {
-                "fix nexx notification logger interface": "patches/nexx_integration/nexx_integration-notification-logger-interface.patch"
             }
         },
         "patches-ignore": {
