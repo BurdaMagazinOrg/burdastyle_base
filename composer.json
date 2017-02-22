@@ -154,8 +154,8 @@
             "drupal/migrate_plus": {
                 "fix-plugin-manager-cache-collision-2752335-8-improved": "patches/migrate_plus/fix-plugin-manager-cache-collision-2752335-8-improved.patch"
             },
-            "drupal/tracdelight": {
-                "INREL-1297: Update to new API": "patches/tracdelight/INREL-1297-api-update.patch"
+            "burdamagazinorg/nexx_integration": {
+                "fix nexx notification logger interface": "patches/nexx_integration/nexx_integration-notification-logger-interface.patch"
             }
         },
         "patches-ignore": {
