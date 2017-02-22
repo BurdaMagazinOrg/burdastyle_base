@@ -109,7 +109,7 @@
         "burdamagazinorg/xsl_process": "dev-8.x-1.x",
         "drupal/access_unpublished": "~1.0",
         "drupal/acquia_connector": "~1.0",
-        "drupal/acquia_lift": "~1.0",
+        "drupal/acquia_lift": "~3.0",
         "drupal/advertising_products": "~1.0",
         "drupal/breakpoint_js_settings": "~1.0",
         "drupal/color_field": "dev-2.x",
