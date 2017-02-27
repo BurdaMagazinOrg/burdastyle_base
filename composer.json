@@ -94,7 +94,7 @@
         "burdamagazinorg/robo": "~2.0",
         "composer/installers": "~1.0",
         "drupal-composer/drupal-scaffold": "~2.2",
-        "cweagans/composer-patches": "dev-master as 1.6.0",
+        "cweagans/composer-patches": "1.6.0",
         "drush/drush": "~8.0",
         "drupal/console": "~0.10",
         "burdamagazinorg/ad_integration": "dev-8.x-1.x",
