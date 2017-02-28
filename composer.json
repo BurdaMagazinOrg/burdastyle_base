@@ -24,6 +24,11 @@
             "url": "https://packages.drupal.org/8"
         },
         {
+            "name": "burdamagazinorg/infinite_amp",
+            "type": "vcs",
+            "url": "git@github.com:BurdaMagazinOrg/theme-infinite_amp.git"
+        },
+        {
             "name": "burdamagazinorg/infinite_theme",
             "type": "vcs",
             "url": "git@github.com:BurdaMagazinOrg/infinite-theme.git"
@@ -37,6 +42,11 @@
             "name": "burdamagazinorg/paragraphs_starterkit",
             "type": "vcs",
             "url": "git@github.com:BurdaMagazinOrg/paragraphs_starterkit.git"
+        },
+        {
+            "name": "burdamagazinorg/ivw_integration_amp",
+            "type": "vcs",
+            "url": "git@github.com:BurdaMagazinOrg/module-ivw_integration_amp.git"
         },
         {
             "name": "burdamagazinorg/ivw_integration_fia",
@@ -100,8 +110,10 @@
         "burdamagazinorg/ad_integration": "dev-8.x-1.x",
         "burdamagazinorg/burdastyle_migrate_common": "dev-8.x-1.x",
         "burdamagazinorg/hm_newsletter": "~1.0",
+        "burdamagazinorg/infinite_amp": "dev-8.x-1.x",
         "burdamagazinorg/infinite_theme": "dev-8.x-2.x as 1.0",
         "burdamagazinorg/infinite_module": "dev-8.x-2.x as 1.0",
+        "burdamagazinorg/ivw_integration_amp": "dev-8.x-1.x",
         "burdamagazinorg/ivw_integration_fia": "dev-8.x-1.x",
         "burdamagazinorg/nexx_integration": "dev-8.x-1.x as 8.1.7",
         "burdamagazinorg/paragraphs_starterkit": "dev-8.x-1.x",
@@ -111,6 +123,8 @@
         "drupal/acquia_connector": "~1.0",
         "drupal/acquia_lift": "~3.0",
         "drupal/advertising_products": "~1.0",
+        "drupal/amp": "~1.0",
+        "drupal/amptheme": "~1.0",
         "drupal/breakpoint_js_settings": "~1.0",
         "drupal/color_field": "dev-2.x",
         "drupal/csv_serialization": "~1.0",
