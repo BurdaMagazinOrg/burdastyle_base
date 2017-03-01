@@ -154,6 +154,9 @@
             "drupal/fb_instant_articles": {
                 "fix warning of missing namespace": "patches/fb_instant_articles/fb_instant_articles-fix-error-with-missing-namespace.patch"
             },
+            "drupal/ivw_integration": {
+                "add missing update hook for update from 1.0 to 1.1": "https://patch-diff.githubusercontent.com/raw/BurdaMagazinOrg/module-ivw_integration/pull/10.patch"
+            },
             "drupal/media_entity_instagram": {
                 "fix responsive instagrams": "patches/media_entity_instagram/make_posts_responsive-2807735-31.patch"
             },
