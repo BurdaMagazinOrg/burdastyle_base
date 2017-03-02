@@ -158,20 +158,14 @@
                 "add missing update hook for update from 1.0 to 1.1": "https://patch-diff.githubusercontent.com/raw/BurdaMagazinOrg/module-ivw_integration/pull/10.patch"
             },
             "drupal/media_entity_instagram": {
-                "fix responsive instagrams": "patches/media_entity_instagram/make_posts_responsive-2807735-31.patch"
+                "revert fix responsive instagrams": "patches/media_entity_instagram/make_posts_responsive-2807735-13-revert.patch",
+                "fix responsive instagrams": "patches/media_entity_instagram/make_posts_responsive-2807735-43.patch"
             },
             "drupal/media_entity_pinterest": {
                 "fix media name is always 'h'": "patches/media_entity_pinterest/media_entity_pinterest-media_name_always_h-2837977-5.patch"
             },
             "drupal/migrate_plus": {
                 "fix-plugin-manager-cache-collision-2752335-8-improved": "patches/migrate_plus/fix-plugin-manager-cache-collision-2752335-8-improved.patch"
-            }
-        },
-        "patches-ignore": {
-            "burdamagazinorg/thunder": {
-                "drupal/media_entity_instagram": {
-                    "Make posts responsive": "https://www.drupal.org/files/issues/make_posts_responsive-2807735-13.patch"
-                }
             }
         }
     }
