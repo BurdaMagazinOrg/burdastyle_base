@@ -149,7 +149,7 @@
             "drupal/core": {
                 "fixes missing vocabulary contextual filter": "patches/core/2048733-18.patch",
                 "fixes rss fields wrong url": "patches/core/rss-fields-wrong-url-2673980-3.patch",
-                "fixes ...": "patches/core/2648950-27.patch"
+                "fixes missing date type on date form elements": "patches/core/2648950-27.patch"
             },
             "drupal/fb_instant_articles": {
                 "fix warning of missing namespace": "patches/fb_instant_articles/fb_instant_articles-fix-error-with-missing-namespace.patch"
@@ -159,7 +159,7 @@
             },
             "drupal/media_entity_instagram": {
                 "revert fix responsive instagrams": "patches/media_entity_instagram/make_posts_responsive-2807735-13-revert.patch",
-                "fix responsive instagrams": "patches/media_entity_instagram/make_posts_responsive-2807735-43.patch"
+                "fix responsive instagrams": "patches/media_entity_instagram/make_posts_responsive-2807735-46.patch"
             },
             "drupal/media_entity_pinterest": {
                 "fix media name is always 'h'": "patches/media_entity_pinterest/media_entity_pinterest-media_name_always_h-2837977-5.patch"
