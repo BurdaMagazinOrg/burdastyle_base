@@ -121,6 +121,7 @@
         "burdamagazinorg/xsl_process": "dev-8.x-1.x",
         "drupal/access_unpublished": "~1.0",
         "drupal/acquia_connector": "~1.0",
+        "drupal/acquia_contenthub": "~1.0",
         "drupal/acquia_lift": "~3.0",
         "drupal/advertising_products": "~1.0",
         "drupal/amp": "~1.0",
@@ -128,8 +129,10 @@
         "drupal/breakpoint_js_settings": "~1.0",
         "drupal/color_field": "dev-2.x",
         "drupal/csv_serialization": "~1.0",
+        "drupal/diff": "~1.0",
         "drupal/embed": "~1.0",
         "drupal/entity_embed": "~1.0",
+        "drupal/entity_reference_display": "~1.0",
         "drupal/fb_instant_articles": "~1.0",
         "drupal/imagemagick": "~1.0",
         "drupal/image_effects": "~1.0",
@@ -150,6 +153,9 @@
                 "fixes missing vocabulary contextual filter": "patches/core/2048733-18.patch",
                 "fixes rss fields wrong url": "patches/core/rss-fields-wrong-url-2673980-3.patch",
                 "fixes missing date type on date form elements": "patches/core/2648950-27.patch"
+            },
+            "drupal/acquia_contenthub": {
+                "fix logger config factory interfaces": "patches/acquia_contenthub/acquia_contenthub-fix_logger_config_factory_interfaces.patch"
             },
             "drupal/fb_instant_articles": {
                 "fix warning of missing namespace": "patches/fb_instant_articles/fb_instant_articles-fix-error-with-missing-namespace.patch"
