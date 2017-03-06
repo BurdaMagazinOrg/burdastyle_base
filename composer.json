@@ -169,9 +169,6 @@
             },
             "drupal/media_entity_pinterest": {
                 "fix media name is always 'h'": "patches/media_entity_pinterest/media_entity_pinterest-media_name_always_h-2837977-5.patch"
-            },
-            "drupal/migrate_plus": {
-                "fix-plugin-manager-cache-collision-2752335-8-improved": "patches/migrate_plus/fix-plugin-manager-cache-collision-2752335-8-improved.patch"
             }
         }
     }
