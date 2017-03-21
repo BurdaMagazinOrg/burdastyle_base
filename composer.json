@@ -154,7 +154,7 @@
                 "fixes missing date type on date form elements": "patches/core/2648950-27.patch"
             },
             "drupal/acquia_contenthub": {
-                "fix logger config factory interfaces": "patches/acquia_contenthub/acquia_contenthub-fix_logger_config_factory_interface-2857762-2.patch"
+                "fix logger config factory interfaces": "https://www.drupal.org/files/issues/acquia_contenthub-fix_logger_and_config_interface-2857762-3.patch"
             },
             "drupal/fb_instant_articles": {
                 "fix warning of missing namespace": "patches/fb_instant_articles/fb_instant_articles-fix-error-with-missing-namespace.patch"
