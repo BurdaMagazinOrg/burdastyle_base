@@ -165,6 +165,9 @@
             },
             "drupal/media_entity_pinterest": {
                 "fix media name is always 'h'": "patches/media_entity_pinterest/media_entity_pinterest-media_name_always_h-2837977-5.patch"
+            },
+            "drupal/redirect": {
+                "fix redirect loops from empty query strings": "https://www.drupal.org/files/issues/redirect-prevent-redirect-loop-2852680-39.patch"
             }
         }
     }
