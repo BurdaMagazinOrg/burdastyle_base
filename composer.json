@@ -136,6 +136,7 @@
         "drupal/imagemagick": "~1.0",
         "drupal/image_effects": "~1.0",
         "drupal/media_entity_browser": "dev-1.x",
+        "drupal/media_entity_instagram": "1.3 as 1.2",
         "drupal/media_entity_pinterest": "~1.0",
         "drupal/menu_link_attributes": "~1.0",
         "drupal/path_redirect_import": "~1.0",
@@ -158,10 +159,6 @@
             },
             "drupal/fb_instant_articles": {
                 "fix warning of missing namespace": "patches/fb_instant_articles/fb_instant_articles-fix-error-with-missing-namespace.patch"
-            },
-            "drupal/media_entity_instagram": {
-                "revert fix responsive instagrams": "patches/media_entity_instagram/make_posts_responsive-2807735-13-revert.patch",
-                "fix responsive instagrams": "patches/media_entity_instagram/make_posts_responsive-2807735-46.patch"
             },
             "drupal/media_entity_pinterest": {
                 "fix media name is always 'h'": "patches/media_entity_pinterest/media_entity_pinterest-media_name_always_h-2837977-5.patch"
