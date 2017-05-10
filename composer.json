@@ -104,7 +104,7 @@
         "burdamagazinorg/robo": "~2.0",
         "composer/installers": "~1.0",
         "drupal-composer/drupal-scaffold": "~2.2",
-        "cweagans/composer-patches": "1.6.0",
+        "cweagans/composer-patches": "1.6.1",
         "drush/drush": "~8.0",
         "drupal/console": "~0.10",
         "burdamagazinorg/ad_integration": "dev-8.x-1.x",
@@ -148,6 +148,13 @@
     },
     "extra": {
         "enable-patching": true,
+        "patches-ignore": {
+            "burdamagazinorg/thunder": {
+                "drupal/media_entity_instagram": {
+                    "Make posts responsive": "https://www.drupal.org/files/issues/make_posts_responsive-2807735-13.patch"
+                }
+            }
+        },
         "patches": {
             "drupal/core": {
                 "fixes missing vocabulary contextual filter": "patches/core/2048733-18.patch",
@@ -159,6 +166,9 @@
             },
             "drupal/fb_instant_articles": {
                 "fix warning of missing namespace": "patches/fb_instant_articles/fb_instant_articles-fix-error-with-missing-namespace.patch"
+            },
+            "drupal/media_entity_instagram": {
+                "fix multiple image posts": "https://www.drupal.org/files/issues/media_entity_instagram-support_multiple_images_posts-2866960-3.patch"
             },
             "drupal/media_entity_pinterest": {
                 "fix media name is always 'h'": "patches/media_entity_pinterest/media_entity_pinterest-media_name_always_h-2837977-5.patch"
