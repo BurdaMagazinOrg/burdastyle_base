@@ -97,6 +97,16 @@
             "name": "burdamagazinorg/burdastyle_migrate_common",
             "type": "vcs",
             "url": "git@github.com:BurdaMagazinOrg/bs-module-burdastyle-migrate-common.git"
+        },
+        {
+            "name": "burdamagazinorg/burdastyle_behat",
+            "type": "vcs",
+            "url": "git@github.com:BurdaMagazinOrg/burdastyle-behat.git"
+        },
+        {
+            "name": "burdamagazinorg/burdastyle_shared_config",
+            "type": "vcs",
+            "url": "git@github.com:BurdaMagazinOrg/burdastyle-shared-config.git"
         }
     ],
     "require": {
@@ -139,6 +149,7 @@
         "drupal/media_entity_instagram": "1.3 as 1.2",
         "drupal/media_entity_pinterest": "~1.0",
         "drupal/menu_link_attributes": "~1.0",
+        "drupal/nimbus": "~1.0",
         "drupal/path_redirect_import": "~1.0",
         "drupal/redirect": "~1.0",
         "drupal/simple_sitemap": "2.8 as 2.6",
@@ -175,6 +186,9 @@
             },
             "drupal/redirect": {
                 "fix redirect loops from empty query strings": "https://www.drupal.org/files/issues/redirect-prevent-redirect-loop-2852680-39.patch"
+            },
+            "burdamagazinorg/robo": {
+                "add nimbus force uuid drush task for robo": "https://gist.githubusercontent.com/IT-Cru/3a396e1c911d74d7f660193c28c52f22/raw/077b976c17a3974eac0d3335fc3630f0679efb10/INREL-2145-robo-add_drush_nimbus_force_uuid_task.patch"
             }
         }
     }
