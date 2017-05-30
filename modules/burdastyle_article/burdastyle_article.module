@@ -136,6 +136,8 @@ function burdastyle_article_preprocess_node(&$variables) {
   if ($node->bundle() == "article") {
     if (_burdastyle_article_display_created($node, $view_mode)) {
       $variables['timestamp'] = $node->created->value;
+      $variables['created_timestamp'] = $node->created->value;
+      $variables['changed_timestamp'] = $node->changed->value;
     }
     else {
       unset($variables['content']['field_created']);
@@ -150,6 +152,8 @@ function burdastyle_article_preprocess_node(&$variables) {
       '#elements' => ['#user' => $author,],
       '#author_id' => 0,
       '#timestamp' => $variables['timestamp'],
+      '#created_timestamp' => $variables['created_timestamp'],
+      '#changed_timestamp' => $variables['changed_timestamp'],
     );
 
     if ($author->isActive()) {
