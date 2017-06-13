@@ -1,4 +1,4 @@
-# Setup development environment
+# HowTo: Setup local dev environment
 
 ## Install Composer and requirements on developer PC
 
