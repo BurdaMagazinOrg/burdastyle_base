@@ -107,6 +107,11 @@
             "name": "burdamagazinorg/burdastyle_shared_config",
             "type": "vcs",
             "url": "git@github.com:BurdaMagazinOrg/burdastyle-shared-config.git"
+        },
+        {
+            "name": "md-systems/views_googlenews",
+            "type": "vcs",
+            "url": "git@github.com:md-systems/views_googlenews.git"
         }
     ],
     "require": {
@@ -155,7 +160,8 @@
         "drupal/simple_sitemap": "2.8 as 2.6",
         "drupal/tracdelight": "~1.0",
         "drupal/views_rest_feed": "~1.0",
-        "exeu/apai-io": "~1.0"
+        "exeu/apai-io": "~1.0",
+        "md-systems/views_googlenews": "dev-master"
     },
     "extra": {
         "enable-patching": true,
