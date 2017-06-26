@@ -1,0 +1,3 @@
+# Ignore compass SASS caches.
+**/.sass-cache
+**/.sass-cache/*

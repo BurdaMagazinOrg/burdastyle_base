@@ -192,3 +192,10 @@ body {
     padding-top: 20px;
   }
 }
+
+.advertising_product {
+  .field--name-product-image {
+    display: inline;
+    float: left;
+  }
+}

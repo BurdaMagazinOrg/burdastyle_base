@@ -179,3 +179,9 @@ body .field-multiple-table .fieldset-wrapper > .form-wrapper > * {
   border-top: 1px solid #c2c2c2;
   padding-top: 20px;
 }
+
+/* line 197, ../sass/article-form.scss */
+.advertising_product .field--name-product-image {
+  display: inline;
+  float: left;
+}
