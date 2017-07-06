@@ -140,7 +140,7 @@
         "drupal/entity_embed": "~1.0",
         "drupal/entity_reference_display": "~1.0",
         "drupal/fb_instant_articles": "~1.0",
-        "drupal/imagemagick": "~1.0",
+        "drupal/imagemagick": "~2.0",
         "drupal/image_effects": "~1.0",
         "drupal/media_entity_browser": "dev-1.x",
         "drupal/media_entity_instagram": "~1.0",
