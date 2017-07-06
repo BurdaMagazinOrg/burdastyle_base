@@ -159,14 +159,14 @@
         "enable-patching": true,
         "patches": {
             "drupal/core": {
-                "fixes rss fields wrong url": "patches/core/rss-fields-wrong-url-2673980-3.patch",
-                "fixes missing date type on date form elements": "patches/core/2648950-27.patch"
+                "fixes rss fields wrong url": "https://www.drupal.org/files/issues/rss_view_with_fields-2673980-10.patch",
+                "fixes missing date type on date form elements": "https://www.drupal.org/files/issues/use_form_element_of-2648950-118.patch"
             },
             "drupal/fb_instant_articles": {
                 "fix warning of missing namespace": "patches/fb_instant_articles/fb_instant_articles-fix-error-with-missing-namespace.patch"
             },
             "drupal/media_entity_pinterest": {
-                "fix media name is always 'h'": "patches/media_entity_pinterest/media_entity_pinterest-media_name_always_h-2837977-5.patch"
+                "fix media name is always 'h'": "https://www.drupal.org/files/issues/media_entity_pinterest-media_name_always_h-2837977-5.patch"
             },
             "burdamagazinorg/robo": {
                 "add nimbus force uuid drush task for robo": "https://gist.githubusercontent.com/IT-Cru/3a396e1c911d74d7f660193c28c52f22/raw/077b976c17a3974eac0d3335fc3630f0679efb10/INREL-2145-robo-add_drush_nimbus_force_uuid_task.patch"
