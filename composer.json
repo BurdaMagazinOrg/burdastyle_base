@@ -149,6 +149,7 @@
         "drupal/purge": "~3.0",
         "drupal/redirect": "~1.0",
         "drupal/tracdelight": "~1.0",
+        "drupal/views_data_export": "^1.0",
         "drupal/views_rest_feed": "~1.0",
         "exeu/apai-io": "~1.0",
         "md-systems/views_googlenews": "dev-master"
