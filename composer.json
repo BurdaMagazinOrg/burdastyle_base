@@ -116,6 +116,7 @@
         "drupal/console": "~0.10",
         "burdamagazinorg/ad_integration": "dev-8.x-1.x",
         "burdamagazinorg/burdastyle_migrate_common": "dev-8.x-1.x",
+        "burdamagazinorg/dcx_integration": "~2.0",
         "burdamagazinorg/hm_newsletter": "~1.0",
         "burdamagazinorg/infinite_amp": "dev-8.x-1.x",
         "burdamagazinorg/infinite_theme": "dev-8.x-2.x as 1.0",
@@ -123,6 +124,7 @@
         "burdamagazinorg/ivw_integration_amp": "dev-8.x-1.x",
         "burdamagazinorg/ivw_integration_fia": "dev-8.x-1.x",
         "burdamagazinorg/paragraphs_starterkit": "dev-8.x-1.x",
+        "burdamagazinorg/select2_widget": "dev-8.x-1.x",
         "burdamagazinorg/views_feed_xml": "dev-8.x-2.x",
         "burdamagazinorg/xsl_process": "dev-8.x-1.x",
         "drupal/acquia_connector": "~1.0",
@@ -144,6 +146,8 @@
         "drupal/media_entity_pinterest": "~1.0",
         "drupal/memcache": "~2.0",
         "drupal/menu_link_attributes": "~1.0",
+        "drupal/migrate_plus": "~3.0",
+        "drupal/migrate_tools": "~3.0",
         "drupal/nimbus": "~1.0",
         "drupal/path_redirect_import": "~1.0",
         "drupal/purge": "~3.0",
@@ -152,7 +156,15 @@
         "drupal/views_data_export": "^1.0",
         "drupal/views_rest_feed": "~1.0",
         "exeu/apai-io": "~1.0",
+        "library/select2": "^4.0",
         "md-systems/views_googlenews": "dev-master"
+    },
+    "require-dev": {
+        "drupal/devel": "~1.0",
+        "drupal/stage_file_proxy": "~1.0",
+        "mikey179/vfsStream": "~1.2",
+        "phpunit/phpunit": "~4.8",
+        "symfony/css-selector": "2.7.*"
     },
     "extra": {
         "enable-patching": true,
