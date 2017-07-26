@@ -183,6 +183,9 @@
             },
             "burdamagazinorg/robo": {
                 "add nimbus force uuid drush task for robo": "https://gist.githubusercontent.com/IT-Cru/3a396e1c911d74d7f660193c28c52f22/raw/077b976c17a3974eac0d3335fc3630f0679efb10/INREL-2145-robo-add_drush_nimbus_force_uuid_task.patch"
+            },
+            "burdamagazinorg/thunder": {
+                "add FIA author patch from PR": "https://patch-diff.githubusercontent.com/raw/BurdaMagazinOrg/thunder-distribution/pull/162.diff"
             }
         }
     }
