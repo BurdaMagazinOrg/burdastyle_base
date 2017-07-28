@@ -28,6 +28,11 @@
             "url": "https://asset-packagist.org"
         },
         {
+            "name": "burdamagazinorg/ad_entity",
+            "type": "vcs",
+            "url": "git@github.com:BurdaMagazinOrg/module-ad_entity.git"
+        },
+        {
             "name": "burdamagazinorg/infinite_amp",
             "type": "vcs",
             "url": "git@github.com:BurdaMagazinOrg/theme-infinite_amp.git"
@@ -114,6 +119,7 @@
         "cweagans/composer-patches": "~1.0",
         "drush/drush": "~8.0",
         "drupal/console": "~0.10",
+        "burdamagazinorg/ad_entity": "~1.0",
         "burdamagazinorg/ad_integration": "dev-8.x-1.x",
         "burdamagazinorg/burdastyle_migrate_common": "dev-8.x-1.x",
         "burdamagazinorg/dcx_integration": "~2.0",
