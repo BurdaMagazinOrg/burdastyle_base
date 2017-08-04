@@ -27,9 +27,3 @@ brew install php71
 ~~~
 brew install composer
 ~~~
-
-* Install npm (deprecated with Thunder 2.x)
- 
-~~~
-brew install node
-~~~
