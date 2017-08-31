@@ -150,7 +150,7 @@
         "drupal/imageapi_optimize": "~2.0",
         "drupal/imagemagick": "~2.0",
         "drupal/image_effects": "~2.0",
-        "drupal/image_style_quality": "~1.0",
+        "drupal/image_style_quality": "dev-1.x",
         "drupal/media_entity_browser": "dev-1.x",
         "drupal/media_entity_pinterest": "~1.0",
         "drupal/memcache": "~2.0",
