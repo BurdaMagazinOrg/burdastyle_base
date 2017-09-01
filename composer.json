@@ -180,8 +180,7 @@
         "patches": {
             "drupal/core": {
                 "fixes rss fields wrong url": "https://www.drupal.org/files/issues/rss_view_with_fields-2673980-10.patch",
-                "fixes missing date type on date form elements": "https://www.drupal.org/files/issues/use_form_element_of-2648950-118.patch",
-                "add image style on uploaded image files": "https://www.drupal.org/files/issues/2831529-8.patch"
+                "fixes missing date type on date form elements": "https://www.drupal.org/files/issues/use_form_element_of-2648950-118.patch"
             },
             "drupal/fb_instant_articles": {
                 "fix warning of missing namespace": "patches/fb_instant_articles/fb_instant_articles-fix-error-with-missing-namespace.patch"
