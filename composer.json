@@ -191,6 +191,10 @@
             "burdamagazinorg/robo": {
                 "add nimbus force uuid drush task for robo": "https://gist.githubusercontent.com/IT-Cru/3a396e1c911d74d7f660193c28c52f22/raw/077b976c17a3974eac0d3335fc3630f0679efb10/INREL-2145-robo-add_drush_nimbus_force_uuid_task.patch"
             },
+            "burdamagazinorg/dcx_integration": {
+                "avoid error in case DB Table misses": "https://gist.githubusercontent.com/IT-Cru/c976c908ec2b29fa8ceb54bcd4dc4b05/raw/a25929f12e22d2647bc7a7861254247cbd0f8018/dcx_integration-add_table_exists_check_entity_delete.patch",
+                "optimize file create": "https://gist.githubusercontent.com/IT-Cru/866dc78a766821121c8559f08456f2ec/raw/e08aa462556944e41d6caa9ee76c2b912b901a7c/dcx_integration-optimize_file_create.patch"
+            },
             "burdamagazinorg/thunder": {
                 "add FIA author patch from PR": "https://patch-diff.githubusercontent.com/raw/BurdaMagazinOrg/thunder-distribution/pull/162.diff"
             }
