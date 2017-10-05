@@ -73,24 +73,6 @@
             "url": "git@github.com:BurdaMagazinOrg/bs-module-xsl-process.git"
         },
         {
-            "name": "drupal/color_field",
-            "type": "vcs",
-            "url": "git.drupal.org/project/color_field.git"
-        },
-        {
-            "type":"package",
-            "package": {
-                "name": "drupal/path_redirect_import",
-                "version":"1.0",
-                "type": "drupal-module",
-                "source": {
-                    "url": "https://git.drupal.org/project/path_redirect_import.git",
-                    "type": "git",
-                    "reference": "8.x-1.x"
-                }
-            }
-        },
-        {
             "name": "burdamagazinorg/burdastyle_migrate_common",
             "type": "vcs",
             "url": "git@github.com:BurdaMagazinOrg/bs-module-burdastyle-migrate-common.git"
@@ -104,11 +86,6 @@
             "name": "burdamagazinorg/burdastyle_shared_config",
             "type": "vcs",
             "url": "git@github.com:BurdaMagazinOrg/burdastyle-shared-config.git"
-        },
-        {
-            "name": "md-systems/views_googlenews",
-            "type": "vcs",
-            "url": "git@github.com:md-systems/views_googlenews.git"
         }
     ],
     "require": {
@@ -138,7 +115,7 @@
         "drupal/acquia_lift": "~3.0",
         "drupal/acquia_purge": "~1.0",
         "drupal/advertising_products": "~1.0",
-        "drupal/color_field": "dev-2.x",
+        "drupal/color_field": "~2.0",
         "drupal/csv_serialization": "~1.0",
         "drupal/dynamic_entity_reference": "^1.0",
         "drupal/embed": "~1.0",
@@ -151,7 +128,7 @@
         "drupal/imagemagick": "~2.0",
         "drupal/image_effects": "~2.0",
         "drupal/image_style_quality": "dev-1.x",
-        "drupal/media_entity_browser": "dev-1.x",
+        "drupal/media_entity_browser": "~1.0",
         "drupal/media_entity_pinterest": "~1.0",
         "drupal/memcache": "~2.0",
         "drupal/menu_link_attributes": "~1.0",
@@ -163,10 +140,10 @@
         "drupal/redirect": "~1.0",
         "drupal/tracdelight": "~1.0",
         "drupal/views_data_export": "^1.0",
+        "drupal/views_googlenews": "~1.0",
         "drupal/views_rest_feed": "~1.0",
         "exeu/apai-io": "~1.0",
-        "library/select2": "^4.0",
-        "md-systems/views_googlenews": "dev-master"
+        "library/select2": "^4.0"
     },
     "require-dev": {
         "drupal/devel": "~1.0",
@@ -185,18 +162,11 @@
             "drupal/fb_instant_articles": {
                 "fix warning of missing namespace": "patches/fb_instant_articles/fb_instant_articles-fix-error-with-missing-namespace.patch"
             },
-            "drupal/media_entity_pinterest": {
-                "fix media name is always 'h'": "https://www.drupal.org/files/issues/media_entity_pinterest-media_name_always_h-2837977-5.patch"
-            },
             "burdamagazinorg/robo": {
                 "add nimbus force uuid drush task for robo": "https://gist.githubusercontent.com/IT-Cru/3a396e1c911d74d7f660193c28c52f22/raw/077b976c17a3974eac0d3335fc3630f0679efb10/INREL-2145-robo-add_drush_nimbus_force_uuid_task.patch"
             },
             "burdamagazinorg/dcx_integration": {
-                "avoid error in case DB Table misses": "https://gist.githubusercontent.com/IT-Cru/c976c908ec2b29fa8ceb54bcd4dc4b05/raw/a25929f12e22d2647bc7a7861254247cbd0f8018/dcx_integration-add_table_exists_check_entity_delete.patch",
                 "optimize file create": "https://gist.githubusercontent.com/IT-Cru/866dc78a766821121c8559f08456f2ec/raw/e08aa462556944e41d6caa9ee76c2b912b901a7c/dcx_integration-optimize_file_create.patch"
-            },
-            "burdamagazinorg/thunder": {
-                "add FIA author patch from PR": "https://patch-diff.githubusercontent.com/raw/BurdaMagazinOrg/thunder-distribution/pull/162.diff"
             }
         }
     }
