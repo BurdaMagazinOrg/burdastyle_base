@@ -39,49 +39,6 @@ function burdastyle_article_form_node_magazine_products_form_alter(&$form, FormS
  */
 function _burdastyle_article_form_alter_helper(&$form, FormStateInterface $form_state) {
 
-	$form['bs_ad_settings'] = [
-		'#type' => 'details',
-		'#title' => 'Ad settings',
-		'#group' => 'advanced',
-		'#open' => FALSE,
-		'#optional' => TRUE,
-	];
-	$form['field_ad_context']['#group'] = 'bs_ad_settings';
-	$form['field_sponsor_type']['#group'] = 'bs_ad_settings';
-	$form['field_campaign']['#group'] = 'bs_ad_settings';
-
-	// Move fields for header, sidebar and footer blocks into advanced region of form.
-	$form['bs_block_settings'] = [
-		'#type' => 'details',
-		'#title' => 'Block settings',
-		'#group' => 'advanced',
-		'#open' => FALSE,
-		'#optional' => TRUE,
-	];
-	$form['field_header_blocks']['#group'] = 'bs_block_settings';
-	$form['field_sidebar_blocks']['#group'] = 'bs_block_settings';
-	$form['field_footer_blocks']['#group'] = 'bs_block_settings';
-
-	$form['bs_header_settings'] = [
-		'#type' => 'details',
-		'#title' => 'Header settings',
-		'#group' => 'advanced',
-		'#open' => FALSE,
-		'#optional' => TRUE,
-	];
-	$form['field_header_media']['#group'] = 'bs_header_settings';
-	$form['field_header_title']['#group'] = 'bs_header_settings';
-
-	$form['bs_extra_settings'] = [
-		'#type' => 'details',
-		'#title' => 'Extra settings',
-		'#group' => 'advanced',
-		'#open' => FALSE,
-		'#optional' => TRUE,
-	];
-	$form['field_promotion_teaser_disable']['#group'] = 'bs_extra_settings';
-
-
   // Move promote fields to options group.
   // TODO: Remove when fully replaced with field_promote_states.
   $form['promote']['#disabled'] = TRUE;
@@ -96,10 +53,6 @@ function _burdastyle_article_form_alter_helper(&$form, FormStateInterface $form_
 
   // TODO: Do we need this any more?
   $form['sponsored']['#group'] = 'options';
-
-  // Add CSS file for layout optimization.
-  // TODO: We need a better admin theme!
-  //$form['#attached']['library'][] = 'burdastyle_article/article_form_styling';
 
   // Load workaround CSS for editor role.
   // TODO: Remove when paragraphs form rebrush is done.
@@ -252,25 +205,6 @@ function burdastyle_article_preprocess_node(&$variables) {
 
     $variables['author_teaser'] = $author_teaser;
   }
-}
-
-/**
- * Implements hook_field_widget_WIDGET_ID_form_alter().
- *
- * Required for non-thunder media image fields.
- *
- * @see thunder_media_field_widget_entity_browser_entity_reference_form_alter
- */
-function burdastyle_article_field_widget_entity_browser_entity_reference_form_alter(&$element, FormStateInterface $form_state, $context) {
-	/* @var \Drupal\Core\Field\EntityReferenceFieldItemList $items */
-	$items = $context['items'];
-	$field_name = $items->getName();
-	switch ($field_name) {
-		case 'field_presenter_media':
-		case 'field_header_media':
-			_thunder_media_media_field_widget_form_alter_helper($element, 'image');
-			break;
-	}
 }
 
 /**

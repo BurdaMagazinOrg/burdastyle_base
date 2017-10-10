@@ -1,0 +1,105 @@
+<?php
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Field\EntityReferenceFieldItemList;
+
+/**
+ * Implements hook_form_node_article_edit_form_alter().
+ */
+function burdastyle_thunder_admin_form_node_article_edit_form_alter(&$form, FormStateInterface $form_state) {
+	_burdastyle_thunder_admin_form_alter_helper($form, $form_state);
+}
+
+/**
+ * Implements hook_form_node_article_form_alter().
+ */
+function burdastyle_thunder_admin_form_node_article_form_alter(&$form, FormStateInterface $form_state) {
+	_burdastyle_thunder_admin_form_alter_helper($form, $form_state);
+}
+
+/**
+ * Implements hook_form_node_article_edit_form_alter().
+ */
+function burdastyle_thunder_admin_form_node_magazine_products_edit_form_alter(&$form, FormStateInterface $form_state) {
+	_burdastyle_thunder_admin_form_alter_helper($form, $form_state);
+}
+
+/**
+ * Implements hook_form_node_article_form_alter().
+ */
+function burdastyle_thunder_admin_form_node_magazine_products_form_alter(&$form, FormStateInterface $form_state) {
+	_burdastyle_thunder_admin_form_alter_helper($form, $form_state);
+}
+
+/**
+ * Helper function for article form alter hooks.
+ *
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ */
+function _burdastyle_thunder_admin_form_alter_helper(&$form, FormStateInterface $form_state) {
+
+	$form['bs_ad_settings'] = [
+		'#type' => 'details',
+		'#title' => 'Ad settings',
+		'#group' => 'advanced',
+		'#open' => FALSE,
+		'#optional' => TRUE,
+	];
+	$form['field_ad_context']['#group'] = 'bs_ad_settings';
+	$form['field_sponsor_type']['#group'] = 'bs_ad_settings';
+	$form['field_campaign']['#group'] = 'bs_ad_settings';
+
+	// Move fields for header, sidebar and footer blocks into advanced region of form.
+	$form['bs_block_settings'] = [
+		'#type' => 'details',
+		'#title' => 'Block settings',
+		'#group' => 'advanced',
+		'#open' => FALSE,
+		'#optional' => TRUE,
+	];
+	$form['field_header_blocks']['#group'] = 'bs_block_settings';
+	$form['field_sidebar_blocks']['#group'] = 'bs_block_settings';
+	$form['field_footer_blocks']['#group'] = 'bs_block_settings';
+
+	$form['bs_header_settings'] = [
+		'#type' => 'details',
+		'#title' => 'Header settings',
+		'#group' => 'advanced',
+		'#open' => FALSE,
+		'#optional' => TRUE,
+	];
+	$form['field_header_media']['#group'] = 'bs_header_settings';
+	$form['field_header_title']['#group'] = 'bs_header_settings';
+
+	$form['bs_extra_settings'] = [
+		'#type' => 'details',
+		'#title' => 'Extra settings',
+		'#group' => 'advanced',
+		'#open' => FALSE,
+		'#optional' => TRUE,
+	];
+	$form['field_promotion_teaser_disable']['#group'] = 'bs_extra_settings';
+
+  // Add BurdaStyle specific CSS for thunder_admin backend theme.
+  $form['#attached']['library'][] = 'burdastyle_thunder_admin/form_styling';
+}
+
+/**
+ * Implements hook_field_widget_WIDGET_ID_form_alter().
+ *
+ * Required for non-thunder media image fields.
+ *
+ * @see thunder_media_field_widget_entity_browser_entity_reference_form_alter
+ */
+function burdastyle_thunder_admin_field_widget_entity_browser_entity_reference_form_alter(&$element, FormStateInterface $form_state, $context) {
+	/* @var EntityReferenceFieldItemList $items */
+	$items = $context['items'];
+	$field_name = $items->getName();
+	switch ($field_name) {
+		case 'field_presenter_media':
+		case 'field_header_media':
+			_thunder_media_media_field_widget_form_alter_helper($element, 'image');
+			break;
+	}
+}

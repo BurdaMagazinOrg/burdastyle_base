@@ -1,0 +1,7 @@
+name: BurdaStyle Thunder Admin
+type: module
+description: Adjustments to use Thunder Admin backend theme on BurdaStyle websites.
+package: Thunder
+core: 8.x
+version: 8.x-1.x-dev
+
