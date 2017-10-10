@@ -1,3 +1,5 @@
+@import 'variables';
+
 body {
 
   .horizontal-tabs {
@@ -197,5 +199,41 @@ body {
   .field--name-product-image {
     display: inline;
     float: left;
+  }
+}
+
+/* adapted from backend.scss of thunder_admin contrib theme from CSS class article-teaser */
+fieldset.article-presenter .fieldset-wrapper .field--name-field-teaser-text {
+  padding: 0 10px;
+}
+
+fieldset.article-presenter {
+  .field--name-field-presenter-media {
+    summary {
+      display: none;
+    }
+
+    .media-form__item-widget {
+      background: $primary-color-lighter;
+    }
+  }
+
+  @include for-tablet-landscape-and-up {
+    div.field--widget-entity-browser-entity-reference div.entities-list > div {
+      margin: 10px 0;
+    }
+
+    .fieldset-wrapper {
+      display: flex;
+
+      .field--name-field-presenter-media {
+        width: 225px;
+        min-width: 225px;
+      }
+
+      .field--name-field-presenter-media details.form-wrapper {
+        border: 0;
+      }
+    }
   }
 }
