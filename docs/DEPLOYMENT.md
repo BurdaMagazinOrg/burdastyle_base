@@ -1,5 +1,9 @@
 # HowTo: Release deployment workflow
 
+## Other docs you should know before
+
+* [git flow commands](https://danielkummer.github.io/git-flow-cheatsheet/)
+
 ## Prepare release for deployment
 
 * Get current master and develop branch of project to release.
@@ -15,7 +19,7 @@ git pull
 * Create release branch with git flow command.
 
 ~~~
-git flow release start v1.x.x
+git flow release start v2.x.x
 ~~~
 
 * Check if their are any non-imported config YMLs in PROD environment.
@@ -32,16 +36,16 @@ git commit -m "INREL-<ID> Re-import config YML files from PROD environment"
 
 ~~~
 git add VERSION
-git commit -m "INREL-<ID> Tagging relase v1.x.x of <PROJECTNAME> project"
+git commit -m "INREL-<ID> Tagging relase v2.x.x of <PROJECTNAME> project"
 ~~~
 
 * Finish release with git flow command.
 
-    At second git flow commit message enter *Tagging RELEASE v1.x.x*
+    At second git flow commit message enter *Tagging RELEASE v2.x.x*
 
 ~~~
-git flow release finish v1.x.x
-git push origin v1.x.x
+git flow release finish v2.x.x
+git push origin v2.x.x
 git push --all
 ~~~
 
@@ -64,7 +68,7 @@ git push --all
 * Monitor load of both PROD web apps with top via ssh.
 
 ~~~
-top -d1
+htop
 ~~~
 
 * Clear varnish cache via Acquia cloud backend when load on both PROD web apps is lower then 3.

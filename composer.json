@@ -24,6 +24,15 @@
             "url": "https://packages.drupal.org/8"
         },
         {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        },
+        {
+            "name": "burdamagazinorg/ad_entity",
+            "type": "vcs",
+            "url": "git@github.com:BurdaMagazinOrg/module-ad_entity.git"
+        },
+        {
             "name": "burdamagazinorg/infinite_amp",
             "type": "vcs",
             "url": "git@github.com:BurdaMagazinOrg/theme-infinite_amp.git"
@@ -64,36 +73,6 @@
             "url": "git@github.com:BurdaMagazinOrg/bs-module-xsl-process.git"
         },
         {
-            "name": "drupal/color_field",
-            "type": "vcs",
-            "url": "git.drupal.org/project/color_field.git"
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "drupal/media_entity_pinterest",
-                "version": "1.0",
-                "type": "drupal-module",
-                "source": {
-                    "url": "https://git.drupal.org/sandbox/double/2769473.git",
-                    "type": "git",
-                    "reference": "8.x-1.x"                }
-            }
-        },
-        {
-            "type":"package",
-            "package": {
-                "name": "drupal/path_redirect_import",
-                "version":"1.0",
-                "type": "drupal-module",
-                "source": {
-                    "url": "https://git.drupal.org/project/path_redirect_import.git",
-                    "type": "git",
-                    "reference": "8.x-1.x"
-                }
-            }
-        },
-        {
             "name": "burdamagazinorg/burdastyle_migrate_common",
             "type": "vcs",
             "url": "git@github.com:BurdaMagazinOrg/bs-module-burdastyle-migrate-common.git"
@@ -107,23 +86,20 @@
             "name": "burdamagazinorg/burdastyle_shared_config",
             "type": "vcs",
             "url": "git@github.com:BurdaMagazinOrg/burdastyle-shared-config.git"
-        },
-        {
-            "name": "md-systems/views_googlenews",
-            "type": "vcs",
-            "url": "git@github.com:md-systems/views_googlenews.git"
         }
     ],
     "require": {
-        "burdamagazinorg/thunder": "~8.1.0",
+        "burdamagazinorg/thunder": "~8.2",
         "burdamagazinorg/robo": "~2.0",
         "composer/installers": "~1.0",
         "drupal-composer/drupal-scaffold": "~2.2",
-        "cweagans/composer-patches": "1.6.1",
+        "cweagans/composer-patches": "~1.0",
         "drush/drush": "~8.0",
         "drupal/console": "~0.10",
+        "burdamagazinorg/ad_entity": "~1.0",
         "burdamagazinorg/ad_integration": "dev-8.x-1.x",
         "burdamagazinorg/burdastyle_migrate_common": "dev-8.x-1.x",
+        "burdamagazinorg/dcx_integration": "~2.0",
         "burdamagazinorg/hm_newsletter": "~1.0",
         "burdamagazinorg/infinite_amp": "dev-8.x-1.x",
         "burdamagazinorg/infinite_theme": "dev-8.x-2.x as 1.0",
@@ -131,70 +107,66 @@
         "burdamagazinorg/ivw_integration_amp": "dev-8.x-1.x",
         "burdamagazinorg/ivw_integration_fia": "dev-8.x-1.x",
         "burdamagazinorg/paragraphs_starterkit": "dev-8.x-1.x",
+        "burdamagazinorg/select2_widget": "dev-8.x-1.x",
         "burdamagazinorg/views_feed_xml": "dev-8.x-2.x",
         "burdamagazinorg/xsl_process": "dev-8.x-1.x",
-        "drupal/access_unpublished": "~1.0",
         "drupal/acquia_connector": "~1.0",
         "drupal/acquia_contenthub": "~1.0",
         "drupal/acquia_lift": "~3.0",
+        "drupal/acquia_purge": "~1.0",
         "drupal/advertising_products": "~1.0",
-        "drupal/amp": "~1.0",
-        "drupal/amptheme": "~1.0",
-        "drupal/breakpoint_js_settings": "~1.0",
-        "drupal/color_field": "dev-2.x",
+        "drupal/color_field": "~2.0",
         "drupal/csv_serialization": "~1.0",
-        "drupal/diff": "~1.0",
+        "drupal/dynamic_entity_reference": "^1.0",
         "drupal/embed": "~1.0",
+        "drupal/entity_block": "~1.0",
+        "drupal/entity_clone": "~1.0",
         "drupal/entity_embed": "~1.0",
         "drupal/entity_reference_display": "~1.0",
         "drupal/fb_instant_articles": "~1.0",
-        "drupal/imagemagick": "~1.0",
-        "drupal/image_effects": "~1.0",
-        "drupal/media_entity_browser": "dev-1.x",
-        "drupal/media_entity_instagram": "1.3 as 1.2",
+        "drupal/imageapi_optimize": "~2.0",
+        "drupal/imagemagick": "~2.0",
+        "drupal/image_effects": "~2.0",
+        "drupal/image_style_quality": "dev-1.x",
+        "drupal/media_entity_browser": "~1.0",
         "drupal/media_entity_pinterest": "~1.0",
+        "drupal/memcache": "~2.0",
         "drupal/menu_link_attributes": "~1.0",
+        "drupal/migrate_plus": "~3.0",
+        "drupal/migrate_tools": "~3.0",
         "drupal/nimbus": "~1.0",
         "drupal/path_redirect_import": "~1.0",
+        "drupal/purge": "~3.0",
         "drupal/redirect": "~1.0",
-        "drupal/simple_sitemap": "2.8 as 2.6",
         "drupal/tracdelight": "~1.0",
+        "drupal/views_data_export": "^1.0",
+        "drupal/views_googlenews": "~1.0",
         "drupal/views_rest_feed": "~1.0",
         "exeu/apai-io": "~1.0",
-        "md-systems/views_googlenews": "dev-master"
+        "library/select2": "^4.0"
+    },
+    "require-dev": {
+        "drupal/devel": "~1.0",
+        "drupal/stage_file_proxy": "~1.0",
+        "mikey179/vfsStream": "~1.2",
+        "phpunit/phpunit": "~4.8",
+        "symfony/css-selector": "2.7.*"
     },
     "extra": {
         "enable-patching": true,
-        "patches-ignore": {
-            "burdamagazinorg/thunder": {
-                "drupal/media_entity_instagram": {
-                    "Make posts responsive": "https://www.drupal.org/files/issues/make_posts_responsive-2807735-13.patch"
-                }
-            }
-        },
         "patches": {
             "drupal/core": {
-                "fixes missing vocabulary contextual filter": "patches/core/2048733-18.patch",
-                "fixes rss fields wrong url": "patches/core/rss-fields-wrong-url-2673980-3.patch",
-                "fixes missing date type on date form elements": "patches/core/2648950-27.patch"
-            },
-            "drupal/acquia_contenthub": {
-                "fix logger config factory interfaces": "https://www.drupal.org/files/issues/acquia_contenthub-fix_logger_and_config_interface-2857762-3.patch"
+                "fixes rss fields wrong url": "https://www.drupal.org/files/issues/rss_view_with_fields-2673980-10.patch",
+                "fixes missing date type on date form elements": "https://www.drupal.org/files/issues/use_form_element_of-2648950-118.patch"
             },
             "drupal/fb_instant_articles": {
                 "fix warning of missing namespace": "patches/fb_instant_articles/fb_instant_articles-fix-error-with-missing-namespace.patch"
             },
-            "drupal/media_entity_instagram": {
-                "fix multiple image posts": "https://www.drupal.org/files/issues/media_entity_instagram-support_multiple_images_posts-2866960-3.patch"
-            },
-            "drupal/media_entity_pinterest": {
-                "fix media name is always 'h'": "patches/media_entity_pinterest/media_entity_pinterest-media_name_always_h-2837977-5.patch"
-            },
-            "drupal/redirect": {
-                "fix redirect loops from empty query strings": "https://www.drupal.org/files/issues/redirect-prevent-redirect-loop-2852680-39.patch"
-            },
             "burdamagazinorg/robo": {
                 "add nimbus force uuid drush task for robo": "https://gist.githubusercontent.com/IT-Cru/3a396e1c911d74d7f660193c28c52f22/raw/077b976c17a3974eac0d3335fc3630f0679efb10/INREL-2145-robo-add_drush_nimbus_force_uuid_task.patch"
+            },
+            "burdamagazinorg/dcx_integration": {
+                "optimize file create": "https://gist.githubusercontent.com/IT-Cru/866dc78a766821121c8559f08456f2ec/raw/e08aa462556944e41d6caa9ee76c2b912b901a7c/dcx_integration-optimize_file_create.patch"
             }
         }
     }
