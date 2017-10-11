@@ -39,12 +39,17 @@ function burdastyle_thunder_admin_form_node_magazine_products_form_alter(&$form,
  */
 function _burdastyle_thunder_admin_form_alter_helper(&$form, FormStateInterface $form_state) {
 
+	// Get the current user.
+	$user = \Drupal::currentUser();
+
+	// Move ad settings fields into advanced region of form.
 	$form['bs_ad_settings'] = [
 		'#type' => 'details',
 		'#title' => 'Ad settings',
 		'#group' => 'advanced',
 		'#open' => FALSE,
 		'#optional' => TRUE,
+		'#access' => $user->hasPermission('view ad settings in forms'),
 	];
 	$form['field_ad_context']['#group'] = 'bs_ad_settings';
 	$form['field_sponsor_type']['#group'] = 'bs_ad_settings';
@@ -57,29 +62,37 @@ function _burdastyle_thunder_admin_form_alter_helper(&$form, FormStateInterface 
 		'#group' => 'advanced',
 		'#open' => FALSE,
 		'#optional' => TRUE,
+		'#access' => $user->hasPermission('view block settings in forms'),
 	];
 	$form['field_header_blocks']['#group'] = 'bs_block_settings';
 	$form['field_sidebar_blocks']['#group'] = 'bs_block_settings';
 	$form['field_footer_blocks']['#group'] = 'bs_block_settings';
 
+	// Move fields for header media and title into advanced region of form.
 	$form['bs_header_settings'] = [
 		'#type' => 'details',
 		'#title' => 'Header settings',
 		'#group' => 'advanced',
 		'#open' => FALSE,
 		'#optional' => TRUE,
+		'#access' => $user->hasPermission('view header settings in forms'),
 	];
 	$form['field_header_media']['#group'] = 'bs_header_settings';
 	$form['field_header_title']['#group'] = 'bs_header_settings';
 
+	// Move fields all extra fields into advanced region of form.
 	$form['bs_extra_settings'] = [
 		'#type' => 'details',
 		'#title' => 'Extra settings',
 		'#group' => 'advanced',
 		'#open' => FALSE,
 		'#optional' => TRUE,
+		'#access' => $user->hasPermission('view extra settings in forms'),
 	];
 	$form['field_promotion_teaser_disable']['#group'] = 'bs_extra_settings';
+
+	// Add access check for IVW settings.
+	$form['field_ivw']['#access'] = $user->hasPermission('view ivw settings in forms');
 
   // Add BurdaStyle specific CSS for thunder_admin backend theme.
   $form['#attached']['library'][] = 'burdastyle_thunder_admin/form_styling';
