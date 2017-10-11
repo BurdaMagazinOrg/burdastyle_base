@@ -53,29 +53,29 @@ fieldset.article-presenter .fieldset-wrapper .field--name-field-teaser-text {
   padding: 0 10px;
 }
 
-/* line 36, ../sass/burdastyle-thunder-admin.scss */
+/* line 37, ../sass/burdastyle-thunder-admin.scss */
 fieldset.article-presenter .field--name-field-presenter-media summary {
   display: none;
 }
-/* line 40, ../sass/burdastyle-thunder-admin.scss */
+/* line 41, ../sass/burdastyle-thunder-admin.scss */
 fieldset.article-presenter .field--name-field-presenter-media .media-form__item-widget {
   background: #d4edfc;
 }
 @media (min-width: 900px) {
-  /* line 46, ../sass/burdastyle-thunder-admin.scss */
+  /* line 47, ../sass/burdastyle-thunder-admin.scss */
   fieldset.article-presenter div.field--widget-entity-browser-entity-reference div.entities-list > div {
     margin: 10px 0;
   }
-  /* line 50, ../sass/burdastyle-thunder-admin.scss */
+  /* line 51, ../sass/burdastyle-thunder-admin.scss */
   fieldset.article-presenter .fieldset-wrapper {
     display: flex;
   }
-  /* line 53, ../sass/burdastyle-thunder-admin.scss */
+  /* line 54, ../sass/burdastyle-thunder-admin.scss */
   fieldset.article-presenter .fieldset-wrapper .field--name-field-presenter-media {
     width: 225px;
     min-width: 225px;
   }
-  /* line 58, ../sass/burdastyle-thunder-admin.scss */
+  /* line 59, ../sass/burdastyle-thunder-admin.scss */
   fieldset.article-presenter .fieldset-wrapper .field--name-field-presenter-media details.form-wrapper {
     border: 0;
   }
