@@ -89,6 +89,11 @@ function _burdastyle_thunder_admin_form_alter_helper(&$form, FormStateInterface 
 
   // Add BurdaStyle specific CSS for thunder_admin backend theme.
   $form['#attached']['library'][] = 'burdastyle_thunder_admin/form_styling';
+
+  // Add CSS to fix broken travis tests with position fixed 'content-form-actions' region.
+	if ($_SERVER['AH_SITE_ENVIRONMENT'] == 'travis') {
+		$form['#attached']['library'][] = 'burdastyle_thunder_admin/travis_fix';
+	}
 }
 
 /**
