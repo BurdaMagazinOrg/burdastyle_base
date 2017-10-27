@@ -52,6 +52,7 @@ function burdastyle_article_form_node_recipe_form_alter(&$form, FormStateInterfa
  * @param \Drupal\Core\Form\FormStateInterface $form_state
  */
 function _burdastyle_article_form_alter_helper(&$form, FormStateInterface $form_state) {
+
   // Move promote fields to options group.
   // TODO: Remove when fully replaced with field_promote_states.
   $form['promote']['#disabled'] = TRUE;
@@ -67,17 +68,14 @@ function _burdastyle_article_form_alter_helper(&$form, FormStateInterface $form_
   // TODO: Do we need this any more?
   $form['sponsored']['#group'] = 'options';
 
-  // Add CSS file for layout optimization.
-  // TODO: We need a better admin theme!
-  $form['#attached']['library'][] = 'burdastyle_article/article_form_styling';
-
   // Load workaround CSS for editor role.
   // TODO: Remove when paragraphs form rebrush is done.
   $account = \Drupal::currentUser();
   $user_roles = $account->getRoles();
-  if (in_array('editor', $user_roles) && !in_array('seo', $user_roles)) {
-    $form['#attached']['library'][] = 'burdastyle_article/article_form_editor_workaround';
-  }
+
+  //if (in_array('editor', $user_roles) && !in_array('seo', $user_roles)) {
+  //  $form['#attached']['library'][] = 'burdastyle_article/article_form_editor_workaround';
+  //}
 
   // Move field_promote_states to options group.
   $form['field_promote_states']['#group'] = 'options';

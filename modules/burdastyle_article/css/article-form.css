@@ -161,27 +161,3 @@ body .field-multiple-table .fieldset-wrapper > .form-wrapper > * {
 .field--widget-entity-reference-paragraphs .paragraphs-subform {
   padding-bottom: 1em;
 }
-
-/* line 178, ../sass/article-form.scss */
-.field--name-field-promote-states legend .fieldset-legend {
-  display: none;
-}
-/* line 182, ../sass/article-form.scss */
-.field--name-field-promote-states .form-item {
-  padding-bottom: 10px;
-}
-/* line 186, ../sass/article-form.scss */
-.field--name-field-promote-states .form-item-field-promote-states-channel-presenter {
-  padding-bottom: 20px;
-}
-/* line 190, ../sass/article-form.scss */
-.field--name-field-promote-states .form-item-field-promote-states-fb-instant-articles {
-  border-top: 1px solid #c2c2c2;
-  padding-top: 20px;
-}
-
-/* line 197, ../sass/article-form.scss */
-.advertising_product .field--name-product-image {
-  display: inline;
-  float: left;
-}

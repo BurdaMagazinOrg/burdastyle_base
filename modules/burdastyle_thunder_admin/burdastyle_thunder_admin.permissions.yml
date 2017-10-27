@@ -1,0 +1,19 @@
+view ad settings in forms:
+  title: 'View ad settings in forms'
+  description: 'View ad settings in advanced sidebar of entity forms'
+
+view block settings in forms:
+  title: 'View block settings in forms'
+  description: 'View block settings in advanced sidebar of entity forms'
+
+view extra settings in forms:
+  title: 'View extra settings in forms'
+  description: 'View extra settings in advanced sidebar of entity forms'
+
+view header settings in forms:
+  title: 'View header settings in forms'
+  description: 'View header settings in advanced sidebar of entity forms'
+
+view ivw settings in forms:
+  title: 'View ivw settings in forms'
+  description: 'View ivw settings in advanced sidebar of entity forms'

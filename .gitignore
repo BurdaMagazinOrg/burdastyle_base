@@ -2,4 +2,6 @@
 **/.sass-cache
 **/.sass-cache/*
 
+# Ignore mac and IDE stuff.
+.DS_Store
 .idea/
