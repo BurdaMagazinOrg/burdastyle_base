@@ -38,25 +38,21 @@ class BurdastyleWishlistController extends ControllerBase
         ->execute();
 
       foreach ($query->fetchAll() as $product) {
+        $build = [
+          '#theme' => 'burdastyle_wishlist_item',
+          '#product' => $product,
+        ];
         $products[] = [
           'productId' => $product->product_id,
-          'markup' => sprintf(
-            '<a class="wishlist__item" href="%s" target="_blank">
-                <span class="wishlist__item__brand">%s</span>
-                <span class="wishlist__item__name">%s</span>
-                <span class="wishlist__item__price">%s</span>
-            </a>',
-            $product->product_url__uri,
-            $product->product_brand,
-            $product->product_name,
-            $product->product_price
-          ),
+          'markup' => \Drupal::service('renderer')->renderPlain($build),
         ];
       }
     }
 
+
+    header('Content-type: application/json');
     return new JsonResponse([
-      'products' => $products
+      'products' => $products,
     ]);
   }
 }

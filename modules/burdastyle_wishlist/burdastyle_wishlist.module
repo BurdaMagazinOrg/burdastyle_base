@@ -11,3 +11,16 @@ function burdastyle_wishlist_page_attachments(array &$attachments)
     $attachments['#attached']['library'][] = 'burdastyle_wishlist/basic';
   }
 }
+
+/**
+ * Implements hook_theme().
+ */
+function burdastyle_wishlist_theme() {
+  return [
+    'burdastyle_wishlist_item' => [
+      'variables' => [
+        'product' => [],
+      ],
+    ],
+  ];
+}
