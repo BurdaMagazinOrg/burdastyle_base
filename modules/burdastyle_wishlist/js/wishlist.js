@@ -4,8 +4,16 @@ Drupal.behaviors.burdastyleWishlist = {
         if (null === wishlist) {
             return [];
         } else {
-            return JSON.parse(wishlist);
+            var wishlistItems = JSON.parse(wishlist);
+
+            this.setCount(wishlistItems.length);
+
+            return wishlistItems;
         }
+    },
+
+    setCount: function(count) {
+        document.querySelector('#wishlist__toggle__count > span').innerText = count;
     },
 
     storeItem: function (productId) {
@@ -50,7 +58,7 @@ Drupal.behaviors.burdastyleWishlist = {
 
     fetchProducts: function (callback) {
         if (typeof callback === 'undefined') {
-            callback = function(storedWishlist) {
+            callback = function (storedWishlist) {
                 Drupal.behaviors.burdastyleWishlist.renderList();
             }
         }
@@ -58,9 +66,13 @@ Drupal.behaviors.burdastyleWishlist = {
 
         // only fetch products is at least one has not been cached or not in the last hour
         var fetch = false;
+// TODO: remove - for debug only
+        fetch = true;
         for (var i = 0; i < storedWishlist.length; i++) {
             var item = storedWishlist[i];
-            if(item.expires < Date.now()) {
+
+
+            if (item.expires < Date.now()) {
                 fetch = true;
                 break;
             }
@@ -87,7 +99,7 @@ Drupal.behaviors.burdastyleWishlist = {
     },
 
     renderList: function () {
-        var list = document.getElementById('wishlist');
+        var list = document.getElementById('wishlist__list');
         list.innerHTML = '';
         var items = this.getWishlist();
         for (var i = 0; i < items.length; i++) {
@@ -96,6 +108,8 @@ Drupal.behaviors.burdastyleWishlist = {
             li.innerHTML = item.markup;
             list.appendChild(li);
         }
+
+        this.initRemoveButtons(list);
     },
 
     injectIcons: function () {
@@ -117,29 +131,81 @@ Drupal.behaviors.burdastyleWishlist = {
     },
 
     injectHeaderIcon: function () {
-        var container = document.createElement('div');
-        var list = document.createElement('ul');
-        var button = document.createElement('button');
-
-        list.id = 'wishlist';
-        container.id = 'wishlist__container';
-
-        button.innerText = '❤';
-        button.id = 'wishlist__toggle';
+        // return;
+        // var container = document.createElement('div');
+        // var list = document.createElement('ul');
+        // var button = document.createElement('button');
+        //
+        // list.id = 'wishlist';
+        // container.id = 'wishlist__container';
+        //
+        // button.innerText = '❤';
+        // button.id = 'wishlist__toggle';
+        var button = document.getElementById('wishlist__toggle');
+        var wishlist = document.getElementById('wishlist');
         button.addEventListener('click', function () {
-            list.classList.toggle('open');
+            wishlist.classList.toggle('open');
         });
         button.addEventListener('mouseover', function () {
             // only prefetch if overlay is not currently open
-            if (false === list.classList.contains('open')) {
+            if (false === wishlist.classList.contains('open')) {
                 Drupal.behaviors.burdastyleWishlist.fetchProducts();
             }
         });
+        //
+        //
+        // document.getElementById('menu-main-navigation').insertBefore(container, document.getElementById('search-open-btn'));
+        // container.appendChild(button);
+        // container.appendChild(list);
+    },
 
+    initRemoveButtons: function (container) {
+        var buttons = container.querySelectorAll('[data-wishlist-remove]');
+        for (var i = 0; i < buttons.length; i++) {
+            var button = buttons[i];
+            button.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                Drupal.behaviors.burdastyleWishlist.removeFromWishlist(
+                    e.currentTarget.getAttribute('data-wishlist-remove')
+                )
+            });
+        }
+    },
 
-        document.getElementById('menu-main-navigation').insertBefore(container, document.getElementById('search-open-btn'));
-        container.appendChild(button);
-        container.appendChild(list);
+    removeFromWishlist: function (productId) {
+        var wishlist = this.getWishlist();
+        for (var i = 0; i < wishlist.length; i++) {
+            var item = wishlist[i];
+            if (productId === item.productId) {
+                wishlist.splice(i, 1);
+                break;
+            }
+        }
+
+        this.growl('Removed item with productId' + productId);
+
+        localStorage.setItem('burdastyle_wishlist', JSON.stringify(wishlist));
+
+        // remove from dom
+        function firstParentThatMatches(selector, childElement) {
+            var parent = childElement.parentNode;
+            while (
+                parent &&
+                typeof parent.matches === 'function' &&
+                false === parent.matches(selector)
+                ) {
+                parent = parent.parentNode;
+            }
+            return typeof parent.matches === 'function' &&
+            parent.matches(selector) ? parent : null;
+        }
+        var items = document.querySelectorAll('[data-wishlist-remove="' + productId + '"]');
+        for (var i = 0; i < items.length; i++) {
+            var item = items[i];
+            var li = firstParentThatMatches('li', item);
+            li.parentNode.removeChild(li);
+        }
     },
 
     attach: function () {
@@ -155,6 +221,7 @@ Drupal.behaviors.burdastyleWishlist = {
                 Drupal.behaviors.burdastyleWishlist.fetchProducts();
             });
         } catch (e) { // local storage is unavailable
+            // TODO: handle
             return false;
         }
     }

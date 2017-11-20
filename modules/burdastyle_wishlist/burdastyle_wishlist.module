@@ -20,7 +20,14 @@ function burdastyle_wishlist_theme() {
     'burdastyle_wishlist_item' => [
       'variables' => [
         'product' => [],
+        'image' => null,
       ],
+    ],
+    'burdastyle_wishlist_page' => [
+      'variables' => [],
+    ],
+    'burdastyle_wishlist_flyout' => [
+      'variables' => [],
     ],
   ];
 }

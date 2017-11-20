@@ -8,6 +8,7 @@ Drupal.behaviors.burdastyleWishlistPage = {
             li.innerHTML = item.markup;
             container.appendChild(li);
         }
+        Drupal.behaviors.burdastyleWishlist.initRemoveButtons(container);
     },
 
     attach: function () {

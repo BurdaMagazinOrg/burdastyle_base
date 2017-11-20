@@ -5,7 +5,8 @@ namespace Drupal\burdastyle_wishlist\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Database\Database;
-use Drupal\Core\Render\Markup;
+use Drupal\Core\Image\Image;
+use Drupal\file\Entity\File;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -14,8 +15,7 @@ class BurdastyleWishlistController extends ControllerBase
   public function show()
   {
     $build = array(
-      '#type' => 'markup',
-      '#markup' => Markup::create('<div id="wishlist-page"></div>'),
+      '#theme' => 'burdastyle_wishlist_page',
     );
     return $build;
   }
@@ -38,9 +38,33 @@ class BurdastyleWishlistController extends ControllerBase
         ->execute();
 
       foreach ($query->fetchAll() as $product) {
+        $imageFile = File::load($product->product_image__target_id);
+        $fileUri = $imageFile->getFileUri();
+        /** @var \Drupal\Core\Image\Image $image */
+        $image = \Drupal::service('image.factory')->get($fileUri);
+        $variables = array(
+          'style_name' => 'thumbnail',
+          'uri' => $fileUri,
+        );
+
+        if ($image->isValid()) {
+          $variables['width'] = $image->getWidth();
+          $variables['height'] = $image->getHeight();
+        }
+        else {
+          $variables['width'] = $variables['height'] = NULL;
+        }
+
         $build = [
           '#theme' => 'burdastyle_wishlist_item',
           '#product' => $product,
+          '#image' => [
+            '#theme' => 'image_style',
+            '#width' => $variables['width'],
+            '#height' => $variables['height'],
+            '#style_name' => $variables['style_name'],
+            '#uri' => $variables['uri'],
+          ],
         ];
         $products[] = [
           'productId' => $product->product_id,
