@@ -33,6 +33,10 @@ function _burdastyle_thunder_admin_form_alter_helper(&$form, FormStateInterface 
 	// Get the current user.
 	$user = \Drupal::currentUser();
 
+	// Move some fields to existing fieldset groups.
+	$form['field_hide_created']['#group'] = 'author';
+	$form['field_promote_states']['#group'] = 'options';
+
 	// Move ad settings fields into advanced region of form.
 	$form['bs_ad_settings'] = [
 		'#type' => 'details',

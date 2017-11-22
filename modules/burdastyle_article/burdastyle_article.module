@@ -64,24 +64,6 @@ function _burdastyle_article_form_alter_helper(&$form, FormStateInterface $form_
   $form['promote_channel']['#disabled'] = TRUE;
   $form['promote_channel_presenter']['#group'] = 'options';
   $form['promote_channel_presenter']['#disabled'] = TRUE;
-
-  // TODO: Do we need this any more?
-  $form['sponsored']['#group'] = 'options';
-
-  // Load workaround CSS for editor role.
-  // TODO: Remove when paragraphs form rebrush is done.
-  $account = \Drupal::currentUser();
-  $user_roles = $account->getRoles();
-
-  //if (in_array('editor', $user_roles) && !in_array('seo', $user_roles)) {
-  //  $form['#attached']['library'][] = 'burdastyle_article/article_form_editor_workaround';
-  //}
-
-  // Move field_promote_states to options group.
-  $form['field_promote_states']['#group'] = 'options';
-  if (isset($form['field_hide_created'])) {
-    $form['field_hide_created']['#group'] = 'author';
-  }
 }
 
 /**
