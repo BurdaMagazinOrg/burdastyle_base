@@ -160,6 +160,9 @@
             "drupal/fb_instant_articles": {
                 "fix warning of missing namespace": "patches/fb_instant_articles/fb_instant_articles-fix-error-with-missing-namespace.patch"
             },
+            "drupal/schema_metatag": {
+                "INREL-2029 recipe patch": "https://gist.githubusercontent.com/georgbez/55ed45ad128c4993e255486577199025/raw/066ee865756811d556b078801628d1de36ee1cee/SchemaRecipe-v0.5"
+            },
             "burdamagazinorg/robo": {
                 "add nimbus force uuid drush task for robo": "https://gist.githubusercontent.com/IT-Cru/3a396e1c911d74d7f660193c28c52f22/raw/077b976c17a3974eac0d3335fc3630f0679efb10/INREL-2145-robo-add_drush_nimbus_force_uuid_task.patch"
             },
