@@ -89,6 +89,17 @@ function _burdastyle_thunder_admin_form_alter_helper(&$form, FormStateInterface 
 	$form['field_hide_title']['#group'] = 'bs_extra_settings';
 	$form['field_rewe_button']['#group'] = 'bs_extra_settings';
 
+  // Move fields for TVI into advanced region of form.
+  $form['bs_tvi_settings'] = [
+    '#type' => 'details',
+    '#title' => 'TVI settings',
+    '#group' => 'advanced',
+    '#open' => FALSE,
+    '#optional' => TRUE,
+    '#access' => $user->hasPermission('administer taxonomy views integrator'),
+  ];
+  $form['tvi']['#group'] = 'bs_tvi_settings';
+
 	// Add access check for IVW settings.
 	$form['field_ivw']['#access'] = $user->hasPermission('view ivw settings in forms');
 
