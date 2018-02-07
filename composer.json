@@ -91,7 +91,6 @@
         "drupal-composer/drupal-scaffold": "~2.2",
         "cweagans/composer-patches": "^1.6",
         "drush/drush": "~8.0",
-        "drupal/console": "~1.0.2",
         "burdamagazinorg/ad_entity": "~1.0",
         "burdamagazinorg/ad_integration": "dev-8.x-1.x",
         "burdamagazinorg/burdastyle_migrate_common": "dev-8.x-1.x",
