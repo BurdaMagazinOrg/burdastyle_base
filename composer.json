@@ -97,8 +97,6 @@
         "burdamagazinorg/dcx_integration": "~2.0",
         "burdamagazinorg/hm_newsletter": "~1.0",
         "burdamagazinorg/infinite_amp": "dev-8.x-1.x",
-        "burdamagazinorg/infinite_theme": "dev-8.x-2.x as 1.0",
-        "burdamagazinorg/infinite_module": "dev-8.x-2.x as 1.0",
         "burdamagazinorg/ivw_integration_amp": "dev-8.x-1.x",
         "burdamagazinorg/ivw_integration_fia": "dev-8.x-1.x",
         "burdamagazinorg/paragraphs_starterkit": "dev-8.x-1.x",
