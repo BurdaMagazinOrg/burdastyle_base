@@ -110,6 +110,10 @@ function _burdastyle_thunder_admin_form_alter_helper(&$form, FormStateInterface 
 	if (getenv('AH_SITE_ENVIRONMENT') == 'travis') {
 		$form['#attached']['library'][] = 'burdastyle_thunder_admin/travis_fix';
 	}
+  // TODO: check, if still relevant
+  // Remove 'save and view amp page' buttons
+  unset($form['actions']['save_view_amp']);
+  unset($form['actions']['save_view_amp_with_warn']);
 }
 
 /**
