@@ -41,41 +41,55 @@
   padding-top: 20px;
 }
 
-/* line 23, ../sass/burdastyle-thunder-admin.scss */
-.advertising_product .field--name-product-image {
-  display: inline;
+/* line 22, ../sass/burdastyle-thunder-admin.scss */
+.advertising-product {
+  display: inline-block;
   float: left;
+  margin-right: 4px;
+  margin-bottom: 4px;
+}
+/* line 28, ../sass/burdastyle-thunder-admin.scss */
+.advertising-product.in-stock-red {
+  border: 3px solid red;
+}
+/* line 31, ../sass/burdastyle-thunder-admin.scss */
+.advertising-product.in-stock-yellow {
+  border: 3px solid orange;
+}
+/* line 34, ../sass/burdastyle-thunder-admin.scss */
+.advertising-product.in-stock-green {
+  border: 3px solid green;
 }
 
 /* adapted from backend.scss of thunder_admin contrib theme from CSS class article-teaser */
-/* line 30, ../sass/burdastyle-thunder-admin.scss */
+/* line 40, ../sass/burdastyle-thunder-admin.scss */
 fieldset.article-presenter .fieldset-wrapper .field--name-field-teaser-text {
   padding: 0 10px;
 }
 
-/* line 37, ../sass/burdastyle-thunder-admin.scss */
+/* line 47, ../sass/burdastyle-thunder-admin.scss */
 fieldset.article-presenter .field--name-field-presenter-media summary {
   display: none;
 }
-/* line 41, ../sass/burdastyle-thunder-admin.scss */
+/* line 51, ../sass/burdastyle-thunder-admin.scss */
 fieldset.article-presenter .field--name-field-presenter-media .media-form__item-widget {
   background: #d4edfc;
 }
 @media (min-width: 900px) {
-  /* line 47, ../sass/burdastyle-thunder-admin.scss */
+  /* line 57, ../sass/burdastyle-thunder-admin.scss */
   fieldset.article-presenter div.field--widget-entity-browser-entity-reference div.entities-list > div {
     margin: 10px 0;
   }
-  /* line 51, ../sass/burdastyle-thunder-admin.scss */
+  /* line 61, ../sass/burdastyle-thunder-admin.scss */
   fieldset.article-presenter .fieldset-wrapper {
     display: flex;
   }
-  /* line 54, ../sass/burdastyle-thunder-admin.scss */
+  /* line 64, ../sass/burdastyle-thunder-admin.scss */
   fieldset.article-presenter .fieldset-wrapper .field--name-field-presenter-media {
     width: 225px;
     min-width: 225px;
   }
-  /* line 59, ../sass/burdastyle-thunder-admin.scss */
+  /* line 69, ../sass/burdastyle-thunder-admin.scss */
   fieldset.article-presenter .fieldset-wrapper .field--name-field-presenter-media details.form-wrapper {
     border: 0;
   }

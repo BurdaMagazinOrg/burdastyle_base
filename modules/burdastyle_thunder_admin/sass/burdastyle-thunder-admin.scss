@@ -19,10 +19,20 @@
   }
 }
 
-.advertising_product {
-  .field--name-product-image {
-    display: inline;
-    float: left;
+.advertising-product {
+  display: inline-block;
+  float: left;
+  margin-right: 4px;
+  margin-bottom: 4px;
+
+  &.in-stock-red {
+    border: 3px solid red;
+  }
+  &.in-stock-yellow {
+    border: 3px solid orange;
+  }
+  &.in-stock-green {
+    border: 3px solid green;
   }
 }
 
