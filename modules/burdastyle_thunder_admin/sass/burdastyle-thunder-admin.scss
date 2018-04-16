@@ -19,23 +19,6 @@
   }
 }
 
-.advertising-product {
-  display: inline-block;
-  float: left;
-  margin-right: 4px;
-  margin-bottom: 4px;
-
-  &.in-stock-red {
-    border: 3px solid red;
-  }
-  &.in-stock-yellow {
-    border: 3px solid orange;
-  }
-  &.in-stock-green {
-    border: 3px solid green;
-  }
-}
-
 /* adapted from backend.scss of thunder_admin contrib theme from CSS class article-teaser */
 fieldset.article-presenter .fieldset-wrapper .field--name-field-teaser-text {
   padding: 0 10px;
