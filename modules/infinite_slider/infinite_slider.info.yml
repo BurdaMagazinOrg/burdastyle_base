@@ -1,0 +1,6 @@
+name: Infinite Slider
+type: module
+description: Functions for the Ecommerce Slider content type
+core: 8.x
+package: Infinite
+dependencies:

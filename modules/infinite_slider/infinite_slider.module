@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains infinite_slider.module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function infinite_slider_form_node_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if ($form_id == 'node_ecommerce_slider_form' || $form_id == 'node_ecommerce_slider_edit_form') {
+    _infinite_slider_node_form_widget_alter($form['field_color_box']);
+    _infinite_slider_node_form_widget_alter($form['field_color_button']);
+    _infinite_slider_node_form_widget_alter($form['field_color_contrast']);
+    _infinite_slider_node_form_widget_alter($form['field_title_color']);
+  }
+}
+
+function _infinite_slider_node_form_widget_alter(array &$form_element) {
+  $form_element['#disabled'] = TRUE;
+}
