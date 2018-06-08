@@ -135,3 +135,22 @@ function burdastyle_thunder_admin_field_widget_entity_browser_entity_reference_f
 			break;
 	}
 }
+
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function burdastyle_thunder_admin_form_node_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if ($form_id == 'node_ecommerce_slider_form' || $form_id == 'node_ecommerce_slider_edit_form') {
+    _burdastyle_thunder_admin_node_form_widget_alter($form['field_color_box']);
+    _burdastyle_thunder_admin_node_form_widget_alter($form['field_color_button']);
+    _burdastyle_thunder_admin_node_form_widget_alter($form['field_color_contrast']);
+    _burdastyle_thunder_admin_node_form_widget_alter($form['field_title_color']);
+    _burdastyle_thunder_admin_node_form_widget_alter($form['field_arrow_foreground']);
+    _burdastyle_thunder_admin_node_form_widget_alter($form['field_arrow_background']);
+  }
+}
+
+function _burdastyle_thunder_admin_node_form_widget_alter(array &$form_element) {
+  $form_element['#disabled'] = TRUE;
+}
