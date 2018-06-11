@@ -1,11 +1,20 @@
 form_styling:
-  version: 1.0
+  version: VERSION
   css:
     theme:
       css/burdastyle-thunder-admin.css: {weight: 999999}
 
 travis_fix:
-  version: 1.0
+  version: VERSION
   css:
     theme:
       css/travis-fix.css: {weight: 1000000}
+
+ecommerce_slider_form:
+  version: VERSION
+  js:
+    js/field-css-styles.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - core/drupal

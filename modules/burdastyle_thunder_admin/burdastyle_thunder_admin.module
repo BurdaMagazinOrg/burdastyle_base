@@ -16,10 +16,82 @@ function burdastyle_thunder_admin_form_alter(&$form, \Drupal\Core\Form\FormState
 		switch ($entity->getEntityTypeId()) {
 			case 'node':
 			case 'taxonomy_term':
-  			_burdastyle_thunder_admin_form_alter_helper($form, $form_state);
+  			_burdastyle_thunder_admin_form_alter_helper($form, $form_state, $form_id);
 	  		break;
 		}
 	}
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function burdastyle_thunder_admin_form_node_ecommerce_slider_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  $form['field_css_styles']['#disabled'] = TRUE;
+  $form['field_css_styles']['widget'][0]['value']['#placeholder'] = 'Save this E-Commerce Slider first and edit it again to adjust CSS styling.';
+
+  // TODO: Remove when color fields are removed from ecommerce_slider.
+  $form['field_color_box']['#disabled'] = TRUE;
+  $form['field_color_button']['#disabled'] = TRUE;
+  $form['field_color_contrast']['#disabled'] = TRUE;
+  $form['field_title_color']['#disabled'] = TRUE;
+  $form['field_arrow_foreground']['#disabled'] = TRUE;
+  $form['field_arrow_background']['#disabled'] = TRUE;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function burdastyle_thunder_admin_form_node_ecommerce_slider_edit_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+
+  // Get node object of form.
+  $node = $form_state->getFormObject()->getEntity();
+
+  // Prepared placeholder for field_css_styles.
+  $css_styles_placeholder = <<<EOT
+.ecommerce-slider.ecommerce-slider-[node:nid]
+.ecommerce-slider__title {
+    color: RGBA(255,255,255,1);
+}
+.ecommerce-slider.ecommerce-slider-[node:nid]
+.ecommerce-slider__content {
+    background-color: RGBA(34,34,34,1);
+}
+.ecommerce-slider.ecommerce-slider-[node:nid]
+.caption .text-shop {
+    color: RGBA(255,255,255,1);
+    background-color: RGBA(34,34,34,1);
+}
+.ecommerce-slider.ecommerce-slider-[node:nid]
+.caption .text-shop:hover {
+    color: white;
+    background-color: #444;
+    border-color: #444;
+}
+.ecommerce-slider.ecommerce-slider-[node:nid]
+.swiper-button {
+    color: RGBA(255,255,255,1);
+    background-color: RGBA(34,34,34,1);
+}
+.ecommerce-slider.ecommerce-slider-[node:nid]
+.swiper-button:hover {
+    color: white;
+    background-color: #444;
+}
+EOT;
+
+  // Replace tokens in placeholder of field_css_styles.
+  $token = \Drupal::service('token');
+  $css_styles_placeholder = $token->replace($css_styles_placeholder, ['node' => $node]);
+  $form['field_css_styles']['widget'][0]['value']['#placeholder'] = $css_styles_placeholder;
+  $form['#attached']['library'][] = 'burdastyle_thunder_admin/ecommerce_slider_form';
+
+  // TODO: Remove when color fields are removed from ecommerce_slider.
+  $form['field_color_box']['#disabled'] = TRUE;
+  $form['field_color_button']['#disabled'] = TRUE;
+  $form['field_color_contrast']['#disabled'] = TRUE;
+  $form['field_title_color']['#disabled'] = TRUE;
+  $form['field_arrow_foreground']['#disabled'] = TRUE;
+  $form['field_arrow_background']['#disabled'] = TRUE;
 }
 
 /**
@@ -28,7 +100,7 @@ function burdastyle_thunder_admin_form_alter(&$form, \Drupal\Core\Form\FormState
  * @param $form
  * @param FormStateInterface $form_state
  */
-function _burdastyle_thunder_admin_form_alter_helper(&$form, FormStateInterface $form_state) {
+function _burdastyle_thunder_admin_form_alter_helper(&$form, FormStateInterface $form_state, $form_id) {
 
 	// Get the current user.
 	$user = \Drupal::currentUser();
@@ -134,23 +206,4 @@ function burdastyle_thunder_admin_field_widget_entity_browser_entity_reference_f
 			_thunder_media_media_field_widget_form_alter_helper($element, 'image');
 			break;
 	}
-}
-
-
-/**
- * Implements hook_form_BASE_FORM_ID_alter().
- */
-function burdastyle_thunder_admin_form_node_form_alter(&$form, FormStateInterface $form_state, $form_id) {
-  if ($form_id == 'node_ecommerce_slider_form' || $form_id == 'node_ecommerce_slider_edit_form') {
-    _burdastyle_thunder_admin_node_form_widget_alter($form['field_color_box']);
-    _burdastyle_thunder_admin_node_form_widget_alter($form['field_color_button']);
-    _burdastyle_thunder_admin_node_form_widget_alter($form['field_color_contrast']);
-    _burdastyle_thunder_admin_node_form_widget_alter($form['field_title_color']);
-    _burdastyle_thunder_admin_node_form_widget_alter($form['field_arrow_foreground']);
-    _burdastyle_thunder_admin_node_form_widget_alter($form['field_arrow_background']);
-  }
-}
-
-function _burdastyle_thunder_admin_node_form_widget_alter(array &$form_element) {
-  $form_element['#disabled'] = TRUE;
 }
