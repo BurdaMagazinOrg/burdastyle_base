@@ -151,6 +151,8 @@ function burdastyle_thunder_admin_form_node_form_alter(&$form, FormStateInterfac
   }
 }
 
-function _burdastyle_thunder_admin_node_form_widget_alter(array &$form_element) {
-  $form_element['#disabled'] = TRUE;
+function _burdastyle_thunder_admin_node_form_widget_alter(?array &$form_element) {
+  if ($form_element) {
+    $form_element['#disabled'] = TRUE;
+  }
 }
