@@ -1,7 +1,8 @@
 (function ($) {
     $('.field--name-field-css-styles textarea').click(function(){
         if (!$('.field--name-field-css-styles textarea').val()) {
-            $('.field--name-field-css-styles textarea').val('.field--name-field-css-styles textarea').attr('placeholder');
+            var cssTemplate = $('.field--name-field-css-styles textarea').attr('placeholder');
+            $('.field--name-field-css-styles textarea').val(cssTemplate);
         }
     });
 }(jQuery));

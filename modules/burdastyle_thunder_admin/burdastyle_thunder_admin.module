@@ -16,7 +16,7 @@ function burdastyle_thunder_admin_form_alter(&$form, \Drupal\Core\Form\FormState
 		switch ($entity->getEntityTypeId()) {
 			case 'node':
 			case 'taxonomy_term':
-  			_burdastyle_thunder_admin_form_alter_helper($form, $form_state);
+  			_burdastyle_thunder_admin_form_alter_helper($form, $form_state, $form_id);
 	  		break;
 		}
 	}
