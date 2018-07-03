@@ -46,43 +46,11 @@ function burdastyle_thunder_admin_form_node_ecommerce_slider_edit_form_alter(&$f
   // Get node object of form.
   $node = $form_state->getFormObject()->getEntity();
 
-  // Prepared placeholder for field_css_styles.
-  $css_styles_placeholder = <<<EOT
-.ecommerce-slider.ecommerce-slider-[node:nid]
-.ecommerce-slider__title {
-    color: RGBA(255,255,255,1);
-}
-.ecommerce-slider.ecommerce-slider-[node:nid]
-.ecommerce-slider__content {
-    background-color: RGBA(34,34,34,1);
-}
-.ecommerce-slider.ecommerce-slider-[node:nid]
-.caption .text-shop {
-    color: RGBA(255,255,255,1);
-    background-color: RGBA(34,34,34,1);
-}
-.ecommerce-slider.ecommerce-slider-[node:nid]
-.caption .text-shop:hover {
-    color: white;
-    background-color: #444;
-    border-color: #444;
-}
-.ecommerce-slider.ecommerce-slider-[node:nid]
-.swiper-button {
-    color: RGBA(255,255,255,1);
-    background-color: RGBA(34,34,34,1);
-}
-.ecommerce-slider.ecommerce-slider-[node:nid]
-.swiper-button:hover {
-    color: white;
-    background-color: #444;
-}
-EOT;
-
   // Replace tokens in placeholder of field_css_styles.
   $token = \Drupal::service('token');
-  $css_styles_placeholder = $token->replace($css_styles_placeholder, ['node' => $node]);
-  $form['field_css_styles']['widget'][0]['value']['#placeholder'] = $css_styles_placeholder;
+  $cssPlaceholder = burdastyle_thunder_admin_get_ecommerce_slider_css_placeholder();
+  $cssPlaceholder = $token->replace($cssPlaceholder, ['node' => $node]);
+  $form['field_css_styles']['widget'][0]['value']['#placeholder'] = $cssPlaceholder;
   $form['#attached']['library'][] = 'burdastyle_thunder_admin/ecommerce_slider_form';
 
   // TODO: Remove when color fields are removed from ecommerce_slider.
@@ -206,4 +174,61 @@ function burdastyle_thunder_admin_field_widget_entity_browser_entity_reference_f
 			_thunder_media_media_field_widget_form_alter_helper($element, 'image');
 			break;
 	}
+}
+
+/**
+ * Helper function to get eCommerce Slider CSS placeholder from default theme,
+ * base theme or fallback.
+ *
+ * @return bool|string
+ */
+function burdastyle_thunder_admin_get_ecommerce_slider_css_placeholder() {
+  // Get path to default theme.
+  $theme = $config = \Drupal::config('system.theme')->get('default');
+  $themePath = drupal_get_path('theme', $theme);
+
+  // Get fallback of CSS placeholder from base theme.
+  $cssPlaceholderFile = DRUPAL_ROOT . '/' . $themePath . '/css/ecommerce_slider.template.css';
+  if (!file_exists($cssPlaceholderFile)) {
+    $themePath = drupal_get_path('theme', 'infinite');
+    $cssPlaceholderFile = DRUPAL_ROOT . '/' . $themePath . '/css/ecommerce_slider.template.css';
+  }
+
+  // Get eCommerce Slider placeholder for field_css_styles from CSS placeholder file.
+  $cssPlaceholder = file_get_contents($cssPlaceholderFile);
+  if (!$cssPlaceholder) {
+    $cssPlaceholder = <<<EOT
+.ecommerce-slider.ecommerce-slider-[node:nid]
+.ecommerce-slider__title {
+    color: RGBA(255,255,255,1);
+}
+.ecommerce-slider.ecommerce-slider-[node:nid]
+.ecommerce-slider__content {
+    background-color: RGBA(34,34,34,1);
+}
+.ecommerce-slider.ecommerce-slider-[node:nid]
+.caption .text-shop {
+    color: RGBA(255,255,255,1);
+    background-color: RGBA(34,34,34,1);
+}
+.ecommerce-slider.ecommerce-slider-[node:nid]
+.caption .text-shop:hover {
+    color: white;
+    background-color: #444;
+    border-color: #444;
+}
+.ecommerce-slider.ecommerce-slider-[node:nid]
+.swiper-button {
+    color: RGBA(255,255,255,1);
+    background-color: RGBA(34,34,34,1);
+}
+.ecommerce-slider.ecommerce-slider-[node:nid]
+.swiper-button:hover {
+    color: white;
+    background-color: #444;
+}
+EOT;
+  }
+
+  return $cssPlaceholder;
 }
