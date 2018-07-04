@@ -188,10 +188,10 @@ function burdastyle_thunder_admin_get_ecommerce_slider_css_placeholder() {
   $themePath = drupal_get_path('theme', $theme);
 
   // Get fallback of CSS placeholder from base theme.
-  $cssPlaceholderFile = DRUPAL_ROOT . '/' . $themePath . '/css/ecommerce_slider.template.css';
+  $cssPlaceholderFile = DRUPAL_ROOT . '/' . $themePath . '/css/ecommerce_slider.tcss';
   if (!file_exists($cssPlaceholderFile)) {
     $themePath = drupal_get_path('theme', 'infinite');
-    $cssPlaceholderFile = DRUPAL_ROOT . '/' . $themePath . '/css/ecommerce_slider.template.css';
+    $cssPlaceholderFile = DRUPAL_ROOT . '/' . $themePath . '/css/ecommerce_slider.tcss';
   }
 
   // Get eCommerce Slider placeholder for field_css_styles from CSS placeholder file.
