@@ -166,8 +166,8 @@ function burdastyle_article_preprocess_node(&$variables) {
       '#elements' => ['#user' => $author,],
       '#author_id' => 0,
       '#timestamp' => $variables['timestamp'],
-      '#created_timestamp' => $variables['created_timestamp'],
-      '#changed_timestamp' => $variables['changed_timestamp'],
+      '#created_timestamp' => $variables['created_timestamp'] ?? '',
+      '#changed_timestamp' => $variables['changed_timestamp'] ?? '',
     );
 
     if ($author->isActive()) {
