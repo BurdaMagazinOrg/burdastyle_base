@@ -66,20 +66,6 @@ function burdastyle_base_entity_base_field_info(EntityTypeInterface $entity_type
       ])
       ->setDisplayConfigurable('form', TRUE);
 
-    $fields['is_landing_page'] = BaseFieldDefinition::create('boolean')
-      ->setLabel(t('Is landing page'))
-      ->setRevisionable(TRUE)
-      ->setTranslatable(TRUE)
-      ->setDefaultValue(FALSE)
-      ->setDisplayOptions('form', [
-        'type' => 'boolean_checkbox',
-        'settings' => [
-          'display_label' => TRUE,
-        ],
-        'weight' => 18,
-      ])
-      ->setDisplayConfigurable('form', TRUE);
-
     $fields['sponsored'] = BaseFieldDefinition::create('boolean')
       ->setLabel(t('Mark as sponsored'))
       ->setRevisionable(TRUE)
