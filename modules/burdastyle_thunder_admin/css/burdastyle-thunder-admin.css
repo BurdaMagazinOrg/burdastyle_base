@@ -23,54 +23,36 @@
 /* 8px/16px */
 /* Device breakpoints */
 /* toolbar */
-/* line 4, ../sass/burdastyle-thunder-admin.scss */
 .field--name-field-promote-states legend .fieldset-legend {
-  display: none;
-}
-/* line 8, ../sass/burdastyle-thunder-admin.scss */
+  display: none; }
+
 .field--name-field-promote-states .form-item {
-  padding-bottom: 10px;
-}
-/* line 12, ../sass/burdastyle-thunder-admin.scss */
-.field--name-field-promote-states .form-item-field-promote-states-channel-presenter {
-  padding-bottom: 20px;
-}
-/* line 16, ../sass/burdastyle-thunder-admin.scss */
-.field--name-field-promote-states .form-item-field-promote-states-fb-instant-articles {
+  padding-bottom: 10px; }
+
+.field--name-field-promote-states .form-item-field-promote-states-channel-presenter, .field--name-field-promote-states .form-item-field-promote-states-msn {
+  padding-bottom: 20px; }
+
+.field--name-field-promote-states .form-item-field-promote-states-fb-instant-articles, .field--name-field-promote-states .form-item-field-promote-states-landing {
   border-top: 1px solid #c2c2c2;
-  padding-top: 20px;
-}
+  padding-top: 20px; }
 
 /* adapted from backend.scss of thunder_admin contrib theme from CSS class article-teaser */
-/* line 23, ../sass/burdastyle-thunder-admin.scss */
 fieldset.article-presenter .fieldset-wrapper .field--name-field-teaser-text {
-  padding: 0 10px;
-}
+  padding: 0 10px; }
 
-/* line 30, ../sass/burdastyle-thunder-admin.scss */
 fieldset.article-presenter .field--name-field-presenter-media summary {
-  display: none;
-}
-/* line 34, ../sass/burdastyle-thunder-admin.scss */
+  display: none; }
+
 fieldset.article-presenter .field--name-field-presenter-media .media-form__item-widget {
-  background: #d4edfc;
-}
+  background: #d4edfc; }
+
 @media (min-width: 900px) {
-  /* line 40, ../sass/burdastyle-thunder-admin.scss */
   fieldset.article-presenter div.field--widget-entity-browser-entity-reference div.entities-list > div {
-    margin: 10px 0;
-  }
-  /* line 44, ../sass/burdastyle-thunder-admin.scss */
+    margin: 10px 0; }
   fieldset.article-presenter .fieldset-wrapper {
-    display: flex;
-  }
-  /* line 47, ../sass/burdastyle-thunder-admin.scss */
-  fieldset.article-presenter .fieldset-wrapper .field--name-field-presenter-media {
-    width: 225px;
-    min-width: 225px;
-  }
-  /* line 52, ../sass/burdastyle-thunder-admin.scss */
-  fieldset.article-presenter .fieldset-wrapper .field--name-field-presenter-media details.form-wrapper {
-    border: 0;
-  }
-}
+    display: flex; }
+    fieldset.article-presenter .fieldset-wrapper .field--name-field-presenter-media {
+      width: 225px;
+      min-width: 225px; }
+    fieldset.article-presenter .fieldset-wrapper .field--name-field-presenter-media details.form-wrapper {
+      border: 0; } }
