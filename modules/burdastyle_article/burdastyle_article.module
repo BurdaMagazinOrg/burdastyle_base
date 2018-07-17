@@ -64,6 +64,8 @@ function _burdastyle_article_form_alter_helper(&$form, FormStateInterface $form_
   $form['promote_channel']['#disabled'] = TRUE;
   $form['promote_channel_presenter']['#group'] = 'options';
   $form['promote_channel_presenter']['#disabled'] = TRUE;
+  $form['is_landing_page']['#group'] = 'options';
+  $form['is_landing_page']['#disabled'] = TRUE;
 }
 
 /**
