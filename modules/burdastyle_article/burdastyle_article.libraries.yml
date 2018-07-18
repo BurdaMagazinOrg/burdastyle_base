@@ -9,3 +9,8 @@ article_form_editor_workaround:
   css:
     theme:
       css/article-form-editor-workaround.css: {weight: 9999999999}
+
+publication_options:
+  js:
+    js/publication-options.js:
+
