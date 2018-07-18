@@ -135,6 +135,14 @@ function burdastyle_article_node_presave(Drupal\Core\Entity\EntityInterface $ent
         $field = $promote_states_mapping[$new_promote_state['value']];
         $entity->{$field}->setValue(1);
       }
+      if ($new_promote_state['value'] == 'landing') {
+        $generator = \Drupal::service('simple_sitemap.generator');
+        $generator->setEntityInstanceSettings(
+          'node',
+          $entity->id(),
+          ['index' => FALSE]
+        );
+      }
     }
   }
 }
