@@ -222,6 +222,43 @@ function burdastyle_article_preprocess_node(&$variables) {
 }
 
 /**
+ * Implements hook_paragraph_view_alter()
+ *
+ * We wish to remove nodes that are landing pages from content_teaser
+ * paragraphs.
+ */
+function burdastyle_article_paragraph_view_alter(array &$build, $entity, $display) {
+  if ($entity->bundle() == 'content_teaser') {
+    if (!isset($build['field_nodes']['#items']) || !$build['field_nodes']['#items']) {
+      return;
+    }
+
+    // Get the referenced nodes
+    foreach ($build['field_nodes']['#items'] as $idx => $entity_reference_item) {
+      $value = $entity_reference_item->getValue();
+      if (isset($value['target_id']) && $value['target_id']) {
+        $references[$idx] = $value['target_id'];
+      }
+    }
+    // load them
+    $referenced_nodes = entity_load_multiple('node', $references);
+
+    // iterate over them and remove those that are landing pages
+    $idx = 0;
+    foreach ($referenced_nodes as $node) {
+      if ($promo = $node->get('field_promote_states')->getValue()) {
+        foreach ($promo as $value) {
+          if ($value['value'] == 'landing') {
+            unset($build['field_nodes']['#items'][$idx]);
+          }
+        }
+      }
+      $idx++;
+    }
+  }
+}
+
+/**
  * Returns TRUE if the date should be displayed, FALSE otherwise.
  *
  * @param Node $node
