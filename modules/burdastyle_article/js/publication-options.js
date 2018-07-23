@@ -1,43 +1,53 @@
 Drupal.behaviors.burdastyleArticle = {
-    selectedPromotionOptions: [],
+  selectedPromotionOptions: [],
+  landingPageCheckbox: null,
+  attach(context) {
+    this.landingPageCheckbox = context.getElementById('edit-field-promote-states-landing');
+    this.landingPageCheckbox.addEventListener('change', (e) => {
+      this.handleSelection(e, context);
+    });
+    this.selectCheckboxes(context);
+  },
 
-    setSelectedInputs: function (context) {
-        const promotionInputs = context.getElementById('edit-options')
-            .querySelectorAll('input[type="checkbox"]:not(#edit-field-promote-states-landing)');
-        for (const promotionInput of promotionInputs) {
-            if (promotionInput.checked) {
-                this.selectedPromotionOptions.push(promotionInput);
-            }
-        }
-    },
+  handleSelection(e, context) {
+    this.selectCheckboxes(context);
+  },
 
-    attach: function (context) {
-        const landingPageCheckbox = context.getElementById('edit-field-promote-states-landing');
-        landingPageCheckbox.addEventListener('change', () => {
-            if (landingPageCheckbox.checked) {
-                this.setSelectedInputs(context);
-            } else {
-                for (const promotionInput of this.selectedPromotionOptions) {
-                    promotionInput.checked = true;
-                }
-            }
-            this.toggleDisabledAttributeOnPromotionInputs(context, landingPageCheckbox);
-        });
-    },
+  selectCheckboxes(context) {
+    if (this.landingPageCheckbox.checked) {
+      this.setSelectedInputs(context);
+    }
+    else {
+      this.selectedPromotionOptions.forEach((promotionInput) => {
+        promotionInput.checked = true;
+      });
+    }
+    this.toggleDisabledAttributeOnPromotionInputs(context, this.landingPageCheckbox);
+  },
 
-    toggleDisabledAttributeOnPromotionInputs: function (context, landingPageCheckbox) {
-        const promotionInputs = context.getElementById('edit-options')
-            .querySelectorAll('input[type="checkbox"]:not(#edit-field-promote-states-landing)');
+  setSelectedInputs(context) {
+    const promotionInputs = context.getElementById('edit-options')
+      .querySelectorAll('input[type="checkbox"]:not(#edit-field-promote-states-landing)');
+    for (const promotionInput of promotionInputs) {
+      if (promotionInput.checked) {
+        this.selectedPromotionOptions.push(promotionInput);
+      }
+    }
+  },
 
-        for (const promotionInput of promotionInputs) {
-            landingPageCheckbox.checked ?
-                promotionInput.setAttribute('disabled', 'disabled') :
-                promotionInput.removeAttribute('disabled');
+  toggleDisabledAttributeOnPromotionInputs(context, landingPageCheckbox) {
+    const promotionInputs = context.getElementById('edit-options')
+      .querySelectorAll('input[type="checkbox"]:not(#edit-field-promote-states-landing)');
 
-            // remove checked state
-            if (landingPageCheckbox.checked) {
-                promotionInput.checked = false;
-            }
-        }
-    },
+    for (const promotionInput of promotionInputs) {
+      landingPageCheckbox.checked
+        ? promotionInput.setAttribute('disabled', 'disabled')
+        : promotionInput.removeAttribute('disabled');
+
+      // remove checked state
+      if (landingPageCheckbox.checked) {
+        promotionInput.checked = false;
+      }
+    }
+  },
 };
