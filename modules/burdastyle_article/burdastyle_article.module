@@ -64,6 +64,9 @@ function _burdastyle_article_form_alter_helper(&$form, FormStateInterface $form_
   $form['promote_channel']['#disabled'] = TRUE;
   $form['promote_channel_presenter']['#group'] = 'options';
   $form['promote_channel_presenter']['#disabled'] = TRUE;
+
+  // attach libraries
+  $form['#attached']['library'][] = 'burdastyle_article/publication_options';
 }
 
 /**
@@ -134,6 +137,14 @@ function burdastyle_article_node_presave(Drupal\Core\Entity\EntityInterface $ent
       if (array_key_exists($new_promote_state['value'], $promote_states_mapping)) {
         $field = $promote_states_mapping[$new_promote_state['value']];
         $entity->{$field}->setValue(1);
+      }
+      if ($new_promote_state['value'] == 'landing') {
+        $generator = \Drupal::service('simple_sitemap.generator');
+        $generator->setEntityInstanceSettings(
+          'node',
+          $entity->id(),
+          ['index' => FALSE]
+        );
       }
     }
   }
@@ -207,6 +218,43 @@ function burdastyle_article_preprocess_node(&$variables) {
     }
 
     $variables['author_teaser'] = $author_teaser;
+  }
+}
+
+/**
+ * Implements hook_paragraph_view_alter()
+ *
+ * We wish to remove nodes that are landing pages from content_teaser
+ * paragraphs.
+ */
+function burdastyle_article_paragraph_view_alter(array &$build, $entity, $display) {
+  if ($entity->bundle() == 'content_teaser') {
+    if (!isset($build['field_nodes']['#items']) || !$build['field_nodes']['#items']) {
+      return;
+    }
+
+    // Get the referenced nodes
+    foreach ($build['field_nodes']['#items'] as $idx => $entity_reference_item) {
+      $value = $entity_reference_item->getValue();
+      if (isset($value['target_id']) && $value['target_id']) {
+        $references[$idx] = $value['target_id'];
+      }
+    }
+    // load them
+    $referenced_nodes = entity_load_multiple('node', $references);
+
+    // iterate over them and remove those that are landing pages
+    $idx = 0;
+    foreach ($referenced_nodes as $node) {
+      if ($promo = $node->get('field_promote_states')->getValue()) {
+        foreach ($promo as $value) {
+          if ($value['value'] == 'landing') {
+            unset($build['field_nodes']['#items'][$idx]);
+          }
+        }
+      }
+      $idx++;
+    }
   }
 }
 
