@@ -138,18 +138,44 @@ function burdastyle_article_node_presave(Drupal\Core\Entity\EntityInterface $ent
         $field = $promote_states_mapping[$new_promote_state['value']];
         $entity->{$field}->setValue(1);
       }
-      if ($new_promote_state['value'] == 'landing' && $entity && $entity->id()) {
-        $generator = \Drupal::service('simple_sitemap.generator');
-        $generator->setEntityInstanceSettings(
-          'node',
-          $entity->id(),
-          ['index' => FALSE]
-        );
-      }
     }
   }
 }
 
+/**
+ * Implements hook_ENTITY_TYPE_insert().
+ */
+function burdastyle_article_node_insert(Drupal\Core\Entity\EntityInterface $entity) {
+  $promote_states = $entity->field_promote_states->getValue();
+  foreach($promote_states as $promote_state) {
+    if ($promote_state['value'] == 'landing' && $entity && $entity->id()) {
+      $generator = \Drupal::service('simple_sitemap.generator');
+      $generator->setEntityInstanceSettings(
+        'node',
+        $entity->id(),
+        ['index' => FALSE]
+      );
+    }
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_update().
+ */
+function burdastyle_article_node_update(Drupal\Core\Entity\EntityInterface $entity) {
+  $promote_states = $entity->field_promote_states->getValue();
+  foreach($promote_states as $promote_state) {
+    if ($promote_state['value'] == 'landing' && $entity && $entity->id()) {
+      $generator = \Drupal::service('simple_sitemap.generator');
+      $generator->setEntityInstanceSettings(
+        'node',
+        $entity->id(),
+        ['index' => FALSE]
+      );
+    }
+  }
+}
+  
 /**
  * Implements hook_preprocess_node().
  */
