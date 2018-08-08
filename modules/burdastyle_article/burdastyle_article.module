@@ -146,15 +146,17 @@ function burdastyle_article_node_presave(Drupal\Core\Entity\EntityInterface $ent
  * Implements hook_ENTITY_TYPE_insert().
  */
 function burdastyle_article_node_insert(Drupal\Core\Entity\EntityInterface $entity) {
-  $promote_states = $entity->field_promote_states->getValue();
-  foreach($promote_states as $promote_state) {
-    if ($promote_state['value'] == 'landing' && $entity && $entity->id()) {
-      $generator = \Drupal::service('simple_sitemap.generator');
-      $generator->setEntityInstanceSettings(
-        'node',
-        $entity->id(),
-        ['index' => FALSE]
-      );
+  if ($entity->field_promote_states) {
+    $promote_states = $entity->field_promote_states->getValue();
+    foreach($promote_states as $promote_state) {
+      if ($promote_state['value'] == 'landing' && $entity && $entity->id()) {
+        $generator = \Drupal::service('simple_sitemap.generator');
+        $generator->setEntityInstanceSettings(
+          'node',
+          $entity->id(),
+          ['index' => FALSE]
+        );
+      }
     }
   }
 }
@@ -163,19 +165,21 @@ function burdastyle_article_node_insert(Drupal\Core\Entity\EntityInterface $enti
  * Implements hook_ENTITY_TYPE_update().
  */
 function burdastyle_article_node_update(Drupal\Core\Entity\EntityInterface $entity) {
-  $promote_states = $entity->field_promote_states->getValue();
-  foreach($promote_states as $promote_state) {
-    if ($promote_state['value'] == 'landing' && $entity && $entity->id()) {
-      $generator = \Drupal::service('simple_sitemap.generator');
-      $generator->setEntityInstanceSettings(
-        'node',
-        $entity->id(),
-        ['index' => FALSE]
-      );
+  if ($entity->field_promote_states) {
+    $promote_states = $entity->field_promote_states->getValue();
+    foreach($promote_states as $promote_state) {
+      if ($promote_state['value'] == 'landing' && $entity && $entity->id()) {
+        $generator = \Drupal::service('simple_sitemap.generator');
+        $generator->setEntityInstanceSettings(
+          'node',
+          $entity->id(),
+          ['index' => FALSE]
+        );
+      }
     }
   }
 }
-  
+ 
 /**
  * Implements hook_preprocess_node().
  */
