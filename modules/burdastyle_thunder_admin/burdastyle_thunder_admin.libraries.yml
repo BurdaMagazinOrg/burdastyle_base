@@ -18,3 +18,11 @@ ecommerce_slider_form:
     - core/jquery
     - core/jquery.once
     - core/drupal
+
+edit_plus:
+  version: VERSION
+  js:
+    js/edit-plus.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
