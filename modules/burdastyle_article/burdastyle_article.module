@@ -211,41 +211,37 @@ function burdastyle_article_preprocess_node(&$variables) {
       '#changed_timestamp' => $variables['changed_timestamp'] ?? '',
     );
 
-    if ($author->isActive()) {
-
-      $author_forename = '';
-      if (isset($author->field_forename)) {
-        $author_forename = $author->field_forename->value;
-      }
-      elseif (isset($author->first_name)) {
-        $author_forename = $author->first_name->value;
-      }
-
-      $author_surname = '';
-      if (isset($author->field_surname)) {
-        $author_surname = $author->field_surname->value;
-      }
-      elseif (isset($author->last_name)) {
-        $author_surname = $author->last_name->value;
-      }
-
-      if (strpos($view_mode, 'amp') === 0) {
-        $user_view_mode = 'amp_author_teaser';
-      }
-      else {
-        $user_view_mode = 'author_teaser';
-      }
-
-      // Build author teaser.
-      $author_teaser = array(
-        '#author_id' => $node->getOwnerId(),
-        '#author_forename' => $author_forename,
-        '#author_surname' => $author_surname,
-        '#author_url' => $author->url('canonical', ['absolute' => TRUE]),
-        '#author_picture' => user_view($author, $user_view_mode),
-      ) + $author_teaser;
-
+    $author_forename = '';
+    if (isset($author->field_forename)) {
+      $author_forename = $author->field_forename->value;
     }
+    elseif (isset($author->first_name)) {
+      $author_forename = $author->first_name->value;
+    }
+
+    $author_surname = '';
+    if (isset($author->field_surname)) {
+      $author_surname = $author->field_surname->value;
+    }
+    elseif (isset($author->last_name)) {
+      $author_surname = $author->last_name->value;
+    }
+
+    if (strpos($view_mode, 'amp') === 0) {
+      $user_view_mode = 'amp_author_teaser';
+    }
+    else {
+      $user_view_mode = 'author_teaser';
+    }
+
+    // Build author teaser.
+    $author_teaser = array(
+      '#author_id' => $node->getOwnerId(),
+      '#author_forename' => $author_forename,
+      '#author_surname' => $author_surname,
+      '#author_url' => $author->url('canonical', ['absolute' => TRUE]),
+      '#author_picture' => user_view($author, $user_view_mode),
+    ) + $author_teaser;
 
     $variables['author_teaser'] = $author_teaser;
   }
