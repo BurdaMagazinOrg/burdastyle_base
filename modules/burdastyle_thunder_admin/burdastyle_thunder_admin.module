@@ -186,9 +186,16 @@ function burdastyle_thunder_admin_field_widget_entity_browser_entity_reference_f
  *
  */
 function burdastyle_thunder_admin_field_widget_viewsreference_autocomplete_form_alter (&$element, FormStateInterface $form_state, $context) {
-  $element['target_id']['#access'] = FALSE;
-  $element['display_id']['#access'] = FALSE;
-  $element['options']['#open'] = TRUE;
+  $route = \Drupal::service('router.route_provider')
+         ->getRouteByName();
+  $is_admin = \Drupal::service('router.admin_context')
+            ->isAdminRoute($route);
+  // we don't want to do this on widget configuration pages.
+  if (!$is_admin) {
+    $element['target_id']['#access'] = FALSE;
+    $element['display_id']['#access'] = FALSE;
+    $element['options']['#open'] = TRUE;
+  }
 }
 
 /**
