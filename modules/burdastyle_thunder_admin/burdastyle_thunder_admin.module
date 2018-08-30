@@ -187,10 +187,10 @@ function burdastyle_thunder_admin_field_widget_entity_browser_entity_reference_f
  */
 function burdastyle_thunder_admin_field_widget_viewsreference_autocomplete_form_alter (&$element, FormStateInterface $form_state, $context) {
   $route_name = \Drupal::routeMatch()->getRouteName();
+
   if (in_array($route_name, array('node.add', 'entity.node.edit_form', 'taxonomy_term.edit.form'))) {
-    \Drupal::logger('para')->info('not admin? '. serialize($is_admin));
-    $element['target_id']['#access'] = FALSE;
-    $element['display_id']['#access'] = FALSE;
+    $element['target_id']['#attributes']['disabled'] = 'disabled';
+    $element['display_id']['#attributes']['disabled'] = 'disabled';
     $element['options']['#open'] = TRUE;
   }
 }
