@@ -189,8 +189,9 @@ function burdastyle_thunder_admin_field_widget_viewsreference_autocomplete_form_
   $route_name = \Drupal::routeMatch()->getRouteName();
 
   if (in_array($route_name, array('node.add', 'entity.node.edit_form', 'taxonomy_term.edit.form'))) {
-    $element['target_id']['#attributes']['disabled'] = 'disabled';
-    $element['display_id']['#attributes']['disabled'] = 'disabled';
+    // Sadly, this does not work
+// #    $element['target_id']['#attributes']['disabled'] = 'disabled';
+#    $element['display_id']['#attributes']['disabled'] = 'disabled';
     $element['options']['#open'] = TRUE;
   }
 }
