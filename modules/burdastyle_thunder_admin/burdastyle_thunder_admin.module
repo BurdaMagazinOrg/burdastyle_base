@@ -199,6 +199,7 @@ function burdastyle_thunder_admin_field_widget_viewsreference_autocomplete_form_
     $element['display_id']['#type'] = 'hidden';
     $element['display_id']['#value'] = 'embed_in_advertising_products_paragraph';
     $element['options']['#open'] = TRUE;
+    $element['options']['#description'] = $element['target_id']['#description'];
   }
 }
 
