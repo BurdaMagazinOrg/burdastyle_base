@@ -187,8 +187,7 @@ function burdastyle_thunder_admin_field_widget_entity_browser_entity_reference_f
  */
 function burdastyle_thunder_admin_field_widget_viewsreference_autocomplete_form_alter (&$element, FormStateInterface $form_state, $context) {
   $route_name = \Drupal::routeMatch()->getRouteName();
-  \Drupal::logger('route')->info($route_name);
-  if (in_array($route_name, array('node.add', 'entity.node.edit_form', 'taxonomy_term.edit.form'))) {
+  if (in_array($route_name, array('node.add', 'entity.node.edit_form', 'entity.taxonomy_term.add_form', 'entity.taxonomy_term.edit_form'))) {
     // we have to lobotomize the form a bit so we can hide the view and
     // display selection
     unset($element['target_id']['#ajax']);
