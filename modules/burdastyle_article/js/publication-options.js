@@ -2,7 +2,7 @@ Drupal.behaviors.burdastyleArticle = {
   selectedPromotionOptions: [],
   landingPageCheckbox: null,
   attach(context) {
-    this.landingPageCheckbox = context.getElementById('edit-field-promote-states-landing');
+    this.landingPageCheckbox = context.querySelector('#edit-field-promote-states-landing');
     this.landingPageCheckbox.addEventListener('change', (e) => {
       this.handleSelection(e, context);
     });
@@ -26,7 +26,7 @@ Drupal.behaviors.burdastyleArticle = {
   },
 
   setSelectedInputs(context) {
-    const promotionInputs = context.getElementById('edit-options')
+    const promotionInputs = context.querySelector('#edit-options')
       .querySelectorAll('input[type="checkbox"]:not(#edit-field-promote-states-landing)');
     for (const promotionInput of promotionInputs) {
       if (promotionInput.checked) {
@@ -36,7 +36,7 @@ Drupal.behaviors.burdastyleArticle = {
   },
 
   toggleDisabledAttributeOnPromotionInputs(context, landingPageCheckbox) {
-    const promotionInputs = context.getElementById('edit-options')
+    const promotionInputs = context.querySelector('#edit-options')
       .querySelectorAll('input[type="checkbox"]:not(#edit-field-promote-states-landing)');
 
     for (const promotionInput of promotionInputs) {
