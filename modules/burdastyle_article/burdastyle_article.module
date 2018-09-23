@@ -285,6 +285,14 @@ function burdastyle_article_paragraph_view_alter(array &$build, $entity, $displa
 }
 
 /**
+ * Implements hook_entity_type_alter().
+ */
+function burdastyle_article_entity_type_alter(array &$entity_types) {
+  /* @var $entity_types \Drupal\Core\Entity\EntityTypeInterface[] */
+  $entity_types['user']->setAccessClass('Drupal\burdastyle_article\BurdaStyleUserAccessHandler');
+}
+
+/**
  * Returns TRUE if the date should be displayed, FALSE otherwise.
  *
  * @param Node $node
