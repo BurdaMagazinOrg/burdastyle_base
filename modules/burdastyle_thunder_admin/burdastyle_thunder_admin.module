@@ -180,29 +180,6 @@ function burdastyle_thunder_admin_field_widget_entity_browser_entity_reference_f
 }
 
 /**
- * Implements hook_field_widget_WIDGET_ID_form_alter().
- *
- * Required for viewsreferences, so the default view and display are used.
- *
- */
-function burdastyle_thunder_admin_field_widget_viewsreference_autocomplete_form_alter (&$element, FormStateInterface $form_state, $context) {
-  $route_name = \Drupal::routeMatch()->getRouteName();
-  if (in_array($route_name, array('node.add', 'entity.node.edit_form', 'entity.taxonomy_term.add_form', 'entity.taxonomy_term.edit_form'))) {
-    // we have to lobotomize the form a bit so we can hide the view and
-    // display selection
-    unset($element['target_id']['#ajax']);
-    unset($element['target_id']['#target_type']);
-    $element['target_id']['#type'] = 'hidden';
-    $element['target_id']['#value'] = 'advertising_products';
-    unset($element['display_id']['#options']);
-    $element['display_id']['#type'] = 'hidden';
-    $element['display_id']['#value'] = 'embed_in_advertising_products_paragraph';
-    $element['options']['#open'] = TRUE;
-    $element['options']['#description'] = $element['target_id']['#description'];
-  }
-}
-
-/**
  * Helper function to get eCommerce Slider CSS placeholder from default theme,
  * base theme or fallback.
  *
