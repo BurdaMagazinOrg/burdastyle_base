@@ -24,14 +24,7 @@ class BurdaStyleUserAccessHandler extends UserAccessControlHandler {
    * {@inheritdoc}
    */
   protected function checkAccess(EntityInterface $entity, $operation, AccountInterface $account) {
-    /** @var \Drupal\user\UserInterface $entity*/
-
-    // We don't treat the user label as privileged information, so this check
-    // has to be the first one in order to allow labels for all users to be
-    // viewed, including the special anonymous user.
-    if ($operation === 'view label') {
-      return AccessResult::allowed();
-    }
+    $default = parent::checkAccess($entity, $operation, $account);
 
     // The anonymous user's profile can neither be viewed, updated nor deleted.
     if ($entity->isAnonymous()) {
@@ -56,19 +49,8 @@ class BurdaStyleUserAccessHandler extends UserAccessControlHandler {
         else {
           return AccessResultNeutral::neutral("The 'access user profiles' permission is required.")->cachePerPermissions()->addCacheableDependency($entity);
         }
-        break;
-
-      case 'update':
-        // Users can always edit their own account.
-        return AccessResult::allowedIf($account->id() == $entity->id())->cachePerUser();
-
-      case 'delete':
-        // Users with 'cancel account' permission can cancel their own account.
-        return AccessResult::allowedIf($account->id() == $entity->id() && $account->hasPermission('cancel account'))->cachePerPermissions()->cachePerUser();
     }
-
-    // No opinion.
-    return AccessResult::neutral();
+    return $default;
   }
 
 }
