@@ -148,6 +148,7 @@ function _burdastyle_thunder_admin_form_alter_helper(&$form, FormStateInterface 
 
   // Add BurdaStyle specific JS for thunder_admin backend theme.
   $form['#attached']['library'][] = 'burdastyle_thunder_admin/edit_plus';
+  $form['#attached']['library'][] = 'burdastyle_thunder_admin/tipser';
 
   // Add CSS to fix broken travis tests with position fixed 'content-form-actions' region.
 	if (getenv('AH_SITE_ENVIRONMENT') == 'travis') {

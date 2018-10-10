@@ -26,3 +26,10 @@ edit_plus:
   dependencies:
     - core/jquery
     - core/drupal
+
+tipser:
+  version: VERSION
+  js:
+    js/tipser.js: {}
+  dependencies:
+    - core/drupal
