@@ -246,5 +246,9 @@ function burdastyle_thunder_admin_user_login(User $account)
 {
     if ($account->hasRole('blocked_user')) {
         user_logout();
+        \Drupal::logger('burdastyle_thunder_admin')->alert(sprintf(
+            'The blocked user with email address %s tried to login',
+            $account->getEmail()
+        ));
     }
 }
