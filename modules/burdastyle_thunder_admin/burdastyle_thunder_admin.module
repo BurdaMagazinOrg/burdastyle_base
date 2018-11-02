@@ -3,6 +3,7 @@
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Field\EntityReferenceFieldItemList;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\user\Entity\User;
 
 /**
  * Implements hook_form_alter().
@@ -235,4 +236,15 @@ EOT;
   }
 
   return $cssPlaceholder;
+}
+
+/**
+ * Implements hook_user_login().
+ * @param User $account
+ */
+function burdastyle_thunder_admin_user_login(User $account)
+{
+    if ($account->hasRole('blocked_user')) {
+        user_logout();
+    }
 }
