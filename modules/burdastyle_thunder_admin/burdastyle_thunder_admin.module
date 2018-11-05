@@ -236,3 +236,18 @@ EOT;
 
   return $cssPlaceholder;
 }
+
+
+/**
+ * Implements hook_field_widget_WIDGET_TYPE_form_alter().
+ */
+function burdastyle_thunder_admin_field_widget_paragraphs_form_alter(&$element, &$form_state, $context) {
+  if ($element['#paragraph_type'] == 'content_reference') {
+    foreach ($element['subform']['field_e_view_mode']['widget']['#options'] as $key => $value) {
+      if (strpos($key, 'content_reference_') !== 0) { // we require valid view modes to
+        // start with content_reference_
+        unset($element['subform']['field_e_view_mode']['widget']['#options'][$key]);
+      }
+    }
+  }
+}
