@@ -18,6 +18,12 @@ function burdastyle_thunder_admin_form_alter(&$form, \Drupal\Core\Form\FormState
 			case 'node':
 			case 'taxonomy_term':
   			_burdastyle_thunder_admin_form_alter_helper($form, $form_state, $form_id);
+
+        // INREL-5274: Set unpublish state to 'unpublished' instead of 'draft'.
+        // TODO: Remove when issue is fixed by Thunder or scheduler team.
+        if (isset($form['unpublish_state']['widget'][0])) {
+          $form['unpublish_state']['widget'][0]['#default_value'] = 'unpublished';
+        }
 	  		break;
 		}
 	}
