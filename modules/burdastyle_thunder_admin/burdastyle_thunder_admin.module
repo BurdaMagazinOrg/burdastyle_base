@@ -242,7 +242,10 @@ EOT;
  * Implements hook_field_widget_WIDGET_TYPE_form_alter().
  */
 function burdastyle_thunder_admin_field_widget_paragraphs_form_alter(&$element, &$form_state, $context) {
-  if ($element['#paragraph_type'] == 'content_reference') {
+  if (
+    $element['#paragraph_type'] === 'content_reference' &&
+    isset($element['subform']['field_e_view_mode']['widget']['#options'])
+  ) {
     foreach ($element['subform']['field_e_view_mode']['widget']['#options'] as $key => $value) {
       if (strpos($key, 'content_reference_') !== 0) { // we require valid view modes to
         // start with content_reference_
@@ -256,7 +259,11 @@ function burdastyle_thunder_admin_field_widget_paragraphs_form_alter(&$element, 
  * Implements hook_preprocess_views_view().
  */
 function burdastyle_thunder_admin_preprocess_views_view(&$variables) {
-  if ($variables['view']->id() == 'content_reference_browser') {
+  $view = $variables['view'];
+  if (
+    $view instanceof \Drupal\views\Entity\View &&
+    $view->id() === 'content_reference_browser'
+  ) {
     $variables['view_array']['#attached']['library'][] = 'thunder_media/entity_browser_view';
   }
 }
