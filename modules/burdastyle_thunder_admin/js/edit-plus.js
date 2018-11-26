@@ -2,7 +2,7 @@
 
 const handleEditedForms = {
   formHasChanged: false,
-  form: document.querySelector('#node-article-edit-form, #node-article-edit-plus-form'),
+  form: document.querySelector('form'),
   handleClick(e) {
     const querySelector = '.tabs a[href$="/edit"], .tabs a[href$="/edit_plus"]';
     const message = 'You have unsaved changes. Do you really want to leave this site?';
