@@ -3,10 +3,12 @@ Drupal.behaviors.burdastyleArticle = {
   landingPageCheckbox: null,
   attach(context) {
     this.landingPageCheckbox = context.querySelector('#edit-field-promote-states-landing');
-    this.landingPageCheckbox.addEventListener('change', (e) => {
-      this.handleSelection(e, context);
-    });
-    this.selectCheckboxes(context);
+    if(this.landingPageCheckbox) {
+      this.landingPageCheckbox.addEventListener('change', (e) => {
+        this.handleSelection(e, context);
+      });
+      this.selectCheckboxes(context);
+    } 
   },
 
   handleSelection(e, context) {
