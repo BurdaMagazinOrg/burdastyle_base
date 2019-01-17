@@ -194,7 +194,7 @@ function burdastyle_article_node_update(Drupal\Core\Entity\EntityInterface $enti
     }
   }
 }
- 
+
 /**
  * Implements hook_preprocess_node().
  */
@@ -330,4 +330,22 @@ function _burdastyle_article_display_created(Node $node, $view_mode) {
   }
 
   return !$node->field_hide_created->value;
+}
+
+
+/**
+ * Implements hook_field_widget_WIDGET_ID_form_alter().
+ *
+ * Required for publish/unpublish state from scheduler_content_moderation_integration.
+ *
+ */
+function burdastyle_article_field_widget_scheduler_moderation_form_alter(&$element, FormStateInterface $form_state, $context) {
+  if (\Drupal::currentUser()->hasPermission('schedule publishing of nodes')) {
+    if (isset($element['#options']['published'])) {
+      $element['#default_value'] = ['published'];
+    }
+    if (isset($element['#options']['unpublished'])) {
+      $element['#default_value'] = ['unpublished'];
+    }
+  }
 }
