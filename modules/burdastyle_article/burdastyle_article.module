@@ -94,7 +94,8 @@ function _burdastyle_article_form_alter_helper(&$form, FormStateInterface $form_
   if (
     !\Drupal::currentUser()->hasPermission('schedule publishing of nodes')
     &&
-    (($node->type->entity->getThirdPartySetting('scheduler', 'publish_enable') && $node->publish_on->value)
+    (
+      ($node->type->entity->getThirdPartySetting('scheduler', 'publish_enable') && $node->publish_on->value)
       ||
       ($node->type->entity->getThirdPartySetting('scheduler', 'unpublish_enable') && $node->unpublish_on->value)
     )
