@@ -15,6 +15,11 @@ function burdastyle_article_module_implements_alter(&$implementations, $hook) {
       unset($implementations['burdastyle_article']);
       $implementations['burdastyle_article'] = $group;
       break;
+    // We remove this entity access check as it does not suit us. We have
+    // re-implemented it below in _burdastyle_article_form_alter_helper
+    case 'entity_access':
+      unset($implementations['scheduler']);
+      break;
   }
 }
 
@@ -82,6 +87,22 @@ function _burdastyle_article_form_alter_helper(&$form, FormStateInterface $form_
 
   // attach libraries
   $form['#attached']['library'][] = 'burdastyle_article/publication_options';
+
+  // In case the user tries to edit a scheduled node, but has not permission
+  // to schedule, we block the form submission form
+  $node = $form_state->getFormObject()->getEntity();
+  if (
+    !\Drupal::currentUser()->hasPermission('schedule publishing of nodes')
+    &&
+    (
+      ($node->type->entity->getThirdPartySetting('scheduler', 'publish_enable') && $node->publish_on->value)
+      ||
+      ($node->type->entity->getThirdPartySetting('scheduler', 'unpublish_enable') && $node->unpublish_on->value)
+    )
+  ) {
+    drupal_set_message(t('This node is scheduled, you can not save it.'), 'warning');
+    $form['actions']['#disabled'] = TRUE;
+  }
 }
 
 /**
