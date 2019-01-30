@@ -31,6 +31,13 @@ function burdastyle_article_form_node_article_edit_form_alter(&$form, FormStateI
 }
 
 /**
+ * Implements hook_form_node_article_edit_plus_form_alter().
+ */
+function burdastyle_article_form_node_article_edit_plus_form_alter(&$form, FormStateInterface $form_state) {
+  _burdastyle_article_form_alter_helper($form, $form_state);
+}
+
+/**
  * Implements hook_form_node_article_form_alter().
  */
 function burdastyle_article_form_node_article_form_alter(&$form, FormStateInterface $form_state) {
