@@ -291,7 +291,7 @@ function burdastyle_thunder_admin_page_attachments_alter(array &$attachments) {
   // We remove the contextual library on node edit forms, it plays havoc with
   // scheduling options if displayed on paragraph previews
   $route_name = \Drupal::routeMatch()->getRouteName();
-  if (in_array($route_name, ['entity.node_type.edit_form', 'entity.node.edit_form.edit_plus']]) {
+  if (in_array($route_name, ['entity.node_type.edit_form', 'entity.node.edit_form.edit_plus'])) {
     if (in_array('contextual/drupal.contextual-links', $attachments['#attached']['library'])) {
       $index = array_search('contextual/drupal.contextual-links', $attachments['#attached']['library']);
       unset($attachments['#attached']['library'][$index]);
