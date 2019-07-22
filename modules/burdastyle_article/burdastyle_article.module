@@ -94,6 +94,7 @@ function _burdastyle_article_form_alter_helper(&$form, FormStateInterface $form_
 
   // attach libraries
   $form['#attached']['library'][] = 'burdastyle_article/publication_options';
+  $form['#attached']['library'][] = 'burdastyle_article/article_form_styling';
 
   // In case the user tries to edit a scheduled node, but has not permission
   // to schedule, we block the form submission form
