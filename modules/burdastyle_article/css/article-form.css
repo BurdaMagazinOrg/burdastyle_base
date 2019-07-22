@@ -1,17 +1,17 @@
-/* line 3, ../sass/article-form.scss */
+/* line 2, ../sass/article-form.scss */
 body .horizontal-tabs {
   border: 0;
 }
-/* line 6, ../sass/article-form.scss */
+/* line 5, ../sass/article-form.scss */
 body .horizontal-tabs .horizontal-tabs-list {
   background-color: transparent;
   border: 0;
 }
-/* line 10, ../sass/article-form.scss */
+/* line 9, ../sass/article-form.scss */
 body .horizontal-tabs .horizontal-tabs-list > li {
   height: 35px;
 }
-/* line 15, ../sass/article-form.scss */
+/* line 14, ../sass/article-form.scss */
 body .horizontal-tabs .horizontal-tab-button {
   border: 1px solid #c2c2c2;
   border-bottom: 0;
@@ -21,26 +21,27 @@ body .horizontal-tabs .horizontal-tab-button {
   padding-left: 15px;
   padding-right: 15px;
 }
-/* line 24, ../sass/article-form.scss */
+/* line 23, ../sass/article-form.scss */
 body .horizontal-tabs .horizontal-tab-button.selected {
   background-color: #fff;
 }
-/* line 30, ../sass/article-form.scss */
+/* line 29, ../sass/article-form.scss */
 body .horizontal-tabs-panes {
   border: 1px solid #c2c2c2;
   margin-top: -6px;
 }
-/* line 35, ../sass/article-form.scss */
+/* line 34, ../sass/article-form.scss */
 body .horizontal-tabs-pane {
   padding: 0;
 }
-/* line 39, ../sass/article-form.scss */
+/* line 38, ../sass/article-form.scss */
 body fieldset {
   border-left: 0;
   border-right: 0;
 }
-/* line 43, ../sass/article-form.scss */
-body fieldset fieldset, body fieldset fieldset:not(.fieldgroup) {
+/* line 42, ../sass/article-form.scss */
+body fieldset fieldset,
+body fieldset fieldset:not(.fieldgroup) {
   border: 0;
   padding-right: 0;
 }
@@ -84,80 +85,105 @@ body textarea.form-textarea {
   background-color: white;
 }
 /* line 90, ../sass/article-form.scss */
-body ul.tips, body div.description, body .form-item .description {
+body ul.tips,
+body div.description,
+body .form-item .description {
   margin-top: 0.5em;
 }
-/* line 93, ../sass/article-form.scss */
-body ul.tips:before, body div.description:before, body .form-item .description:before {
-  content: "\00bb";
+/* line 95, ../sass/article-form.scss */
+body ul.tips:before,
+body div.description:before,
+body .form-item .description:before {
+  content: '\00bb';
   font-size: 15px;
   color: #4fa5ff;
   margin-right: 4px;
 }
-/* line 102, ../sass/article-form.scss */
+/* line 104, ../sass/article-form.scss */
 body .field--widget-entity-reference-paragraphs .tabledrag-toggle-weight-wrapper {
   margin-bottom: 1em;
 }
-/* line 107, ../sass/article-form.scss */
+/* line 109, ../sass/article-form.scss */
 body .field--name-field-media-images {
   margin-top: 1.5em;
   border-top: 1px solid #e6e4df;
 }
-/* line 114, ../sass/article-form.scss */
+/* line 116, ../sass/article-form.scss */
 body .field-multiple-table .fieldset-wrapper > .form-wrapper > * {
   margin-top: 1.5em;
 }
 
-/* line 121, ../sass/article-form.scss */
+/* line 123, ../sass/article-form.scss */
 .inline-entity-form-media-thumbnail {
   padding-top: 1em;
   padding-bottom: 1em;
 }
 
-/* line 127, ../sass/article-form.scss */
+/* line 129, ../sass/article-form.scss */
 .touchevents .draggable td {
   padding-top: 1em;
   padding-bottom: 1em;
 }
 
-/* line 133, ../sass/article-form.scss */
+/* line 135, ../sass/article-form.scss */
 .touchevents a.tabledrag-handle .handle {
   height: 40px;
+}
+
+/* line 143, ../sass/article-form.scss */
+.paragraph--type--products .field--name-field-products {
+  display: flex;
+}
+/* line 146, ../sass/article-form.scss */
+.paragraph--type--products .field--name-field-products .field__item + .field__item {
+  margin-left: 15px;
+}
+/* line 150, ../sass/article-form.scss */
+.paragraph--type--products .field--name-field-products .field__item {
+  width: 60px;
+}
+/* line 153, ../sass/article-form.scss */
+.paragraph--type--products .field--name-field-products .field__item .caption {
+  display: none;
 }
 
 /**
 * Harm want only 1 Label
 **/
-/* line 140, ../sass/article-form.scss */
-#edit-field-top-paragraphs, #edit-field-paragraphs {
+/* line 163, ../sass/article-form.scss */
+#edit-field-top-paragraphs,
+#edit-field-paragraphs {
   font-size: 0;
   line-height: 0;
 }
-/* line 144, ../sass/article-form.scss */
-#edit-field-top-paragraphs > *, #edit-field-paragraphs > * {
+/* line 168, ../sass/article-form.scss */
+#edit-field-top-paragraphs > *,
+#edit-field-paragraphs > * {
   font-size: 12px;
   line-height: 1;
 }
 
-/* line 150, ../sass/article-form.scss */
+/* line 174, ../sass/article-form.scss */
 #edit-field-presenter-media-wrapper fieldset {
   padding-left: 0;
 }
 
-/* line 155, ../sass/article-form.scss */
-#field-paragraphs-values > thead, #field-top-paragraphs-values > thead {
+/* line 180, ../sass/article-form.scss */
+#field-paragraphs-values > thead,
+#field-top-paragraphs-values > thead {
   display: none;
 }
-/* line 160, ../sass/article-form.scss */
-#field-paragraphs-values .draggable:first-child, #field-top-paragraphs-values .draggable:first-child {
+/* line 185, ../sass/article-form.scss */
+#field-paragraphs-values .draggable:first-child,
+#field-top-paragraphs-values .draggable:first-child {
   border-top: 1px solid #e6e4df;
 }
 
-/* line 168, ../sass/article-form.scss */
+/* line 192, ../sass/article-form.scss */
 .field--widget-entity-reference-paragraphs .paragraph-type-top {
   padding-top: 1em;
 }
-/* line 172, ../sass/article-form.scss */
+/* line 196, ../sass/article-form.scss */
 .field--widget-entity-reference-paragraphs .paragraphs-subform {
   padding-bottom: 1em;
 }

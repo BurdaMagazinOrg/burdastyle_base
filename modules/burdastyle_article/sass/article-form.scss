@@ -1,5 +1,4 @@
 body {
-
   .horizontal-tabs {
     border: 0;
 
@@ -40,7 +39,8 @@ body {
     border-left: 0;
     border-right: 0;
 
-    fieldset, fieldset:not(.fieldgroup) {
+    fieldset,
+    fieldset:not(.fieldgroup) {
       border: 0;
       padding-right: 0;
     }
@@ -87,11 +87,13 @@ body {
     background-color: white;
   }
 
-  ul.tips, div.description, .form-item .description {
+  ul.tips,
+  div.description,
+  .form-item .description {
     margin-top: 0.5em;
 
     &:before {
-      content: "\00bb";
+      content: '\00bb';
       font-size: 15px;
       color: #4fa5ff;
       margin-right: 4px;
@@ -134,10 +136,32 @@ body {
   height: 40px;
 }
 
+.paragraph--type--products {
+  .field--name-field-title {
+  }
+
+  .field--name-field-products {
+    display: flex;
+
+    .field__item + .field__item {
+      margin-left: 15px;
+    }
+
+    .field__item {
+      width: 60px;
+
+      .caption {
+        display: none;
+      }
+    }
+  }
+}
+
 /**
 * Harm want only 1 Label
 **/
-#edit-field-top-paragraphs, #edit-field-paragraphs {
+#edit-field-top-paragraphs,
+#edit-field-paragraphs {
   font-size: 0;
   line-height: 0;
 
@@ -151,7 +175,8 @@ body {
   padding-left: 0;
 }
 
-#field-paragraphs-values, #field-top-paragraphs-values {
+#field-paragraphs-values,
+#field-top-paragraphs-values {
   & > thead {
     display: none;
   }
@@ -160,7 +185,6 @@ body {
     &:first-child {
       border-top: 1px solid #e6e4df;
     }
-
   }
 }
 
