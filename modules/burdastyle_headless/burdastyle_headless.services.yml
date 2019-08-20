@@ -1,0 +1,6 @@
+services:
+  burdastyle_headless.frontend_path_processor:
+    class: Drupal\burdastyle_headless\HttpKernel\FrontendPathProcessor
+    arguments: ['@config.factory', '@path.alias_manager']
+    tags:
+      - { name: path_processor_outbound, priority: 200 }

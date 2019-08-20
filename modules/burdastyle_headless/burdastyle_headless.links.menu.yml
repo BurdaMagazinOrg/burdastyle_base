@@ -1,0 +1,6 @@
+burdastyle_headless.settings_form:
+  title: 'Headless settings'
+  route_name: burdastyle_headless.settings_form
+  description: 'Configure settings for BurdaStyle Headless.'
+  parent: burdastyle_base.burdastyle_settings
+  weight: 8
