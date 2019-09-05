@@ -78,27 +78,20 @@ class FrontendPathProcessor implements OutboundPathProcessorInterface {
       return $path;
     }
 
-    // Get the current language.
+    // Return given path for non-routed and non-canonical URLs.
     $langcode = NULL;
     if (!empty($options['language'])) {
       $langcode = $options['language']->getId();
     }
-    // Get the URL object for this request.
     $alias = $this->aliasManager->getPathByAlias($path, $langcode);
     $url = Url::fromUserInput($alias, $options);
-
-    if (!$url->isRouted()) {
+    if (!$url->isRouted() || !preg_match("/\.canonical$/", $url->getRouteName())) {
       return $path;
     }
 
-    $route_name_parts = explode('.', $url->getRouteName());
-    if (end($route_name_parts) !== 'canonical') {
-      return $path;
-    }
-
+    // Switch via options to configured frontend base URL.
     $options['base_url'] = trim($frontend_base_url, '/');
     $options['absolute'] = TRUE;
-
     return $path;
   }
 
