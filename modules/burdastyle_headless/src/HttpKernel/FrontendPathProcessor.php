@@ -52,6 +52,13 @@ class FrontendPathProcessor implements OutboundPathProcessorInterface {
    * {@inheritdoc}
    */
   public function processOutbound($path, &$options = [], Request $request = NULL, BubbleableMetadata $bubbleable_metadata = NULL) {
+
+    // Early return if no 'frontend_base_url' is set yet.
+    $frontend_base_url = $this->configFactory->get('burdastyle_headless.settings')->get('frontend_base_url');
+    if (empty($frontend_base_url)) {
+      return $path;
+    }
+
     // Only act on valid internal paths and when a domain loads.
     if (empty($path) || !empty($options['external'])) {
       return $path;
@@ -86,11 +93,6 @@ class FrontendPathProcessor implements OutboundPathProcessorInterface {
 
     $route_name_parts = explode('.', $url->getRouteName());
     if (end($route_name_parts) !== 'canonical') {
-      return $path;
-    }
-
-    $frontend_base_url = $this->configFactory->get('burdastyle_headless.settings')->get('frontend_base_url');
-    if (empty($frontend_base_url)) {
       return $path;
     }
 
