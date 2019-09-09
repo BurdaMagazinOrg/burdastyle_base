@@ -4,3 +4,8 @@ services:
     arguments: ['@config.factory', '@path.alias_manager']
     tags:
       - { name: path_processor_outbound, priority: 200 }
+
+  burdastyle_headless.route_subscriber:
+    class: Drupal\burdastyle_headless\Routing\RouteSubscriber
+    tags:
+      - { name: event_subscriber }
