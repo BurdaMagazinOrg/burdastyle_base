@@ -90,6 +90,7 @@ function _burdastyle_thunder_admin_form_alter_helper(&$form, FormStateInterface 
 	$form['field_ad_context']['#group'] = 'bs_ad_settings';
 	$form['field_sponsor_type']['#group'] = 'bs_ad_settings';
 	$form['field_campaign']['#group'] = 'bs_ad_settings';
+	$form['field_amazon_tag']['#group'] = 'bs_ad_settings';
 
 	// Move fields for header, sidebar and footer blocks into advanced region of form.
 	$form['bs_block_settings'] = [
