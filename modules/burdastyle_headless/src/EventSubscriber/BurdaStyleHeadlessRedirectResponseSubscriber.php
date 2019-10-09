@@ -1,10 +1,16 @@
 <?php
 
+/**
+ * @file
+ * Contains \Drupal\burdastyle_headless\EventSubscriber\BurdaStyleHeadlessRedirectResponseSubscriber.
+ */
+
 namespace Drupal\burdastyle_headless\EventSubscriber;
 
 use Drupal\Component\HttpFoundation\SecuredRedirectResponse;
 use Drupal\Core\Routing\LocalRedirectResponse;
 use Drupal\Core\Routing\TrustedRedirectResponse;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -13,7 +19,7 @@ use Drupal\Core\EventSubscriber\RedirectResponseSubscriber;
 /**
  * Override RedirectResponseSubscriber of Drupal Core for headless projects.
  */
-class BurdaStyleHeadlessRedirectResponseSubscriber extends RedirectResponseSubscriber {
+class BurdaStyleHeadlessRedirectResponseSubscriber extends RedirectResponseSubscriber implements EventSubscriberInterface {
 
   /**
    * Allows manipulation of the response object when performing a redirect.
