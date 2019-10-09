@@ -4,3 +4,9 @@ services:
     arguments: ['@config.factory', '@path.alias_manager']
     tags:
       - { name: path_processor_outbound, priority: 200 }
+
+  burdastyle_headless.redirect_response_subscriber:
+    class: Drupal\burdastyle_headless\EventSubscriber\BurdaStyleHeadlessRedirectResponseSubscriber
+    arguments: ['@unrouted_url_assembler', '@router.request_context']
+    tags:
+      - { name: event_subscriber }
