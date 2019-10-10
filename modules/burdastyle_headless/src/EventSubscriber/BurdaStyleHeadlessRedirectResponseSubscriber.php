@@ -8,8 +8,11 @@
 namespace Drupal\burdastyle_headless\EventSubscriber;
 
 use Drupal\Component\HttpFoundation\SecuredRedirectResponse;
+use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Routing\LocalRedirectResponse;
+use Drupal\Core\Routing\RequestContext;
 use Drupal\Core\Routing\TrustedRedirectResponse;
+use Drupal\Core\Utility\UnroutedUrlAssemblerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
@@ -18,8 +21,33 @@ use Drupal\Core\EventSubscriber\RedirectResponseSubscriber;
 
 /**
  * Override RedirectResponseSubscriber of Drupal Core for headless projects.
+ *
+ * @package Drupal\burdastyle_headless\EventSubscriber
  */
 class BurdaStyleHeadlessRedirectResponseSubscriber extends RedirectResponseSubscriber implements EventSubscriberInterface {
+
+  /**
+   * Config factory.
+   *
+   * @var \Drupal\Core\Config\ConfigFactoryInterface
+   */
+  protected $config;
+
+  /**
+   * Constructs a RedirectResponseSubscriber object.
+   *
+   * @param \Drupal\Core\Utility\UnroutedUrlAssemblerInterface $url_assembler
+   *   The unrouted URL assembler service.
+   * @param \Drupal\Core\Routing\RequestContext $request_context
+   *   The request context.
+   * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
+   *   The config factory.
+   */
+  public function __construct(UnroutedUrlAssemblerInterface $url_assembler, RequestContext $request_context, ConfigFactoryInterface $config_factory) {
+    $this->unroutedUrlAssembler = $url_assembler;
+    $this->requestContext = $request_context;
+    $this->config = $config_factory->get('burdastyle_headless.settings');
+  }
 
   /**
    * Allows manipulation of the response object when performing a redirect.
@@ -53,18 +81,8 @@ class BurdaStyleHeadlessRedirectResponseSubscriber extends RedirectResponseSubsc
       // destination, ensure that all redirects are safe.
       if (!($response instanceof SecuredRedirectResponse)) {
         try {
-          // TODO: Get frontend domain from burdastyle_headless settings.
-          $trustedDomains = [
-            'www.harpersbazaar.de',
-            'www2.harpersbazaar.de',
-            'dev.harpersbazaar.de',
-            'staging.harpersbazaar.de',
-            'feature1.harpersbazaar.de',
-            'feature2.harpersbazaar.de',
-            'bazaar.local',
-          ];
           $host = parse_url($response->getTargetUrl(), PHP_URL_HOST);
-          if (in_array($host, $trustedDomains)) {
+          if (strpos($this->config->get('frontend_base_url'), $host) !== FALSE) {
             $safe_response = TrustedRedirectResponse::createFromRedirectResponse($response);
             $safe_response->setRequestContext($this->requestContext);
           }
