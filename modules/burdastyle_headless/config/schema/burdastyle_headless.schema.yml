@@ -1,0 +1,7 @@
+burdastyle_headless.settings:
+  type: config_object
+  label: 'BurdaStyle Headless settings'
+  mapping:
+    frontend_base_url:
+      type: string
+      label: 'The Base URL for frontend server.'

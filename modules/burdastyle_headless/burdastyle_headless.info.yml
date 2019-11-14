@@ -1,0 +1,6 @@
+name: 'BurdaStyle Headless'
+type: module
+description: 'Provide support functionality for BurdaStyle headless projects.'
+package: BurdaStyle
+configure: burdastyle_headless.settings_form
+core: 8.x

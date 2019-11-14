@@ -1,0 +1,9 @@
+burdastyle_headless.settings_form:
+  path: '/admin/config/system/burdastyle/headless'
+  defaults:
+    _form: '\Drupal\burdastyle_headless\Form\SettingsForm'
+    _title: 'BurdaStyle Headless settings'
+  requirements:
+    _permission: 'administer site configuration'
+  options:
+    _admin_route: TRUE
