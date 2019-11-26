@@ -37,7 +37,6 @@ class BurdaStyleHeadlessAmpHtmlResponseMarkupProcessor extends AmpHtmlResponseMa
        * - Replace absolute backend URLs to frontend URLs (1,2).
        * - Replace relative image URLs to absolute backend URLs (3,5,6).
        * - Replace frontend image URLs to backend image URLs (4).
-       * - Replace relative links to absolute frontend URLs (7).
        */
       $sources = [
         $base_secure_url,
@@ -46,7 +45,6 @@ class BurdaStyleHeadlessAmpHtmlResponseMarkupProcessor extends AmpHtmlResponseMa
         $frontend_base_url . '/sites/default/files/styles',
         'href="/themes/custom',
         'src="/themes/custom',
-        'href="/',
       ];
       $replacements = [
         $frontend_base_url,
@@ -55,7 +53,6 @@ class BurdaStyleHeadlessAmpHtmlResponseMarkupProcessor extends AmpHtmlResponseMa
         $base_secure_url . '/sites/default/files/styles',
         'href="' . $base_secure_url . '/themes/custom',
         'src="' . $base_secure_url . '/themes/custom',
-        'href="' . $frontend_base_url . '/',
       ];
       $response->setContent(str_replace($sources, $replacements, $this->ampContent));
     }
