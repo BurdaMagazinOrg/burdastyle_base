@@ -26,9 +26,10 @@ class BurdaStyleHeadlessAmpHtmlResponseMarkupProcessor extends AmpHtmlResponseMa
    */
   public function processMarkupToAmp(HtmlResponse $response) {
     global $base_insecure_url, $base_secure_url;
-
     $response = parent::processMarkupToAmp($response);
-    if ($frontend_base_url = $this->configFactory->get('burdastyle_headless.settings')->get('frontend_base_url')) {
+    $frontend_base_url = $this->configFactory->get('burdastyle_headless.settings')->get('frontend_base_url');
+
+    if (!isEmpty($frontend_base_url)) {
       $this->ampContent = $response->getContent();
 
       /**
