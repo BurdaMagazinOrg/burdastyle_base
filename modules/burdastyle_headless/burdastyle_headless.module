@@ -39,8 +39,11 @@ function burdastyle_headless_clear_associated_urls(EntityInterface $entity){
   // Get absolute URL of frontpage.
   $urls[] = Url::fromUri('internal:/', $options)->toString();
 
-  // Get absolute URL of node.
-  $urls[] = Url::fromRoute('entity.node.canonical', ['node' => $entity->id()], $options)->toString();
+  // Get absolute and AMP URLs of node.
+  // TODO: Use $options to generate AMP URL.
+  $nodeUrl = Url::fromRoute('entity.node.canonical', ['node' => $entity->id()], $options)->toString();
+  $urls[] = $nodeUrl;
+  $urls[] = $nodeUrl . '?amp';
 
   // Get referenced or related Taxonomy terms from node.
   $termIDs = [];
