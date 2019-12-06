@@ -57,7 +57,9 @@ function burdastyle_headless_clear_associated_urls(EntityInterface $entity){
     }
   }
   foreach ($termIDs as $termID) {
-    $urls[] = Url::fromRoute('entity.taxonomy_term.canonical', ['taxonomy_term' => $termID], $options)->toString();
+    if (!empty($termID)) {
+      $urls[] = Url::fromRoute('entity.taxonomy_term.canonical', ['taxonomy_term' => $termID], $options)->toString();
+    }
   }
 
   // TODO Code not working yet: Get absolute URL of author page.
