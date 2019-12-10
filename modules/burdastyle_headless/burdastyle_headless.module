@@ -27,6 +27,12 @@ function burdastyle_headless_node_update(EntityInterface $entity) {
  */
 function burdastyle_headless_clear_associated_urls(EntityInterface $entity){
 
+  // Init purging of Acquia varnish for published nodes.
+  // TODO: Remove when headless 404 error / GraphQL caching is fixed.
+  if ($entity->isPublished()) {
+    burdastyle_headless_purge_acquia_varnish();
+  }
+
   // Clearing the drupal cache is necessary sometimes.
   Cache::invalidateTags(['homepage_tag']);
 
@@ -75,5 +81,27 @@ function burdastyle_headless_clear_associated_urls(EntityInterface $entity){
     $invalidation_type = 'url';
     $invalidations[] = $queuer->purgeInvalidationFactory->get($invalidation_type, $url);
     $queuer->purgeQueue->add($queuer->queuer, $invalidations);
+  }
+}
+
+/**
+ * Helper function to purge Acquia varnish on Acquia envs via APIv1.
+ */
+function burdastyle_headless_purge_acquia_varnish() {
+  if (isset($_ENV['AH_SITE_NAME'])) {
+    $domain = $_ENV['HTTP_HOST'];
+    $realm = $_ENV['AH_REALM'];
+    $site = $_ENV['AH_SITE_NAME'];
+    $env = $_ENV['AH_SITE_ENVIRONMENT'];
+    $acquiaVarnishPurgeUrl = 'https://cloudapi.acquia.com/v1/sites/' . $realm . ':' . $site . '/envs/' . $env . '/domains/' . $domain . '/cache.json';
+
+    $options = [
+      'auth' => [
+        'tech.burdastyle@burda.com',
+        'OnpygbAHIoFUABoDZ8BhHkSINJMu+TDlHBts5OQSns6C3FdRu8TMkzdSIGkYJb+hlhvCtDeC2VWB',
+      ],
+    ];
+    $httpClient = \Drupal::httpClient();
+    $httpClient->delete($acquiaVarnishPurgeUrl, $options);
   }
 }
