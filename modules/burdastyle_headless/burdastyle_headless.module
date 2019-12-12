@@ -4,7 +4,6 @@ use Drupal\burdastyle_headless\Plugin\Purge\Queuer\CloudflareQueuer;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Url;
 use Drupal\Core\Cache\Cache;
-use Drupal\purge\Plugin\Purge\Purger\PurgersService;
 
 /**
  * Implements hook_ENTITY_TYPE_insert() for node entities.
