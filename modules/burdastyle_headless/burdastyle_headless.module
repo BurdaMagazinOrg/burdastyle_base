@@ -4,6 +4,7 @@ use Drupal\burdastyle_headless\Plugin\Purge\Queuer\CloudflareQueuer;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Url;
 use Drupal\Core\Cache\Cache;
+use Drupal\purge\Plugin\Purge\Purger\PurgersService;
 
 /**
  * Implements hook_ENTITY_TYPE_insert() for node entities.
@@ -26,6 +27,12 @@ function burdastyle_headless_node_update(EntityInterface $entity) {
  *    The node being updated.
  */
 function burdastyle_headless_clear_associated_urls(EntityInterface $entity){
+
+  // Init purging of Acquia varnish for published nodes.
+  // TODO: Remove when headless 404 error / GraphQL caching is fixed.
+  if ($entity->isPublished()) {
+    burdastyle_headless_purge_acquia_varnish();
+  }
 
   // Clearing the drupal cache is necessary sometimes.
   Cache::invalidateTags(['homepage_tag']);
@@ -75,5 +82,31 @@ function burdastyle_headless_clear_associated_urls(EntityInterface $entity){
     $invalidation_type = 'url';
     $invalidations[] = $queuer->purgeInvalidationFactory->get($invalidation_type, $url);
     $queuer->purgeQueue->add($queuer->queuer, $invalidations);
+  }
+}
+
+/**
+ * Helper function to purge everything in Acquia varnish.
+ *
+ * @throws \Drupal\Component\Plugin\Exception\PluginException
+ */
+function burdastyle_headless_purge_acquia_varnish() {
+
+  /** @var \Drupal\purge\Plugin\Purge\Purger\PurgersService $purgers */
+  /** @var \Drupal\purge\Plugin\Purge\Purger\PluginManager $pluginManager */
+  /** @var \Drupal\acquia_purge\Plugin\Purge\Purger\AcquiaCloudPurger $acquiaPurger */
+
+  $purgers = \Drupal::service('purge.purgers');
+  $purgePlugins = $purgers->getPluginsEnabled();
+  foreach ($purgePlugins as $id => $purgePlugin) {
+    if ($purgePlugin == 'acquia_purge') {
+      $pluginManager = \Drupal::service('plugin.manager.purge.purgers');
+      $purgeLogger = Drupal::service('purge.logger');
+
+      $acquiaPurger = $pluginManager->createInstance($purgePlugin, ['id' => $id]);
+      $acquiaPurger->setLogger($purgeLogger->get(sprintf($purgers::LOGGER_PURGERS_FORMAT, $purgePlugin, $id)));
+      $acquiaPurger->invalidateEverything([]);
+      break;
+    }
   }
 }
