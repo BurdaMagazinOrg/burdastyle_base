@@ -1,0 +1,111 @@
+<?php
+
+use Drupal\burdastyle_headless\Plugin\Purge\Queuer\CloudflareQueuer;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Url;
+use Drupal\Core\Cache\Cache;
+
+/**
+ * Implements hook_ENTITY_TYPE_insert() for node entities.
+ */
+function burdastyle_headless_node_insert(EntityInterface $entity) {
+  burdastyle_headless_clear_associated_urls($entity);
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_update() for node entities.
+ */
+function burdastyle_headless_node_update(EntityInterface $entity) {
+  burdastyle_headless_clear_associated_urls($entity);
+}
+
+/**
+ * Clears urls associated with a node.
+ *
+ * @param \Drupal\Core\Entity\EntityInterface $entity
+ *    The node being updated.
+ */
+function burdastyle_headless_clear_associated_urls(EntityInterface $entity){
+
+  // Init purging of Acquia varnish for published nodes.
+  // TODO: Remove when headless 404 error / GraphQL caching is fixed.
+  if ($entity->isPublished()) {
+    burdastyle_headless_purge_acquia_varnish();
+  }
+
+  // Clearing the drupal cache is necessary sometimes.
+  Cache::invalidateTags(['homepage_tag']);
+
+  $queuer = new CloudflareQueuer();
+  $queuer->initialize();
+
+  $urls = [];
+  $options = ['absolute' => TRUE];
+
+  // Get absolute URL of frontpage.
+  $urls[] = Url::fromUri('internal:/', $options)->toString();
+
+  // Get absolute and AMP URLs of node.
+  // TODO: Use $options to generate AMP URL.
+  $nodeUrl = Url::fromRoute('entity.node.canonical', ['node' => $entity->id()], $options)->toString();
+  $urls[] = $nodeUrl;
+  $urls[] = $nodeUrl . '?amp';
+
+  // Get referenced or related Taxonomy terms from node.
+  $termIDs = [];
+  if (($entity->hasField('field_channel')) && !$entity->get('field_tags')->isEmpty()) {
+    $channels = $entity->get('field_channel')->getValue();
+    $channel = reset($channels);
+    $termIDs[] = $channel['target_id'];
+    // TODO: Get all parent taxonomy terms.
+  }
+  if (($entity->hasField('field_tags')) && !$entity->get('field_tags')->isEmpty()) {
+    $tags = $entity->get('field_tags')->getValue();
+    foreach ($tags as $tag) {
+      $termIDs[] = $tag['target_id'];
+    }
+  }
+  foreach ($termIDs as $termID) {
+    if (!empty($termID)) {
+      $urls[] = Url::fromRoute('entity.taxonomy_term.canonical', ['taxonomy_term' => $termID], $options)->toString();
+    }
+  }
+
+  // TODO Code not working yet: Get absolute URL of author page.
+  //if (($userID = $entity->get('uid')->getValue()) && $userID != 0) {
+  //  $urls[] = Url::fromRoute('entity.user.canonical', ['user' => $userID], $options)->toString();
+  //}
+
+  $invalidations = [];
+  foreach ($urls as $url) {
+    $invalidation_type = 'url';
+    $invalidations[] = $queuer->purgeInvalidationFactory->get($invalidation_type, $url);
+    $queuer->purgeQueue->add($queuer->queuer, $invalidations);
+  }
+}
+
+/**
+ * Helper function to purge everything in Acquia varnish.
+ *
+ * @throws \Drupal\Component\Plugin\Exception\PluginException
+ */
+function burdastyle_headless_purge_acquia_varnish() {
+
+  /** @var \Drupal\purge\Plugin\Purge\Purger\PurgersService $purgers */
+  /** @var \Drupal\purge\Plugin\Purge\Purger\PluginManager $pluginManager */
+  /** @var \Drupal\acquia_purge\Plugin\Purge\Purger\AcquiaCloudPurger $acquiaPurger */
+
+  $purgers = \Drupal::service('purge.purgers');
+  $purgePlugins = $purgers->getPluginsEnabled();
+  foreach ($purgePlugins as $id => $purgePlugin) {
+    if ($purgePlugin == 'acquia_purge') {
+      $pluginManager = \Drupal::service('plugin.manager.purge.purgers');
+      $purgeLogger = Drupal::service('purge.logger');
+
+      $acquiaPurger = $pluginManager->createInstance($purgePlugin, ['id' => $id]);
+      $acquiaPurger->setLogger($purgeLogger->get(sprintf($purgers::LOGGER_PURGERS_FORMAT, $purgePlugin, $id)));
+      $acquiaPurger->invalidateEverything([]);
+      break;
+    }
+  }
+}
