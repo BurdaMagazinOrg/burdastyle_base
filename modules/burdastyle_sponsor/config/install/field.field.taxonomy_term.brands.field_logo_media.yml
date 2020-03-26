@@ -3,7 +3,6 @@ status: true
 dependencies:
   config:
     - field.storage.taxonomy_term.field_logo_media
-    - media_entity.bundle.image
     - taxonomy.vocabulary.brands
 id: taxonomy_term.brands.field_logo_media
 field_name: field_logo_media
